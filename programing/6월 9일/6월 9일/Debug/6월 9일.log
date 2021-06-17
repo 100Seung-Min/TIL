@@ -1,0 +1,3 @@
+﻿  소스.c
+C:\Users\user\Documents\GitHub\programing\6월 9일\6월 9일\소스.c(8,21): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  6월 9일.vcxproj -> C:\Users\user\Documents\GitHub\programing\6월 9일\Debug\6월 9일.exe

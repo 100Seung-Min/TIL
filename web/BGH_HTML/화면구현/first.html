@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head lang = "en">
+  <meta charset="UTF-8">
+  <title>첫 타이틀</title>
+  <meta name = "master" content="백승민">
+  <base href = "C:\Users\user\Desktop\컴퓨터\화면구현\">
+</head>
+<body>
+  <h1 title="h1태그로 작성하였습니다">1장 홈페이지 만들기</h1>
+  <h2>1절 HTML언어</h2>
+  <h3>1.웹</h3>
+  <h4>1.1 인터넷</h4>
+  <h5>1.1.1 네트워크</h5>
+  <h6>1.1.1.1 통신</h6>
+  <hr>
+  <h3>단락나누기</h3>
+  <p>
+    HTML 문서도 본문을 여러 단락으로
+    나눌 수 있다. css 스타일을 사용하면
+    단락 단위로 내어쓰기와 들여쓰기가 가능하다.
+  </p>
+  <p>여러 개의 빈칸은 하나로 취급되며,
+    엔터 키 역시 하나의 빈 칸으로 처리된다.
+  </p>
+  <hr>
+  <h3>수평선 긋기</h3>
+  <p>hr 태그는 horizontal에서 딴 글자입니다.</p>
+  <p>종료 태그 &lt;/hr&gt;를 사용하지 않습니다.</p>
+  <hr>
+  <h3>새로운 줄 넘어가기</h3>
+  &lt;br&gt;태그로 다음 줄로 넘어갑니다.<br>
+  2 개의 &lt;br&gt;태그로 두번 넘어갑니다.<br><br>
+  잘보이나요?
+  <hr>
+  <h3>특수문자, 기호, 심볼 입력</h3>
+  10 &divide; 2 = 5<br>
+  &radic;2 = 1.414<br>
+  2 &nbsp;&nbsp;&lt;&nbsp;&nbsp;&nbsp;3<br>
+  오늘 &quot;Elvis&#34;노래를 들었다.
+  <hr>
+  <h3>개발자의 포맷 그대로 출력하기</h3>
+  <p>
+    &lt;p&gt;태그를 사용하면
+            여러개의 빈 칸은 하나로,
+            여러 줄은 한 줄에 붙여 출력됩니다.
+  </p>
+  <pre>
+    그러나 &lt;pre&gt;태그를 사용하면
+            사용자가 입력한
+            그대로 출력됩니다.
+  </pre>
+  <hr>
+  <h3>텍스트 꾸미기</h3>
+  <p>
+    <b>진하게</b><br>
+    <strong>강하게</strong><br>
+    <em>강조</em><br>
+    <i>이탤릭으로 강조</i><br>
+    <b><i>지하게 이탤릭으로 강조</i></b><br>
+    보통문자<small>한 단계 작은 문자</small><br>
+    <del>삭제</del><br>
+    <ins>추가</ins><br>
+    보통문자의 <sup>윗 첨자</sup><br>
+    보통문자의 <sub>아래첨자</sub><br>
+    <mark>하이라이팅</mark><br>
+  </p>
+  <hr>
+  <h3>&lt;div&gt;블록과 &lt;span&gt;인라인</h3>
+  <div style="background-color:skyblue; padding: 20px;">
+  내가 사람의 방언과 천사의 말을 할지라도
+  <span style="color: red;">사랑</span>이 없으면
+  소리 나는 구리와 울리는 꽹가리가 되고,
+  <span style="color: red;">사랑</span>이 없으면 아무것도 아니라.</div>
+  <hr>
+  <h3>여러가지 삽입 태그</h3>
+  <a href = "라면 끓이기 ol.html">ol</a><br>
+  <a href="내가 좋아하는 것 ul.html">ul</a><br>
+  <a href="중첩리스트.html">중첩리스트</a><br>
+  <img src = "https://cdn.yasinmoon.com/news/photo/201001/11884_12826_4151.jpg" width="100" height="100">
+  <hr>
+  <h3>리스트 삽입</h3>
+  <ol type = "1"
+      start = "value">
+      <li>아이템</li>
+      <li>아이템</li>
+  </ol>
+  <ul>
+    <li>아이템</li>
+    <li>아이템</li>
+  </ul>
+  <hr>
+  <h3>정의리스트</h3>
+  <dl>
+    <dt><strong>Internet Expiorer</strong></dt>
+    <dd>마이크로소프트에서 만든 브라우저로 현재 국내 시장에서 가장 많이 사용</dd>
+    <dt><strong>Firefox</strong></dt>
+    <dd>Mozilla 재단에서 오픈 소스로 만든 것으로 W3C의 웹 표준을 선도</dd>
+    <dt><strong>Chrome</strong></dt>
+    <dd>구글에서 만든 것으로 좋은 디버거를 갖추고 있어 디버깅에 많이 사용</dd>
+  </dl>
+  <hr>
+  <h3>기본 구조를 가진 표</h3>
+  <table border="1">
+    <caption>1학기 성적</caption>
+    <thead>
+      <tr>
+        <th>이름</th>
+        <th>HTML</th>
+        <th>CSS</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <th>합</th>
+        <th>225</th>
+        <th>230</th>
+      </tr>
+    </tfoot>
+    <tbody>
+      <tr><td>황기태</td><td>80</td><td>70</td></tr>
+      <tr><td>이재문</td><td>95</td><td>99</td></tr>
+      <tr><td>이병은</td><td>40</td><td>61</td></tr>
+    </tbody>
+  </table>
+  <hr>
+  <table>
+    <caption>과일 모음</caption>
+    <tbody>
+      <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQX5A2hobyfM2ogyEp0ciDw3K4vbJ5kA1xEg&usqp=CAU"></td>
+      <td><img src = "https://cdn.crowdpic.net/list-thumb/thumb_l_E3365CCEF4F711F5C52765FF4B6BFD95.jpg"></td>
+    </tbody>
+  </table>
+  <hr>
+  <h3>링크 만들기</h3>
+  <a href= "https://www.aladin.co.kr/home/welcome.aspx#">
+    <img src="https://image.aladin.co.kr/img/header/2011/aladin_logo_new.gif">
+  </a>
+  <hr>
+  <h3>링크의 target 속성 활용</h3>
+  <ul>
+    <li><a href="http://www.w3.org" target="_blank">W3C(새 윈도우,_blank)</a></li>
+    <li><a href="http://www.etnews.com" target="_self">전자신문(현재 윈도우,_self)</a></li>
+    <li><a href="http://www.naver.com" target="_parent">네이버(부모윈도우,_parent)</a></li>
+    <li><a href="http://www.mk.co.kr" target="_top">매일경제신문(브라우저 윈도우,_top)</a></li>
+  </ul>
+  <hr>
+  <h3>앵커로 링크만들기</h3>
+  <ul>
+    <li><a href="#love">첫번째</a>
+    <li><a href="#second">두번째</a>
+    <li><a href="#third">세번째</a>
+  </ul>
+  <h4 id="love">첫번째</h4>
+  여기는 첫 번째입니다
+  <h4 id="second">두번째</h4>
+  여기는 두 번째입니다
+  <h4 id="third">세번째</h4>
+  여기는 세 번째입니다
+  <hr>
+  <h3>파일 다운로드</h3>
+  <a href="내가좋아하는것ul.html" download>내 html</a>
+  <hr>
+  <h3>인라인 프레임</h3>
+  <iframe src="htttp://www.etnews.com" name="left" width="200" height="150"></iframe>
+  <iframe src="http://www.mk.co.kr" name="right" width="200" height="100"></iframe>
+  <hr>
+  <h3>
+  <video width="320" height="240" controls autoplay>
+    <source src="simple.mp4" type="video/mp4">
+    브라우저가 태그를 지원하지 않네용~~
+  </video>
+  <audio src="녹음.mp3" controls autoplay loop>
+    브라우저가 태그를 지원하지 않네용~~
+  </audio>
+</body>
+</html>

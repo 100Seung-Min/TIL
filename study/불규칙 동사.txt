@@ -1,0 +1,90 @@
+be		was/were		been
+bear		bore		born
+begin		began		begun
+bite		bit		bitten
+blow		blew		blown
+break		broke		broken
+choose		chose		chosen		v
+do		did		done
+draw		drew		drawn		v
+drink		drank		drunk
+drive		drove		driven
+eat		ate		eaten		v
+fall		fell		fallen
+fly		flew		flown
+forget		forgat		forgotten		v
+freeze		froze		frozen
+get		got		gotten
+give		gave		given
+go		went		gone
+grow		grew		grown
+know		knew		known
+lie		lay		lain
+mistake		mistook		mistaken
+ride		rode		ridden
+ring		rang		rung
+rise		rose		risen		v
+see		saw		seen
+shake		shook		shaken
+show		showed		shown		v
+sing		sang 		sung
+speak		spoke		spoken
+steal		stole		stolen
+swim		swam		swum
+take		took		taken
+tear		tore		torn		v
+throw		threw		thrown
+wake		woke		woken		v
+wear		wore		worn		v
+write		wrote		written		v
+bring		brought
+bulid		built				v
+buy		bought
+catch		caught				v
+feed		fed
+feel		felt
+fight		fought
+find		found
+hang		hung
+have		had
+hear		heard				v
+hold		held
+keep		kept
+lay		laid				v
+lead		led
+leave		left				vv
+lend		lent
+light		lit
+lose		lost
+make		made
+mean		meant
+meet		met
+pay		paid
+say		said
+sell		sold
+send		sent
+shoot		shot
+sit		sat
+sleep		slept
+spend		spent
+stand		stood
+teach		taught				v
+tell		told
+think		thought
+understand	understood
+win		won
+become		became
+come		came
+run		ran
+beat		
+broadcast
+cost
+cut
+hit
+hurt
+let
+put
+quit
+read
+shut
+upset

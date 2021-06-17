@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="기초.css">
+</head>
+<body>
+  <header>
+    <h2>HTML 기초</h2>
+  </header>
+  <hr>
+  <section id="list">
+    <h4>목록 만들기</h4>
+   <p>순서있는 목록</p>
+    <ol>
+      <li>첫째</li>
+      <li>둘째</li>
+      <li>셋째</li>
+    </ol>
+    <p>순서 있는 목록</p>
+    <ul>
+      <li>가나다</li>
+      <li>123</li>
+      <li>abc</li>
+    </ul>
+   <hr>
+  </section>
+  <section id="table">
+    <h4>테이블 만들기</h4>
+    <table>
+      <caption>테이블</caption>
+      <thead>
+        <th>첫째</th>
+        <th>둘째</th>
+      </thead>
+      <tr>
+        <td>1,1</td>
+        <td>1,2</td>
+      </tr>
+      <tr>
+        <td>2,1</td>
+        <td>2,2</td>
+      </tr>
+    </table>
+    <hr>
+  </section>
+ <section id="삽입">
+    <h4>이미지 삽입</h4>
+    <img src = "다운로드.jpg" alt = "강아지"width="30%">
+    <hr>
+    <h4>링크 삽입</h4>
+    <a href="https://www.aladin.co.kr/home/welcome.aspx#"><img src="images.jpg" alt="알라딘"width="20%"></a>
+    <hr>
+    <h4>동영상 삽입</h4>
+    <video src="002.mp4" width = "20%" muted autoplay loop></video>
+    <hr>
+ </section>
+ <section id="form">
+   <form>
+     <fieldset>
+        <legend>로그인</legend>
+        <label>아이디:<input type="text"></label>
+        <br>
+        <label>비밀번호:<input type="password"></label>
+        <input type="submit" value="로그인">
+     </fieldset>
+      <label>파일첨부<input type="file"></label>
+     <fieldset>
+       <legend>체크박스</legend>
+       <legend>1개 이상 체크</legend>
+       <label><input type="checkbox">첫번째</label>
+       <label><input type="checkbox">두번째</label>
+       <legend>1개만 체크</legend>
+       <label><input type="radio">첫번째</label>
+       <label><input type="radio">두번째</label>
+     </fieldset>
+    </form>
+ </section> 
+</body>
+</html>

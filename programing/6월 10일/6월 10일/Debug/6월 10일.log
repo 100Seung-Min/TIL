@@ -1,0 +1,5 @@
+﻿  문자처리라이브러리.c
+C:\Users\user\Documents\GitHub\programing\6월 10일\6월 10일\문자처리라이브러리.c(59,16): warning C4473: 'printf': 서식 문자열에 대한 인수가 충분하게 전달되지 않았습니다.
+C:\Users\user\Documents\GitHub\programing\6월 10일\6월 10일\문자처리라이브러리.c(59,16): message : 자리 표시자 및 해당 매개 변수에는 variadic 인수가 1개 필요하지만 0개가 제공되었습니다.
+C:\Users\user\Documents\GitHub\programing\6월 10일\6월 10일\문자처리라이브러리.c(59,16): message : 누락된 variadic 인수 1이(가) 서식 문자열 '%s'에 필요합니다.
+  6월 10일.vcxproj -> C:\Users\user\Documents\GitHub\programing\6월 10일\Debug\6월 10일.exe

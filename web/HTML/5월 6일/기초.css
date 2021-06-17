@@ -1,0 +1,14 @@
+header{
+  background-color: aqua;
+}
+#list{
+  background-color: darkblue;
+  color: gold;
+}
+#table{
+  background-color: sienna;
+  color: chartreuse;
+}
+#삽입{
+  background-color: darkgrey;
+}
