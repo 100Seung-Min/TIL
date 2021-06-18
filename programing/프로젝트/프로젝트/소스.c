@@ -92,7 +92,7 @@ int main()
 
 void color()
 {
-	char color, key[1000] = "예";
+	char color, key[10] = "예";
 	system("cls");
 
 	while (!strcmp(key, "예"))
@@ -406,106 +406,221 @@ void alphabet()
 
 void attitude()
 {
-	int key, num, a;
-	char key1[100];
-	char quize1[100][100] = {
+	int key2, num, answer, a, b;
+	char key1[100], key[10] = "예";
+	char quize1[20][100] = {
 		"처음보는 웃어른에게는?",
 		"아침에 일어났을 때 웃어른에게는?",
 		"밤에 잘때 웃어른에게는?",
 		"웃어른과 밥을 먹을 때는?",
 	};
-	char quize2[100][100] = {
+	char quize2[20][100] = {
 		"처음보는 사람에게는?",
 		"오랜만에 보는 사람에게는?",
 		"친구들을 만났을 때에는?",
 		"이웃을 만났을때는?",
 		"선생님을 만났을 때에는?",
 	};
-	char quize3[100][100] = {
+	char quize3[20][100] = {
 		"음식이 입속 에 있을 때는?",
 		"웃어른이 식사를 끝내지 않았다면?",
 		"밥이나 반찬을 먹을 때는?",
 		"국물을 마실때는?"
 	};
-	char quize4[100][100] = {
+	char quize4[20][100] = {
 		"웃어른에게는?",
 		"친구에게는?",
 		"형, 누나들에게는?",
 		"동생들에게는?"
 	};
-	char answer1[100][100] = {
+	char answer1[20][100] = {
 		"공손히 인사한다.",
 		"아침인사를 드린다.",
 		"저녁인사를 드린다.",
 		"식사예절을 지키며 먹는다."
 	};
-	char answer2[100][100] = {
+	char answer2[20][100] = {
 		"공손히 인사한다.",
 		"반갑게 인사한다.",
 		"즐겁게 인사한다.",
 		"가볍게 인사한다.",
 		"예의바르게 인사한다."
 	};
-	char answer3[100][100] = {
+	char answer3[20][100] = {
 		"말하지 않는다.",
 		"자리에서 일어나지 않는다.",
 		"조용히 먹는다.",
 		"소리내며 마시지 않는다."
 	};
-	char answer4[100][100] = {
-		""
+	char answer4[20][100] = {
+		"존대말 써",
+		"친하게 말하지만, 상대를 존중한다.",
+		"예의바르게 말한다.",
+		"다정하게 말한다."
 	};
-	char wrong1[100][100] = {
+	char wrong1[20][100] = {
 		"안녕"
 	};
-	char wrong2[100][100] = {
+	char wrong2[20][100] = {
 		"안녕"
 	};
-	char wrong3[100][100] = {
+	char wrong3[20][100] = {
 		"안녕"
 	};
-	char wrong4[100][100] = {
+	char wrong4[20][100] = {
 		"안녕"
 	};
-	system("cls");
-	printf("1 -> 웃어른예절\t2 -> 인사예절\n");
-	printf("3 -> 식사예절\t4 -> 언어예절\n");
-	printf("예절 배우기 선택 : ");
-	scanf("%d", &key);
-	printf("문제 수 선택 : ");
-	scanf("%d", &num);
-	switch (key)
+	while (!strcmp(key, "예"))
 	{
-	case 1:
-		for (int i = 0; i < key; i++)
+		system("cls");
+		printf("1 -> 웃어른예절\t2 -> 인사예절\n");
+		printf("3 -> 식사예절\t4 -> 언어예절\n");
+		printf("예절 배우기 선택 : ");
+		scanf(" %d", &key2);
+		printf("문제 수 선택 : ");
+		scanf(" %d", &num);
+		switch (key2)
 		{
-			a = rand() % 100;
-			printf("%s", quize1[a][100]);
+		case 1:
+			for (int i = 0; i < num; i++)
+			{
+				a = rand() % 4;
+				b = rand() % 4;
+				printf("%s\n\n", quize1[a]);
+				for (int j = 0; j < 4; j++)
+				{
+					int c = rand() % 4;
+					if (b == j)
+						printf("%d : %s\n", j + 1, answer1[a]);
+					else
+						printf("%d : %s\n", j + 1, wrong1[c]);
+				}
+				scanf(" %d", &answer);
+				if (answer - 1 == b)
+				{
+					printf("정답입니다.");
+					Sleep(800);
+					system("cls");
+				}
+				else
+				{
+					printf("오답입니다");
+					printf("정답은 %d번입니다.\n", b + 1);
+					Sleep(800);
+					system("cls");
+				}
+			}
+			break;
+		case 2:
+			for (int i = 0; i < num; i++)
+			{
+				a = rand() % 4;
+				b = rand() % 4;
+				printf("%s\n\n", quize2[a]);
+				for (int j = 0; j < 4; j++)
+				{
+					int c = rand() % 4;
+					if (b == j)
+						printf("%d : %s\n", j + 1, answer2[a]);
+					else
+						printf("%d : %s\n", j + 1, wrong2[c]);
+				}
+				scanf(" %d", &answer);
+				if (answer - 1 == b)
+				{
+					printf("정답입니다.");
+					Sleep(800);
+					system("cls");
+				}
+				else
+				{
+					printf("오답입니다");
+					printf("정답은 %d번입니다.\n", b + 1);
+					Sleep(800);
+					system("cls");
+				}
+			}
+			break;
+		case 3:
+			for (int i = 0; i < num; i++)
+			{
+				a = rand() % 4;
+				b = rand() % 4;
+				printf("%s\n\n", quize3[a]);
+				for (int j = 0; j < 4; j++)
+				{
+					int c = rand() % 4;
+					if (b == j)
+						printf("%d : %s\n", j + 1, answer3[a]);
+					else
+						printf("%d : %s\n", j + 1, wrong3[c]);
+				}
+				scanf(" %d", &answer);
+				if (answer - 1 == b)
+				{
+					printf("정답입니다.");
+					Sleep(800);
+					system("cls");
+				}
+				else
+				{
+					printf("오답입니다");
+					printf("정답은 %d번입니다.\n", b + 1);
+					Sleep(800);
+					system("cls");
+				}
+			}
+			break;
+		case 4:
+			for (int i = 0; i < num; i++)
+			{
+				a = rand() % 4;
+				b = rand() % 4;
+				printf("%s\n\n", quize4[a]);
+				for (int j = 0; j < 4; j++)
+				{
+					int c = rand() % 4;
+					if (b == j)
+						printf("%d : %s\n", j + 1, answer4[a]);
+					else
+						printf("%d : %s\n", j + 1, wrong4[c]);
+				}
+				scanf(" %d", &answer);
+				if (answer - 1 == b)
+				{
+					printf("정답입니다.");
+					Sleep(800);
+					system("cls");
+				}
+				else
+				{
+					printf("오답입니다");
+					printf("정답은 %d번입니다.\n", b + 1);
+					Sleep(800);
+					system("cls");
+				}
+			}
+			break;
+		default:
+			printf("다시 입력해주세요.");
+			break;
 		}
-		break;
-	case 2:
-		for (int i = 0; i < key; i++)
+		do
 		{
-			a = rand() % 100;
-			printf("%s", quize1[a][100]);
-		}
-		break;
-	case 3:
-		for (int i = 0; i < key; i++)
-		{
-			a = rand() % 100;
-			printf("%s", quize1[a][100]);
-		}
-		break;
-	case 4:
-		for (int i = 0; i < key; i++)
-		{
-			a = rand() % 100;
-			printf("%s", quize1[a][100]);
-		}
-		break;
+			printf("계속 하시 겠습니까 ? ");
+			scanf(" %s", key);
+			if (strcmp(key, "예") && strcmp(key, "아니요"))
+			{
+				printf("예 아니요로 대답해주세요");
+				Sleep(1000);
+				system("cls");
+			}
+			else {
+				system("cls");
+				break;
+			}
+		} while (1);
 	}
-
 }
 
 void 더하기(char n, int c, int g)
