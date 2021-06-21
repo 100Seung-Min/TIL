@@ -24,10 +24,12 @@ int main()
 {
 	system("mode con cols=40 lines=30");
 	char choose = '9';
-	printf("------------------------------\n\n");
-	printf("핸드폰을 키시겠습니까?\n");
-	printf("키려면 버튼을 입력");
-	printf("\n\n-------------------------------");
+	printf("\n\n\n\n\n\t-------------------------\n");
+	printf("\t|\t\t\t|\n");
+	printf("\t| 화면을 키시겠습니까?\t|\n");
+	printf("\t|\t\t\t|\n");
+	printf("\t-------------------------\n\n\n\n");
+	printf("\t   아무 버튼이나 클릭");
 	while (1)
 	{
 		int cnt = 0;
@@ -39,13 +41,14 @@ int main()
 			return;
 		continue;
 	}
-	while (choose > 0)
+	while (1)
 	{
 		system("cls");
-		printf("1 -> 배경색깔\t2 -> 알파벳 게임\n");
-		printf("3 -> 숫자 계산\t4 -> 예절 공부\n");
-		printf("5 -> 타자연습\t6 -> \n\n");
-		printf("원하는 기능 선택 : ");
+		printf("\n\n  1 -> 배경색깔     2 -> 알파벳 게임\n");
+		printf("  3 -> 숫자 계산    4 -> 예절 공부\n");
+		printf("  5 -> 타자연습     6 -> \n\n\n\n\n\n\n");
+		printf("  원하는 번호를 입력하세요\n\n");
+		printf("  번호 입력 : _\b");
 		scanf_s(" %c", &choose);
 		switch (choose)
 		{
@@ -81,11 +84,10 @@ int main()
 		system("cls");
 		if (choose >= '1' && choose <= '6')
 		{
-			printf("핸드폰을 끄시겠습니까?\n");
-			printf("끄려면 음수를 입력 : \n");
+			printf("\n\n\n\n\n\n\n\n\n\n\n\t핸드폰을 끄시겠습니까?\n");
+			printf("\t끄려면 ctrl + c를 입력하세요\n\n");
+			printf("\t   입력 : _\b");
 			scanf_s(" %c", &choose);
-			if (choose <= 0)
-				system("cls");
 		}
 	}
 }
@@ -99,15 +101,16 @@ void color()
 	{
 		do
 		{
-			printf("검은색 -> 0\t회색 -> 8\n");
-			printf("파란색 -> 1\t연한 파란색 -> 9\n");
-			printf("녹색 -> 2\t연한 녹색 -> A\n");
-			printf("청록색 -> 3\t연한 청록색 -> B\n");
-			printf("빨간색 -> 4\t연한 빨간색 -> C\n");
-			printf("자주색 -> 5\t연한 자주색 -> D\n");
-			printf("노란색 -> 6\t연한 노란색 -> E\n");
-			printf("흰색 -> 7\t밝은 흰색 -> F\n\n");
-			printf("색깔은 입력하세요 : ");
+			printf("\n\n   0 -> 검은색\t8 -> 회색\n");
+			printf("   1 -> 파란색\t9 -> 연한 파란색\n");
+			printf("   2 -> 녹색\tA -> 연한 녹색\n");
+			printf("   3 -> 청록색\tB -> 연한 청록색\n");
+			printf("   4 -> 빨간색\tC -> 연한 빨간색\n");
+			printf("   5 -> 자주색\tD -> 연한 자주색\n");
+			printf("   6 -> 노란색\tE -> 연한 노란색\n");
+			printf("   7 -> 흰색\tF -> 밝은 흰색\n\n\n");
+			printf("   원하시는 색깔의 번호를 입력하세요\n");
+			printf("   입력 : _\b");
 			scanf(" %c", &color);
 			if (color >= '0' && color <= '9' || color >= 'A' && color <= 'F')
 				break;
@@ -206,7 +209,8 @@ void color()
 void alphabet()
 {
 	system("cls");
-	int key, ran, j = 0, score = 0;
+	int key, ran, j = 0;
+	Score = 0;
 	char en[26], EN[26], answer, key1[1000] = { "예" };
 	srand(time(NULL));
 	for (int i = 0; i < 26; i++)
@@ -216,13 +220,15 @@ void alphabet()
 	}
 	while (!strcmp(key1, "예"))
 	{
-		printf("1 -> 소문자 쉬움\t3 -> 소문자 어려움\n");
-		printf("2 -> 대문자 쉬움\t4 -> 대문자 어려움\n\n");
-		printf("원하는 난이도 선택 : ");
+		printf("\n\n\t1 -> 소문자 쉬움\n\n\t2 -> 대문자 쉬움\n\n");
+		printf("\t3 -> 소문자 어려움\n\n\t4 -> 대문자 어려움\n\n\n");
+		printf("   원하는 난이도를 입력해주세요\n");
+		printf("   입력 : _\b");
 		scanf_s(" %d", &key);
 		if (key == 3 || key == 4)
 		{
-			printf("원하는 문제 수 : ");
+			printf("\n   원하는 문제 수를 입력해주세요\n");
+			printf("   입력 : _\b");
 			scanf_s(" %d", &j);
 		}
 		if (key <= 4 && key >= 1)
@@ -234,13 +240,14 @@ void alphabet()
 			{
 				do
 				{
-					printf("score: 26 / %d\n\n", score);
-					printf("%d번째의 알파벳 ", i + 1);
+					printf("\t\t\t   score: 26 / %d\n\n\n\n\n\n\n\n", Score);
+					printf("\t   %d번째의 알파벳은 ?\n\n\n", i + 1);
+					printf("입력 : _\b");
 					scanf(" %c", &answer);
 					if (!islower(answer))
 					{
-						printf("소문자가 아닙니다.\n");
-						printf("다시 입력 하세요\n");
+						printf("\n\n\t   소문자가 아닙니다.\n");
+						printf("\t   다시 입력 하세요\n");
 						Sleep(800);
 						system("cls");
 					}
@@ -249,21 +256,21 @@ void alphabet()
 				} while (!islower(answer));
 				if (answer == en[i])
 				{
-					printf("정답!!\n");
-					score++;
+					printf("\n\n\t   정답!!\n");
+					Score++;
 					Sleep(1000);
 					system("cls");
 				}
 				else
 				{
-					printf("좀만 더 노력해보자\n");
+					printf("\n\n\t   좀만 더 노력해보자\n");
 					Sleep(1000);
-					printf("정답은 %c였습니다\n", en[i]);
+					printf("\t   정답은 %c였습니다\n", en[i]);
 					Sleep(1000);
 					system("cls");
 				}
 			}
-			printf("26개 중에 %d개 맞췄습니다", score);
+			printf("\n\n\n\n\n\n\n\n\n\n\n\t 26개 중에 %d개 맞췄습니다", Score);
 			Sleep(1000);
 			break;
 		case 2:
@@ -271,13 +278,14 @@ void alphabet()
 			{
 				do
 				{
-					printf("score: 26 / %d\n\n", score);
-					printf("%d번째의 알파벳 ", i + 1);
+					printf("\t\t\t   score: 26 / %d\n\n\n\n\n\n\n\n", Score);
+					printf("\t   %d번째의 알파벳은 ?\n\n\n", i + 1);
+					printf("\t   입력 : _\b");
 					scanf(" %c", &answer);
 					if (!isupper(answer))
 					{
-						printf("대문자가 아닙니다.\n");
-						printf("다시 입력 하세요\n");
+						printf("\n\n\t   대문자가 아닙니다.\n");
+						printf("\t   다시 입력 하세요\n");
 						Sleep(800);
 						system("cls");
 					}
@@ -286,21 +294,21 @@ void alphabet()
 				} while (!isupper(answer));
 				if (answer == EN[i])
 				{
-					printf("정답!!\n");
-					score++;
+					printf("\n\n\t   정답!!\n");
+					Score++;
 					Sleep(1000);
 					system("cls");
 				}
 				else
 				{
-					printf("좀만 더 노력해보자\n");
+					printf("\n\n\t   좀만 더 노력해보자\n");
 					Sleep(1000);
-					printf("정답은 %c였습니다\n", EN[i]);
+					printf("\t   정답은 %c였습니다\n", EN[i]);
 					Sleep(1000);
 					system("cls");
 				}
 			}
-			printf("26개 중에 %d개 맞췄습니다", score);
+			printf("\n\n\n\n\n\n\n\n\n\n\n\t 26개 중에 %d개 맞췄습니다", Score);
 			Sleep(1000);
 			break;
 		case 3:
@@ -309,13 +317,14 @@ void alphabet()
 				ran = rand() % 25;
 				do
 				{
-					printf("score: %d / %d\n\n", j, score);
-					printf("%c 다음 알파벳 : ", en[ran]);
+					printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n", j, Score);
+					printf("\t   %c 다음 알파벳은 ?\n\n\n", en[ran]);
+					printf("\t   입력 : _\b");
 					scanf(" %c", &answer);
 					if (!islower(answer))
 					{
-						printf("소문자가 아닙니다.\n");
-						printf("다시 입력 하세요\n");
+						printf("\n\n\t   소문자가 아닙니다.\n");
+						printf("\t   다시 입력 하세요\n");
 						Sleep(800);
 						system("cls");
 					}
@@ -324,21 +333,21 @@ void alphabet()
 				} while (!islower(answer));
 				if (answer == en[ran + 1])
 				{
-					printf("정답!!\n");
-					score++;
+					printf("\n\n\t   정답!!\n");
+					Score++;
 					Sleep(1000);
 					system("cls");
 				}
 				else
 				{
-					printf("좀만 더 노력해보자\n");
+					printf("\n\n\t   좀만 더 노력해보자\n");
 					Sleep(1000);
-					printf("정답은 %c였습니다\n", en[ran + 1]);
+					printf("\t   정답은 %c였습니다\n", en[ran + 1]);
 					Sleep(1000);
 					system("cls");
 				}
 			}
-			printf("%d개 중에 %d개 맞췄습니다", j, score);
+			printf("\n\n\n\n\n\n\n\n\n\n\n\t %d개 중에 %d개 맞췄습니다", j, Score);
 			Sleep(1000);
 			break;
 		case 4:
@@ -347,13 +356,14 @@ void alphabet()
 				ran = rand() % 25;
 				do
 				{
-					printf("score: %d / %d\n\n", j, score);
-					printf("%c 다음 알파벳 : ", EN[ran]);
-					scanf(" %c", &answer);
+					printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n", j, Score);
+					printf("\t   %c 다음 알파벳은 ?\n\n\n", EN[ran]);
+					printf("\t   입력 : _\b");
+					scanf("%c", &answer);
 					if (!isupper(answer))
 					{
-						printf("대문자가 아닙니다.\n");
-						printf("다시 입력 하세요\n");
+						printf("\n\n\t   대문자가 아닙니다.\n");
+						printf("\t   다시 입력 하세요\n");
 						Sleep(800);
 						system("cls");
 					}
@@ -362,25 +372,25 @@ void alphabet()
 				} while (!isupper(answer));
 				if (answer == EN[ran + 1])
 				{
-					printf("정답!!\n");
-					score++;
+					printf("\n\n\t   정답!!\n");
+					Score++;
 					Sleep(1000);
 					system("cls");
 				}
 				else
 				{
-					printf("좀만 더 노력해보자\n");
+					printf("\n\n\t   좀만 더 노력해보자\n");
 					Sleep(1000);
-					printf("정답은 %c였습니다\n", EN[ran + 1]);
+					printf("\t   정답은 %c였습니다\n", EN[ran + 1]);
 					Sleep(1000);
 					system("cls");
 				}
 			}
-			printf("%d개 중에 %d개 맞췄습니다", j, score);
+			printf("\n\n\n\n\n\n\n\n\n\n\n\t %d개 중에 %d개 맞췄습니다", j, Score);
 			Sleep(1000);
 			break;
 		default:
-			printf("다시 선택해주세요~~");
+			printf("\n\n\n\t지원되지 않습니다.");
 			Sleep(1000);
 			system("cls");
 			break;
@@ -388,8 +398,10 @@ void alphabet()
 		do
 		{
 			system("cls");
-			printf("계속 하시 겠습니까 ? ");
-			scanf(" %[^\n]s", key1);
+			printf("\n\n\n\n\n\n\n\n\n\n\t  계속 하시 겠습니까 ? ");
+			printf("\n\t예, 아니요로 대답해주세요\n\n");
+			printf("\t   입력 : _\b");
+			scanf(" %s", key1);
 			if (strcmp(key1, "예") && strcmp(key1, "아니요"))
 			{
 				printf("예 아니요로 대답해주세요");
@@ -632,8 +644,8 @@ void 더하기(char n, int c, int g)
 	d = b;
 	a = a < b ? d : a;
 	temp = a + b;
-	printf("score: %d / %d\n\n", I, Score);
-	printf("%d %c %d = ? \n", a, n, b);
+	printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
+	printf("%d %c %d = ? \n\n", a, n, b);
 	printf("답을 입력하시오 : ");
 	scanf(" %d", &답);
 	if (답 == temp)
@@ -659,8 +671,8 @@ void 빼기(char n, int c, int g)
 	d = b;
 	a = a < b ? d : a;
 	temp = a - b;
-	printf("score: %d / %d\n\n", I, Score);
-	printf("%d %c %d = ? \n", a, n, b);
+	printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
+	printf("%d %c %d = ? \n\n", a, n, b);
 	printf("답을 입력하시오 : ");
 	scanf(" %d", &답);
 	if (답 == temp)
@@ -684,8 +696,8 @@ void 곱하기(char n, int c, int d)
 	a = rand() % c + 1;
 	b = rand() % d + 1;
 	temp = a * b;
-	printf("score: %d / %d\n\n", I, Score);
-	printf("%d %c %d = ? \n", a, n, b);
+	printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
+	printf("%d %c %d = ? \n\n", a, n, b);
 	printf("답을 입력하시오 : ");
 	scanf(" %d", &답);
 	if (답 == temp)
@@ -715,8 +727,8 @@ void 나누기(char n, int c, int g)
 		b = d;
 	}
 	temp = a / b;
-	printf("score: %d / %d\n\n", I, Score);
-	printf("%d %c %d = ? \n", a, n, b);
+	printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
+	printf("%d %c %d = ? \n\n", a, n, b);
 	printf("답을 입력하시오 : ");
 	scanf(" %d", &답);
 	if (답 == temp)
@@ -744,11 +756,13 @@ int number()
 		{
 			Score = 0;
 			system("cls");
-			printf("1 -> 쉬움\t2 -> 보통\n");
-			printf("3 -> 어려움\t4 -> 매우 어려움\n\n");
-			printf("난이도를 선택하십시오 : ");
+			printf("\n\n\t1 -> 쉬움\n\n\t2 -> 보통\n\n\t");
+			printf("3 -> 어려움\n\n\t4 -> 매우 어려움\n\n\n\n");
+			printf("   원하는 난이도를 입력해주세요\n\n");
+			printf("   입력 : _\b");
 			scanf(" %d", &난이도);
-			printf("문제수를 정해주세요.");
+			printf("\n   문제수를 입력해주세요\n\n");
+			printf("   입력 : _\b");
 			scanf(" %d", &I);
 
 			if (난이도 == 1)
@@ -806,7 +820,7 @@ int number()
 		{
 			system("cls");
 			printf("계속 하시 겠습니까 ? ");
-			scanf(" %[^\n]s", key);
+			scanf(" %s", key);
 			if (strcmp(key, "예") && strcmp(key, "아니요"))
 			{
 				printf("예 아니요로 대답해주세요");
