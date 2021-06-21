@@ -24,6 +24,7 @@ int main()
 {
 	system("mode con cols=40 lines=30");
 	char choose = '9';
+	int cnt = 0;
 	printf("\n\n\n\n\n\t-------------------------\n");
 	printf("\t|\t\t\t|\n");
 	printf("\t| 화면을 키시겠습니까?\t|\n");
@@ -32,24 +33,33 @@ int main()
 	printf("\t   아무 버튼이나 클릭");
 	while (1)
 	{
-		int cnt = 0;
 		if (kbhit())
 			break;
-		Sleep(100);
 		cnt++;
-		if (cnt == 10)
+		Sleep(10);
+		if (cnt >= 500)
 			return;
-		continue;
 	}
 	while (1)
 	{
-		system("cls");
-		printf("\n\n  1 -> 배경색깔     2 -> 알파벳 게임\n");
-		printf("  3 -> 숫자 계산    4 -> 예절 공부\n");
-		printf("  5 -> 타자연습     6 -> \n\n\n\n\n\n\n");
-		printf("  원하는 번호를 입력하세요\n\n");
-		printf("  번호 입력 : _\b");
-		scanf_s(" %c", &choose);
+		for (;;) {
+			system("cls");
+			printf("\n\n  1 -> 배경색깔     2 -> 알파벳 게임\n");
+			printf("  3 -> 숫자 계산    4 -> 예절 공부\n");
+			printf("  5 -> 타자연습     6 -> \n\n\n\n\n\n\n");
+			printf("  원하는 번호를 입력하세요\n\n");
+			printf("  번호 입력 : _\b");
+			scanf_s(" %c", &choose);
+			fflush(stdin);
+			if (choose < '1' || choose > '6')
+			{
+				printf("\n\n\t   지원되지 않습니다.");
+				printf("\n\t   다시입력해주세요");
+				Sleep(800);
+				continue;
+			}
+			break;
+		}
 		switch (choose)
 		{
 		case '1':
@@ -76,18 +86,18 @@ int main()
 
 			system("cls");
 			break;
-		default :
-			printf("지원되지 않습니다.\n다시 입력해주세요");
-			Sleep(800);
-			system("cls");
 		}
 		system("cls");
-		if (choose >= '1' && choose <= '6')
+		printf("\n\n\n\n\n\n\n\n\n\n\n\t계속하려면 아무키나 클릭하세요\n\n");
+		cnt = 0;
+		while (1)
 		{
-			printf("\n\n\n\n\n\n\n\n\n\n\n\t핸드폰을 끄시겠습니까?\n");
-			printf("\t끄려면 ctrl + c를 입력하세요\n\n");
-			printf("\t   입력 : _\b");
-			scanf_s(" %c", &choose);
+			if (kbhit())
+				break;
+			cnt++;
+			Sleep(10);
+			if (cnt >= 100)
+				return;
 		}
 	}
 }
@@ -115,8 +125,8 @@ void color()
 			if (color >= '0' && color <= '9' || color >= 'A' && color <= 'F')
 				break;
 			else {
-				system("cls");
-				printf("지원되지 않습니다");
+				printf("\n\n\t   지원되지 않습니다");
+				printf("다시 입력해주세요");
 				Sleep(1000);
 				system("cls");
 			}
@@ -190,7 +200,10 @@ void color()
 		}
 		do
 		{
-			printf("계속 하시 겠습니까 ? ");
+			system("cls");
+			printf("\n\n\n\n\n\n\n\n\n\n\t  계속 하시 겠습니까 ? ");
+			printf("\n\t예, 아니요로 대답해주세요\n\n");
+			printf("\t   입력 : _\b");
 			scanf(" %s", key);
 			if (strcmp(key, "예") && strcmp(key, "아니요"))
 			{
@@ -645,19 +658,20 @@ void 더하기(char n, int c, int g)
 	a = a < b ? d : a;
 	temp = a + b;
 	printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
+	printf("답을 입력하시오\n\n\t   ");
 	printf("%d %c %d = ? \n\n", a, n, b);
-	printf("답을 입력하시오 : ");
+	printf("\t   답 : _\b");
 	scanf(" %d", &답);
 	if (답 == temp)
 	{
-		printf("정답입니다!!!\n");
+		printf("\n\n\t   정답입니다!!!\n");
 		Score++;
 	}
 	else
 	{
-		printf("틀렸습니다ㅜㅜ\n");
+		printf("\n\n\t   틀렸습니다ㅜㅜ\n");
 		Sleep(800);
-		printf("정답은 %d입니다.", temp);
+		printf("\t   정답은 %d입니다.", temp);
 	}
 	Sleep(1000);
 }
@@ -672,19 +686,20 @@ void 빼기(char n, int c, int g)
 	a = a < b ? d : a;
 	temp = a - b;
 	printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
+	printf("답을 입력하시오\n\n\t   ");
 	printf("%d %c %d = ? \n\n", a, n, b);
-	printf("답을 입력하시오 : ");
+	printf("\t   답 : _\b");
 	scanf(" %d", &답);
 	if (답 == temp)
 	{
-		printf("정답입니다!!!\n");
+		printf("\n\n\t   정답입니다!!!\n");
 		Score++;
 	}
 	else
 	{
-		printf("틀렸습니다ㅜㅜ\n");
+		printf("\n\n\t   틀렸습니다ㅜㅜ\n");
 		Sleep(800);
-		printf("정답은 %d입니다.", temp);
+		printf("\t   정답은 %d입니다.", temp);
 	}
 	Sleep(800);
 }
@@ -697,19 +712,20 @@ void 곱하기(char n, int c, int d)
 	b = rand() % d + 1;
 	temp = a * b;
 	printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
+	printf("답을 입력하시오\n\n\t   ");
 	printf("%d %c %d = ? \n\n", a, n, b);
-	printf("답을 입력하시오 : ");
+	printf("\t   답 : _\b");
 	scanf(" %d", &답);
 	if (답 == temp)
 	{
-		printf("정답입니다!!!\n");
+		printf("\n\n\t   정답입니다!!!\n");
 		Score++;
 	}
 	else
 	{
-		printf("틀렸습니다ㅜㅜ\n");
+		printf("\n\n\t   틀렸습니다ㅜㅜ\n");
 		Sleep(800);
-		printf("정답은 %d입니다.", temp);
+		printf("\t   정답은 %d입니다.", temp);
 	}
 	Sleep(800);
 }
@@ -728,19 +744,20 @@ void 나누기(char n, int c, int g)
 	}
 	temp = a / b;
 	printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
+	printf("답을 입력하시오\n\n\t   ");
 	printf("%d %c %d = ? \n\n", a, n, b);
-	printf("답을 입력하시오 : ");
+	printf("\t   답 : _\b");
 	scanf(" %d", &답);
 	if (답 == temp)
 	{
-		printf("정답입니다!!!\n");
+		printf("\n\n\t   정답입니다!!!\n");
 		Score++;
 	}
 	else
 	{
-		printf("틀렸습니다ㅜㅜ\n");
+		printf("\n\n\t  틀렸습니다ㅜㅜ\n");
 		Sleep(800);
-		printf("정답은 %d입니다.", temp);
+		printf("\t   정답은 %d입니다.", temp);
 	}
 	Sleep(800);
 }
@@ -756,14 +773,33 @@ int number()
 		{
 			Score = 0;
 			system("cls");
-			printf("\n\n\t1 -> 쉬움\n\n\t2 -> 보통\n\n\t");
-			printf("3 -> 어려움\n\n\t4 -> 매우 어려움\n\n\n\n");
-			printf("   원하는 난이도를 입력해주세요\n\n");
-			printf("   입력 : _\b");
-			scanf(" %d", &난이도);
-			printf("\n   문제수를 입력해주세요\n\n");
-			printf("   입력 : _\b");
-			scanf(" %d", &I);
+			for (;;)
+			{
+				printf("\n\n\t1 -> 쉬움\n\n\t2 -> 보통\n\n\t");
+				printf("3 -> 어려움\n\n\t4 -> 매우 어려움\n\n\n\n");
+				printf("   원하는 난이도를 입력해주세요\n\n");
+				printf("   입력 : _\b");
+				scanf(" %d", &난이도);
+				if (난이도 > 4 || 난이도 < 1) {
+					printf("\n\n\t   지원되지 않습니다");
+					printf("\n\t   다시 입력해주세요");
+					Sleep(800);
+					system("cls");
+					continue;
+				}
+				printf("\n   문제수를 입력해주세요\n\n");
+				printf("   입력 : _\b");
+				scanf(" %d", &I);
+				if (I > 99 || I < 1)
+				{
+					printf("\n\n\t   지원되지 않습니다");
+					printf("\n\t   다시 입력해주세요");
+					Sleep(800);
+					system("cls");
+					continue;
+				}
+				break;
+			}
 
 			if (난이도 == 1)
 			{
@@ -784,11 +820,6 @@ int number()
 			{
 				난이도 = 40;
 				break;
-			}
-			else
-			{
-				printf("없는 난이도 입니다");
-				Sleep(800);
 			}
 		} while (1);
 		for (int l = 0; l < I; l++)
@@ -814,25 +845,26 @@ int number()
 			}
 		}
 		system("cls");
-		printf("%d개중 %d개 맞췄습니다.", I, Score);
+		printf("\n\n\n\n\n\n\n\n\n\n\t   %d개중 %d개 맞췄습니다.", I, Score);
 		Sleep(800);
 		do
 		{
 			system("cls");
-			printf("계속 하시 겠습니까 ? ");
+			printf("\n\n\n\n\n\n\n\n\n\n\t  계속 하시 겠습니까 ? ");
+			printf("\n\t예, 아니요로 대답해주세요\n\n");
+			printf("\t   입력 : _\b");
 			scanf(" %s", key);
 			if (strcmp(key, "예") && strcmp(key, "아니요"))
 			{
 				printf("예 아니요로 대답해주세요");
-				Sleep(800);
+				Sleep(1000);
 				system("cls");
 			}
-			else 
-			{
+			else {
 				system("cls");
 				break;
 			}
-		}while (1);
+		} while (1);
 	}
 }
 

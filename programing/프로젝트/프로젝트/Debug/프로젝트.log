@@ -1,14 +1,10 @@
 ﻿  소스.c
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(52,11): warning C4473: 'scanf_s': 서식 문자열에 대한 인수가 충분하게 전달되지 않았습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(52,11): message : 자리 표시자 및 해당 매개 변수에는 variadic 인수가 2개 필요하지만 1개가 제공되었습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(52,11): message : 누락된 variadic 인수 2이(가) 서식 문자열 '%c'에 필요합니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(52,11): message : 이 인수는 버퍼 크기로 사용됩니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(90,12): warning C4473: 'scanf_s': 서식 문자열에 대한 인수가 충분하게 전달되지 않았습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(90,12): message : 자리 표시자 및 해당 매개 변수에는 variadic 인수가 2개 필요하지만 1개가 제공되었습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(90,12): message : 누락된 variadic 인수 2이(가) 서식 문자열 '%c'에 필요합니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(90,12): message : 이 인수는 버퍼 크기로 사용됩니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(215,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(422,7): warning C4101: 'key1' :참조되지 않은 지역 변수입니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(752,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(837): warning C4716: 'number': 값을 반환해야 합니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(52,12): warning C4473: 'scanf_s': 서식 문자열에 대한 인수가 충분하게 전달되지 않았습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(52,12): message : 자리 표시자 및 해당 매개 변수에는 variadic 인수가 2개 필요하지만 1개가 제공되었습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(52,12): message : 누락된 variadic 인수 2이(가) 서식 문자열 '%c'에 필요합니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(52,12): message : 이 인수는 버퍼 크기로 사용됩니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(225,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(429,7): warning C4101: 'key1' :참조되지 않은 지역 변수입니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(763,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(860): warning C4716: 'number': 값을 반환해야 합니다.
   프로젝트.vcxproj -> C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\Debug\프로젝트.exe
