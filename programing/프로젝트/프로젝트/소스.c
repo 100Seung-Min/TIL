@@ -96,7 +96,7 @@ int main()
 				break;
 			cnt++;
 			Sleep(10);
-			if (cnt >= 100)
+			if (cnt >= 500)
 				return;
 		}
 	}
@@ -126,7 +126,7 @@ void color()
 				break;
 			else {
 				printf("\n\n\t   지원되지 않습니다");
-				printf("다시 입력해주세요");
+				printf("\n\t   다시 입력해주세요");
 				Sleep(1000);
 				system("cls");
 			}
