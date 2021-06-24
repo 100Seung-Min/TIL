@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <h3>fiure태그 활용</h3>
+  <figure id="1-1">
+    <figcaption>alert()함수 활용</figcaption>
+    <pre>
+      <code>function f(){ alert("경고합니다");</code>
+    </pre>
+    <small>실행결과</small>
+    <pre>
+    </pre>
+  </figure>
+  <hr>
+  <h3>details와 summary</h3>
+  <details>
+    <summary>Question1</summary>
+    <p>웹 개발자가 알아야 하는 언어 3가지</p>
+  </details>
+  <details>
+    <summary>Answer 1</summary>
+    <p>HTML 5, CSS, Javascript</p>
+  </details>
+  <hr>
+  <h3>인라인 시맨틱 태그</h3>
+  <p>내일<mark>HTML 5 시험</mark><br>
+    시간은<time>9:00</time><br>
+    난이도<meter value="0.8" max="1.0">80%</meter><br>
+    자료업로딩(20%)
+    <progress value="2" max="10"></progress><br>
+  </p>
+  <hr>
+  <h3>로그인폼</h3>
+  <form name="fo" method="get">
+    사용자 ID : <input type="text" size="15" value=""><br>
+    비밀번호 : <input type="password" size="15" value=""><input type="submit" value="완료">
+  </form>
+  <hr>
+  <h3>텍스트 입력 폼</h3>
+  <from>
+    이름 : <input type="text" value=""><br>
+    암호 : <input type="password" value="" maxlength="4"><br>
+    자고서 : <textarea cols="20" rows="5">
+      이곳에 작성
+    </textarea>
+  </from>
+  <hr>
+  <h3>데이터 목록을 가진 텍스트 입력</h3>
+  <form>
+    나라 : <input type="text" list="countries"><br>
+    <datalist id="countries">
+      <option value="가나">
+      <option value="스위스">
+      <option value="브라질">
+      </datalist>
+    보고싶은것 : <input type="text" list="what"><br>
+    <datalist id="what">
+      <option value="산">
+      <option value="바다">
+      <option value="도시">
+      </datalist>
+  </form>
+  <hr>
+  <h3>버튼이 있는 입력폼</h3>
+  <form>
+    검색 : <input type="text" size="10" value="">
+    <input type="button" value="Q1">
+    <button type="button">Q2</button><br>
+    submit 버튼 : <input type="submit" value="전송1">
+    <button type="submit">전송2</button><br>
+    reset 버튼 : <input type="reset" value="리셋">
+    <button type="reset">리셋2</button><br>
+    이미지 버튼 : <input type="image" src="다운로드.jpg" alt="이미지 버튼">
+    <button type="button">
+      <img src="다운로드.jpg" alt="이미지 버튼">
+    </button>
+  </form>
+  <hr>
+  <h3>체크박스 만들기</h3>
+  <form>
+    짜장면<input type="checkbox" value="1">
+    짬뽕<input type="checkbox" value="2" checked>
+    탕수육<input type="checkbox" value="3">
+  </form>
+  <hr>
+  <h3>라디오버튼만들기</h3>
+  <form>
+    <input type="radio" name="china" value="1">
+    짜장면<img src="다운로드.jpg"><br>
+    <input type="radio" name="china" value="2" checked>
+    짬뽕<img src="다운로드.jpg"><br>
+    <input type="radio" name="china" value="3">
+    탕수육<img src="다운로드.jpg"><br>
+  </form>
+  <hr>
+  <h3>콤보박스 만들기</h3>
+  <select name="china">
+    <option value="1">짜장면</option>
+    <option value="2" selected>짬뽕</option>
+    <option value="3">탕수육</option>
+  </select>
+  <hr>
+  <h3>로그인폼</h3>
+  <form name="fo" method="get">
+    <label>사용자 ID : <input type="text" size="15" value=""></label><br>
+    <label for="pass">비밀번호 : </label>
+    <input id="pass" type="password" size="15" value="">
+    <input type="submit" value="완료">
+  </form>
+  <hr>
+  <h3>캡션을 가진 라디오버튼</h3>
+  <form>
+    <label>
+      <input type="radio" name="china" value="1">
+      짜장면<img src="다운로드.jpg">
+    </label>
+    <label>
+      <input type="radio" name="china" value="2" checked>
+      짬뽕<img src="다운로드.jpg">
+    </label>
+    <label>
+      <input type="radio" name="china" value="3">
+      탕수육<img src="다운로드.jpg">
+    </label>
+  </form>
+  <hr>
+  <h3>색 입력</h3>
+  <form>
+    색선택
+    <input type="color" value="#00BFFF"
+    onchange="document.body.style.color=this.value">
+  </form>
+  <hr>
+  <h3>시간정보를 입력하는 폼 활용</h3>
+  <form>
+    <pre>
+      month : <input type="month" value="2016-09"><br>
+      week : <input type="week" value="2016-W36"><br>
+      date : <input type="date" value="2016-09-01"><br>
+      time : <input type="time" value="21:30"><br>
+      local : <input type="datetime-local" value="2016-09-01T21:30:10.32"><br>
+    </pre>
+  </form>
+  <hr>
+  <h3>시간정보입력응용</h3>
+  <form>
+    <table>
+      <tr><td>생일</td>
+        <td><input type="date" value="2000-05-20"></td>
+      </tr>
+      <tr>
+        <td>생일파티시간</td>
+        <td><input type="time"></td>
+      </tr>
+      <tr>
+        <td>생일파티장소</td>
+        <td><input type="text"></td>
+      </tr>
+    </table>
+  </form>
+  <hr>
+  <h3>형식을 가진 텍스트 입력</h3>
+  <form>
+    email : <input type="email" placeholder="id@host"><br>
+    홈페이지 : <input type="url" placeholder="http://"><br>
+    전화번호 : <input type="tel" placeholder="010-1234-5678">
+    <input type="submit" value="확인"><br><br>
+    <hr>
+    검색어 : <input type="search" placeholder="검색어">
+    <input type="button" value="검색">
+  </form>
+  <hr>
+  <h3>회원정보를 입력해주세요</h3>
+  <form>
+    <fieldset>
+      <legend>회원정보</legend>
+      이메일 : <input type="email"><br>
+      홈페이지 : <input type="url"><br>
+      전화번호 : <input type="tel">
+    </fieldset>
+    <small>질문 : Tel.010-1111-1111</small>
+  </form>
+</body>
+</html>
