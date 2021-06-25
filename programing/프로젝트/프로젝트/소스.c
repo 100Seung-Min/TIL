@@ -20,6 +20,7 @@ void rps();
 void game();
 void updown();
 int end();
+void numbase();
 
 int Score;
 int I;
@@ -874,6 +875,12 @@ void game()
 	case 1:
 		rps();
 		break;
+	case 3:
+		updown();
+		break;
+	case 5:
+		numbase();
+		break;
 	default:
 		break;
 	}
@@ -932,4 +939,59 @@ int end()
 				return 2;
 		}
 	} while (1);
+}
+
+void numbase() {
+	while (1)
+	{
+		int user[3], com[3], num = 0, home = 0, ball = 0;
+		srand(time(NULL));
+		for (int i = 0; i < 3; i++)
+		{
+			com[i] = rand() % 9 + 1;
+			if (com[i] == com[i - 1] && i != 0)
+				i--;
+			else if (com[i] == com[i - 2] && i == 2)
+				i--;
+		}
+		do
+		{
+			for (int i = 0; i < 3; i++)
+			{
+				scanf(" %d", &user[i]);
+				printf("\r");
+			}
+			for (int i = 0; i < 3; i++)
+				for (int j = 0; j < 3; j++)
+				{
+					if (user[i] == com[j])
+					{
+						if (i == j)
+							home++;
+						else
+							ball++;
+					}
+				}
+			printf("%d Strike, %dBall\n", home, ball);
+			if (home == 3)
+				break;
+			num++;
+			home = 0;
+			ball = 0;
+		} while (num < 9);
+		if (num < 9)
+			printf("성공입니다");
+		else
+		{
+			printf("실패입니다.");
+			printf("정답은 %d %d %d입니다", com[0], com[1], com[2]);
+		}
+		if (end() == 1)
+			break;
+	}
+}
+
+void attribute()
+{
+	
 }
