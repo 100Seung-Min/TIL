@@ -1,1 +1,4 @@
-﻿  c언어 시험.vcxproj -> C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\c언어 시험\Debug\c언어 시험.exe
+﻿  6.c
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\c언어 시험\c언어 시험\6.c(15,26): warning C4047: '<': 'int'의 간접 참조 수준이 'char *'과(와) 다릅니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\c언어 시험\c언어 시험\6.c(17,34): warning C4047: '<': 'int'의 간접 참조 수준이 'char *'과(와) 다릅니다.
+  c언어 시험.vcxproj -> C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\c언어 시험\Debug\c언어 시험.exe
