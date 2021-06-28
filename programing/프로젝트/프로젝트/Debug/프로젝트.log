@@ -1,19 +1,2 @@
-﻿  소스.c
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(256,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(445,7): warning C4101: 'key1' :참조되지 않은 지역 변수입니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(662,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(677,7): warning C4101: 'color' :참조되지 않은 지역 변수입니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(947,13): warning C4098: 'delete_diary': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(942,17): warning C4101: 'did' :참조되지 않은 지역 변수입니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(942,8): warning C4101: 'day' :참조되지 않은 지역 변수입니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(957,6): warning C4101: 'num' :참조되지 않은 지역 변수입니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1032,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1062,12): warning C4098: 'open_diary': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1077,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1125,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1188,12): warning C4098: 'update_diary': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1207,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1345,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1339): warning C4715: 'keyControl': 모든 제어 경로에서 값을 반환하지는 않습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1426): warning C4716: 'number': 값을 반환해야 합니다.
+﻿  소.c
   프로젝트.vcxproj -> C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\Debug\프로젝트.exe

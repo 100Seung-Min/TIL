@@ -36,6 +36,7 @@ void numbase();
 void rps();
 void setcolor(unsigned char _BgColor, unsigned char _TextColor);
 void taza();
+void up();
 void update_diary();
 void updown();
 int choice(int x, int y, int a, int b, int c, int d);
@@ -140,21 +141,23 @@ void 곱하기(char n, int c, int d)
 	a = rand() % c + 1;
 	b = rand() % d + 1;
 	temp = a * b;
-	printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
+	printf("\t\t\t score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
 	printf("답을 입력하시오\n\n\t   ");
 	printf("%d %c %d = ? \n\n", a, n, b);
 	printf("\t   답 : _\b");
 	scanf(" %d", &답);
 	if (답 == temp)
 	{
+		gotoxy(11, 15);
 		good();
 		Score++;
 	}
 	else
 	{
+		gotoxy(11, 15);
 		bad();
 		Sleep(800);
-		printf("\t   정답은 %d입니다.", temp);
+		printf("\n\t   정답은 %d입니다.", temp);
 	}
 	Sleep(800);
 }
@@ -172,21 +175,23 @@ void 나누기(char n, int c, int g)
 		b = d;
 	}
 	temp = a / b;
-	printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
+	printf("\t\t\t score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
 	printf("답을 입력하시오\n\n\t   ");
 	printf("%d %c %d = ? \n\n", a, n, b);
 	printf("\t   답 : _\b");
 	scanf(" %d", &답);
 	if (답 == temp)
 	{
+		gotoxy(11, 15);
 		good();
 		Score++;
 	}
 	else
 	{
+		gotoxy(11, 15);
 		bad();
 		Sleep(800);
-		printf("\t   정답은 %d입니다.", temp);
+		printf("\n\t   정답은 %d입니다.", temp);
 	}
 	Sleep(800);
 }
@@ -200,23 +205,25 @@ void 더하기(char n, int c, int g)
 	d = b;
 	a = a < b ? d : a;
 	temp = a + b;
-	printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
+	printf("\t\t\t score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
 	printf("답을 입력하시오\n\n\t   ");
 	printf("%d %c %d = ? \n\n", a, n, b);
 	printf("\t   답 : _\b");
 	scanf(" %d", &답);
 	if (답 == temp)
 	{
+		gotoxy(11, 15);
 		good();
 		Score++;
 	}
 	else
 	{
+		gotoxy(11, 15);
 		bad();
 		Sleep(800);
-		printf("\t   정답은 %d입니다.", temp);
+		printf("\n\t   정답은 %d입니다.", temp);
 	}
-	Sleep(1000);
+	Sleep(800);
 }
 
 void 빼기(char n, int c, int g)
@@ -228,21 +235,23 @@ void 빼기(char n, int c, int g)
 	d = b;
 	a = a < b ? d : a;
 	temp = a - b;
-	printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
+	printf("\t\t\t score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
 	printf("답을 입력하시오\n\n\t   ");
 	printf("%d %c %d = ? \n\n", a, n, b);
 	printf("\t   답 : _\b");
 	scanf(" %d", &답);
 	if (답 == temp)
 	{
+		gotoxy(11, 15);
 		good();
 		Score++;
 	}
 	else
 	{
+		gotoxy(11, 15);
 		bad();
 		Sleep(800);
-		printf("\t   정답은 %d입니다.", temp);
+		printf("\n\t   정답은 %d입니다.", temp);
 	}
 	Sleep(800);
 }
@@ -272,8 +281,8 @@ void alphabet()
 		sum = choice(7, 6, 6, 7, 7, 23);
 		if (sum == 14 || sum == 30)
 		{
-			printf("\n   원하는 문제 수를 입력해주세요\n");
-			printf("   입력 : _\b");
+			printf("\n\n\n     원하는 문제 수를 입력해주세요\n");
+			printf("     입력 : _\b");
 			scanf_s(" %d", &j);
 		}
 		system("cls");
@@ -286,7 +295,7 @@ void alphabet()
 				{
 					printf("\t\t\t   score: 26 / %d\n\n\n\n\n\n\n\n", Score);
 					printf("\t   %d번째의 알파벳은 ?\n\n\n", i + 1);
-					printf("입력 : _\b");
+					printf("\t   입력 : _\b");
 					scanf(" %c", &answer);
 					if (!islower(answer))
 					{
@@ -300,6 +309,7 @@ void alphabet()
 				} while (!islower(answer));
 				if (answer == en[i])
 				{
+					gotoxy(11, 14);
 					good();
 					Score++;
 					Sleep(800);
@@ -307,9 +317,10 @@ void alphabet()
 				}
 				else
 				{
+					gotoxy(11, 14);
 					bad();
 					Sleep(800);
-					printf("\t   정답은 %c였습니다\n", en[i]);
+					printf("\n\t   정답은 %c였습니다\n", en[i]);
 					Sleep(800);
 					system("cls");
 				}
@@ -338,6 +349,7 @@ void alphabet()
 				} while (!isupper(answer));
 				if (answer == EN[i])
 				{
+					gotoxy(11, 14);
 					good();
 					Score++;
 					Sleep(800);
@@ -345,9 +357,10 @@ void alphabet()
 				}
 				else
 				{
+					gotoxy(11, 14);
 					bad();
 					Sleep(800);
-					printf("\t   정답은 %c였습니다\n", EN[i]);
+					printf("\n\t   정답은 %c였습니다\n", EN[i]);
 					Sleep(800);
 					system("cls");
 				}
@@ -377,6 +390,7 @@ void alphabet()
 				} while (!islower(answer));
 				if (answer == en[ran + 1])
 				{
+					gotoxy(11, 14);
 					good();
 					Score++;
 					Sleep(800);
@@ -384,9 +398,10 @@ void alphabet()
 				}
 				else
 				{
+					gotoxy(11, 14);
 					bad();
 					Sleep(800);
-					printf("\t   정답은 %c였습니다\n", en[ran + 1]);
+					printf("\n\t   정답은 %c였습니다\n", en[ran + 1]);
 					Sleep(800);
 					system("cls");
 				}
@@ -403,7 +418,7 @@ void alphabet()
 					printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n", j, Score);
 					printf("\t   %c 다음 알파벳은 ?\n\n\n", EN[ran]);
 					printf("\t   입력 : _\b");
-					scanf("%c", &answer);
+					scanf(" %c", &answer);
 					if (!isupper(answer))
 					{
 						printf("\n\n\t   대문자가 아닙니다.\n");
@@ -416,6 +431,7 @@ void alphabet()
 				} while (!isupper(answer));
 				if (answer == EN[ran + 1])
 				{
+					gotoxy(11, 14);
 					good();
 					Score++;
 					Sleep(800);
@@ -423,9 +439,10 @@ void alphabet()
 				}
 				else
 				{
+					gotoxy(11, 14);
 					bad();
 					Sleep(800);
-					printf("\t   정답은 %c였습니다\n", EN[ran + 1]);
+					printf("\n\t   정답은 %c였습니다\n", EN[ran + 1]);
 					Sleep(800);
 					system("cls");
 				}
@@ -539,12 +556,14 @@ void attitude()
 				scanf(" %d", &answer);
 				if (answer - 1 == b)
 				{
+					gotoxy(11, 15);
 					good();
 					Sleep(800);
 					system("cls");
 				}
 				else
 				{
+					gotoxy(11, 15);
 					bad();
 					Sleep(800);
 					printf("정답은 %d번입니다.\n", b + 1);
@@ -998,7 +1017,7 @@ void game()
 		gotoxy(x, y + 1);
 		printf("업다운");
 		gotoxy(x + 16, y + 1);
-		printf("기억려게임");
+		printf("기억력게임");
 		gotoxy(x, y + 2);
 		printf("숫자야구");
 		gotoxy(x + 16, y + 2);
@@ -1204,6 +1223,11 @@ void update_diary()
 		return;
 }
 
+void up()
+{
+
+}
+
 void updown()
 {
 	srand(time(NULL));
@@ -1304,6 +1328,7 @@ int end()
 		scanf(" %s", key);
 		if (strcmp(key, "예") && strcmp(key, "아니요"))
 		{
+			gotoxy(9, 7);
 			printf("예 아니요로 대답해주세요");
 			Sleep(1000);
 			system("cls");
@@ -1362,8 +1387,10 @@ int number()
 				gotoxy(x, y + 3);
 				printf("매우 어려움");
 				sum = choice(7, 6, 6, 9, 7, 7);
-				printf("\n   문제수를 입력해주세요\n\n");
-				printf("   입력 : _\b");
+				gotoxy(7, 11);
+				printf("문제수를 입력해주세요");
+				gotoxy(7, 13);
+				printf("입력 : _\b");
 				scanf(" %d", &I);
 				if (I > 99 || I < 1)
 				{
