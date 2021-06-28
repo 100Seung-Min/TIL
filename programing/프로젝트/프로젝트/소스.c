@@ -7,29 +7,47 @@
 #include <conio.h>
 #include <ctype.h>
 
-void color();
-void alphabet();
-int number();
-void attitude();
-void taza();
-void 더하기(char n, int c, int g);
-void 빼기(char n, int c, int g);
-void 곱하기(char n, int c, int d);
-void 나누기(char n, int c, int g);
-void rps();
-void game();
-void updown();
-int end();
-void numbase();
+#define UP 0
+#define DOWN 1
+#define LEFT 2
+#define RIGHT 3
 
 int Score;
 int I;
+int Color;
+
+void 곱하기(char n, int c, int d);
+void 나누기(char n, int c, int g);
+void 더하기(char n, int c, int g);
+void 빼기(char n, int c, int g);
+void alphabet();
+void attitude();
+void attribute();
+void bad();
+void color(int a);
+void cursorView();
+void delete_diary();
+void diary();
+void game();
+void good();
+void gotoxy(int, int);
+void open_diary();
+void numbase();
+void rps();
+void setcolor(unsigned char _BgColor, unsigned char _TextColor);
+void taza();
+void update_diary();
+void updown();
+int choice(int x, int y, int a, int b, int c, int d);
+int end();
+int keyControl();
+int number();
 
 int main()
 {
+	cursorView();
 	system("mode con cols=40 lines=30");
-	char choose = '9';
-	int cnt = 0;
+	int cnt = 0, x = 7, y = 6, sum;
 	printf("\n\n\n\n\n\t-------------------------\n");
 	printf("\t|\t\t\t|\n");
 	printf("\t| 화면을 키시겠습니까?\t|\n");
@@ -47,48 +65,56 @@ int main()
 	}
 	while (1)
 	{
-		for (;;) {
-			system("cls");
-			printf("\n\n  1 -> 환경설정     2 -> 알파벳 게임\n");
-			printf("  3 -> 숫자 계산    4 -> 예절 공부\n");
-			printf("  5 -> 타자연습     6 -> 각종 게임\n\n\n\n\n\n\n");
-			printf("  원하는 번호를 입력하세요\n\n");
-			printf("  번호 입력 : _\b");
-			scanf_s(" %c", &choose);
-			fflush(stdin);
-			if (choose < '1' || choose > '6')
-			{
-				printf("\n\n\t   지원되지 않습니다.");
-				printf("\n\t   다시입력해주세요");
-				Sleep(800);
-				continue;
-			}
-			break;
-		}
-		switch (choose)
+		system("mode con cols=40 lines=30");
+		gotoxy(x - 2, y);
+		printf("> 환경설정");
+		gotoxy(x + 16, y);
+		printf("알파벳게임");
+		gotoxy(x, y + 1);
+		printf("숫자계산");
+		gotoxy(x + 16, y + 1);
+		printf("예절공부");
+		gotoxy(x, y + 2);
+		printf("타자연습");
+		gotoxy(x + 16, y + 2);
+		printf("랜덤게임");
+		gotoxy(x, y + 3);
+		printf("일기장");
+		gotoxy(x + 16, y + 3);
+		printf("기능하나");
+		sum = choice(7, 6, 6, 9, 7, 23);
+		switch (sum)
 		{
-		case '1':
-			color();
+		case 13:
+			color(0);
+			color(1);
 			system("cls");
 			break;
-		case '2':
+		case 29:
 			alphabet();
 			system("cls");
 			break;
-		case '3':
+		case 14:
 			number();
 			system("cls");
 			break;
-		case '4':
+		case 30:
 			attitude();
 			system("cls");
 			break;
-		case '5':
+		case 15:
 			taza();
 			system("cls");
 			break;
-		case '6':
+		case 31:
 			game();
+			system("cls");
+			break;
+		case 16:
+			diary();
+			system("cls");
+			break;
+		case 32:
 			system("cls");
 			break;
 		}
@@ -107,113 +133,126 @@ int main()
 	}
 }
 
-void color()
+void 곱하기(char n, int c, int d)
 {
-	char color, key[10] = "예";
 	system("cls");
-
-	while (!strcmp(key, "예"))
+	int cnt = 0, a, b, temp, 답;
+	a = rand() % c + 1;
+	b = rand() % d + 1;
+	temp = a * b;
+	printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
+	printf("답을 입력하시오\n\n\t   ");
+	printf("%d %c %d = ? \n\n", a, n, b);
+	printf("\t   답 : _\b");
+	scanf(" %d", &답);
+	if (답 == temp)
 	{
-		do
-		{
-			printf("\n\n   0 -> 검은색\t8 -> 회색\n");
-			printf("   1 -> 파란색\t9 -> 연한 파란색\n");
-			printf("   2 -> 녹색\tA -> 연한 녹색\n");
-			printf("   3 -> 청록색\tB -> 연한 청록색\n");
-			printf("   4 -> 빨간색\tC -> 연한 빨간색\n");
-			printf("   5 -> 자주색\tD -> 연한 자주색\n");
-			printf("   6 -> 노란색\tE -> 연한 노란색\n");
-			printf("   7 -> 흰색\tF -> 밝은 흰색\n\n\n");
-			printf("   원하시는 색깔의 번호를 입력하세요\n");
-			printf("   입력 : _\b");
-			scanf(" %c", &color);
-			if (color >= '0' && color <= '9' || color >= 'A' && color <= 'F')
-				break;
-			else {
-				printf("\n\n\t   지원되지 않습니다");
-				printf("\n\t   다시 입력해주세요");
-				Sleep(1000);
-				system("cls");
-			}
-		} while (1);
-		switch (color)
-		{
-		case '0':
-			system("color 00");
-			system("cls");
-			break;
-		case '1':
-			system("color 10");
-			system("cls");
-			break;
-		case '2':
-			system("color 20");
-			system("cls");
-			break;
-		case '3':
-			system("color 30");
-			system("cls");
-			break;
-		case '4':
-			system("color 40");
-			system("cls");
-			break;
-		case '5':
-			system("color 50");
-			system("cls");
-			break;
-		case '6':
-			system("color 60");
-			system("cls");
-			break;
-		case '7':
-			system("color 70");
-			system("cls");
-			break;
-		case '8':
-			system("color 80");
-			system("cls");
-			break;
-		case '9':
-			system("color 90");
-			system("cls");
-			break;
-		case 'A':
-			system("color A0");
-			system("cls");
-			break;
-		case 'B':
-			system("color B0");
-			system("cls");
-			break;
-		case 'C':
-			system("color C0");
-			system("cls");
-			break;
-		case 'D':
-			system("color D0");
-			system("cls");
-			break;
-		case 'E':
-			system("color E0");
-			system("cls");
-			break;
-		case 'F':
-			system("color F0");
-			system("cls");
-			break;
-		}
-		if (end() == 1)
-			break;
+		good();
+		Score++;
 	}
+	else
+	{
+		bad();
+		Sleep(800);
+		printf("\t   정답은 %d입니다.", temp);
+	}
+	Sleep(800);
+}
+
+void 나누기(char n, int c, int g)
+{
+	system("cls");
+	int cnt = 0, a, b, d, 답, temp;
+	a = rand() % c;
+	b = rand() % g;
+	d = a;
+	if (a < b)
+	{
+		a = b;
+		b = d;
+	}
+	temp = a / b;
+	printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
+	printf("답을 입력하시오\n\n\t   ");
+	printf("%d %c %d = ? \n\n", a, n, b);
+	printf("\t   답 : _\b");
+	scanf(" %d", &답);
+	if (답 == temp)
+	{
+		good();
+		Score++;
+	}
+	else
+	{
+		bad();
+		Sleep(800);
+		printf("\t   정답은 %d입니다.", temp);
+	}
+	Sleep(800);
+}
+
+void 더하기(char n, int c, int g)
+{
+	system("cls");
+	int cnt = 0, a, b, temp, 답, d;
+	a = rand() % c;
+	b = rand() % g;
+	d = b;
+	a = a < b ? d : a;
+	temp = a + b;
+	printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
+	printf("답을 입력하시오\n\n\t   ");
+	printf("%d %c %d = ? \n\n", a, n, b);
+	printf("\t   답 : _\b");
+	scanf(" %d", &답);
+	if (답 == temp)
+	{
+		good();
+		Score++;
+	}
+	else
+	{
+		bad();
+		Sleep(800);
+		printf("\t   정답은 %d입니다.", temp);
+	}
+	Sleep(1000);
+}
+
+void 빼기(char n, int c, int g)
+{
+	system("cls");
+	int cnt = 0, a, b, temp, 답, d;
+	a = rand() % c;
+	b = rand() % g;
+	d = b;
+	a = a < b ? d : a;
+	temp = a - b;
+	printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
+	printf("답을 입력하시오\n\n\t   ");
+	printf("%d %c %d = ? \n\n", a, n, b);
+	printf("\t   답 : _\b");
+	scanf(" %d", &답);
+	if (답 == temp)
+	{
+		good();
+		Score++;
+	}
+	else
+	{
+		bad();
+		Sleep(800);
+		printf("\t   정답은 %d입니다.", temp);
+	}
+	Sleep(800);
 }
 
 void alphabet()
 {
 	system("cls");
-	int key, ran, j = 0;
+	int ran, j = 0, x = 7, y = 6, sum;
 	Score = 0;
-	char en[26], EN[26], answer, key1[1000] = { "예" };
+	char en[26], EN[26], answer, key1[100] = { "예" };
 	srand(time(NULL));
 	for (int i = 0; i < 26; i++)
 	{
@@ -222,22 +261,25 @@ void alphabet()
 	}
 	while (!strcmp(key1, "예"))
 	{
-		printf("\n\n\t1 -> 소문자 쉬움\n\n\t2 -> 대문자 쉬움\n\n");
-		printf("\t3 -> 소문자 어려움\n\n\t4 -> 대문자 어려움\n\n\n");
-		printf("   원하는 난이도를 입력해주세요\n");
-		printf("   입력 : _\b");
-		scanf_s(" %d", &key);
-		if (key == 3 || key == 4)
+		gotoxy(x - 2, y);
+		printf("> 소문자 쉬움");
+		gotoxy(x + 16, y);
+		printf("대문자 쉬움");
+		gotoxy(x, y + 1);
+		printf("소문자 어려움");
+		gotoxy(x + 16, y + 1);
+		printf("대문자 어려움");
+		sum = choice(7, 6, 6, 7, 7, 23);
+		if (sum == 14 || sum == 30)
 		{
 			printf("\n   원하는 문제 수를 입력해주세요\n");
 			printf("   입력 : _\b");
 			scanf_s(" %d", &j);
 		}
-		if (key <= 4 && key >= 1)
-			system("cls");
-		switch (key)
+		system("cls");
+		switch (sum)
 		{
-		case 1:
+		case 13:
 			for (int i = 0; i < 26; i++)
 			{
 				do
@@ -258,24 +300,24 @@ void alphabet()
 				} while (!islower(answer));
 				if (answer == en[i])
 				{
-					printf("\n\n\t   정답!!\n");
+					good();
 					Score++;
-					Sleep(1000);
+					Sleep(800);
 					system("cls");
 				}
 				else
 				{
-					printf("\n\n\t   좀만 더 노력해보자\n");
-					Sleep(1000);
+					bad();
+					Sleep(800);
 					printf("\t   정답은 %c였습니다\n", en[i]);
-					Sleep(1000);
+					Sleep(800);
 					system("cls");
 				}
 			}
 			printf("\n\n\n\n\n\n\n\n\n\n\n\t 26개 중에 %d개 맞췄습니다", Score);
-			Sleep(1000);
+			Sleep(800);
 			break;
-		case 2:
+		case 29:
 			for (int i = 0; i < 26; i++)
 			{
 				do
@@ -296,24 +338,24 @@ void alphabet()
 				} while (!isupper(answer));
 				if (answer == EN[i])
 				{
-					printf("\n\n\t   정답!!\n");
+					good();
 					Score++;
-					Sleep(1000);
+					Sleep(800);
 					system("cls");
 				}
 				else
 				{
-					printf("\n\n\t   좀만 더 노력해보자\n");
-					Sleep(1000);
+					bad();
+					Sleep(800);
 					printf("\t   정답은 %c였습니다\n", EN[i]);
-					Sleep(1000);
+					Sleep(800);
 					system("cls");
 				}
 			}
 			printf("\n\n\n\n\n\n\n\n\n\n\n\t 26개 중에 %d개 맞췄습니다", Score);
-			Sleep(1000);
+			Sleep(800);
 			break;
-		case 3:
+		case 14:
 			for (int i = 0; i < j; i++)
 			{
 				ran = rand() % 25;
@@ -335,24 +377,24 @@ void alphabet()
 				} while (!islower(answer));
 				if (answer == en[ran + 1])
 				{
-					printf("\n\n\t   정답!!\n");
+					good();
 					Score++;
-					Sleep(1000);
+					Sleep(800);
 					system("cls");
 				}
 				else
 				{
-					printf("\n\n\t   좀만 더 노력해보자\n");
-					Sleep(1000);
+					bad();
+					Sleep(800);
 					printf("\t   정답은 %c였습니다\n", en[ran + 1]);
-					Sleep(1000);
+					Sleep(800);
 					system("cls");
 				}
 			}
 			printf("\n\n\n\n\n\n\n\n\n\n\n\t %d개 중에 %d개 맞췄습니다", j, Score);
-			Sleep(1000);
+			Sleep(800);
 			break;
-		case 4:
+		case 30:
 			for (int i = 0; i < j; i++)
 			{
 				ran = rand() % 25;
@@ -374,27 +416,22 @@ void alphabet()
 				} while (!isupper(answer));
 				if (answer == EN[ran + 1])
 				{
-					printf("\n\n\t   정답!!\n");
+					good();
 					Score++;
-					Sleep(1000);
+					Sleep(800);
 					system("cls");
 				}
 				else
 				{
-					printf("\n\n\t   좀만 더 노력해보자\n");
-					Sleep(1000);
+					bad();
+					Sleep(800);
 					printf("\t   정답은 %c였습니다\n", EN[ran + 1]);
-					Sleep(1000);
+					Sleep(800);
 					system("cls");
 				}
 			}
 			printf("\n\n\n\n\n\n\n\n\n\n\n\t %d개 중에 %d개 맞췄습니다", j, Score);
-			Sleep(1000);
-			break;
-		default:
-			printf("\n\n\n\t지원되지 않습니다.");
-			Sleep(1000);
-			system("cls");
+			Sleep(800);
 			break;
 		}
 		if (end() == 1)
@@ -404,7 +441,7 @@ void alphabet()
 
 void attitude()
 {
-	int key2, num, answer, a, b;
+	int num, answer, a, b, x = 7, y = 6, sum;
 	char key1[100], key[10] = "예";
 	char quize1[20][100] = {
 		"처음보는 웃어른에게는?",
@@ -471,15 +508,21 @@ void attitude()
 	while (!strcmp(key, "예"))
 	{
 		system("cls");
-		printf("1 -> 웃어른예절\t2 -> 인사예절\n");
-		printf("3 -> 식사예절\t4 -> 언어예절\n");
-		printf("예절 배우기 선택 : ");
-		scanf(" %d", &key2);
+		gotoxy(x - 2, y);
+		printf("> 웃어른예절");
+		gotoxy(x + 16, y);
+		printf("인사예절");
+		gotoxy(x, y + 1);
+		printf("식사예절");
+		gotoxy(x + 16, y + 1);
+		printf("언어예절");
+		sum = choice(7, 6, 6, 7, 7, 23);
+		gotoxy(7, 10);
 		printf("문제 수 선택 : ");
 		scanf(" %d", &num);
-		switch (key2)
+		switch (sum)
 		{
-		case 1:
+		case 13:
 			for (int i = 0; i < num; i++)
 			{
 				a = rand() % 4;
@@ -496,20 +539,21 @@ void attitude()
 				scanf(" %d", &answer);
 				if (answer - 1 == b)
 				{
-					printf("정답입니다.");
+					good();
 					Sleep(800);
 					system("cls");
 				}
 				else
 				{
-					printf("오답입니다");
+					bad();
+					Sleep(800);
 					printf("정답은 %d번입니다.\n", b + 1);
 					Sleep(800);
 					system("cls");
 				}
 			}
 			break;
-		case 2:
+		case 29:
 			for (int i = 0; i < num; i++)
 			{
 				a = rand() % 4;
@@ -526,20 +570,21 @@ void attitude()
 				scanf(" %d", &answer);
 				if (answer - 1 == b)
 				{
-					printf("정답입니다.");
+					good();
 					Sleep(800);
 					system("cls");
 				}
 				else
 				{
-					printf("오답입니다");
+					bad();
+					Sleep(800);
 					printf("정답은 %d번입니다.\n", b + 1);
 					Sleep(800);
 					system("cls");
 				}
 			}
 			break;
-		case 3:
+		case 14:
 			for (int i = 0; i < num; i++)
 			{
 				a = rand() % 4;
@@ -556,20 +601,21 @@ void attitude()
 				scanf(" %d", &answer);
 				if (answer - 1 == b)
 				{
-					printf("정답입니다.");
+					good();
 					Sleep(800);
 					system("cls");
 				}
 				else
 				{
-					printf("오답입니다");
+					bad();
+					Sleep(800);
 					printf("정답은 %d번입니다.\n", b + 1);
 					Sleep(800);
 					system("cls");
 				}
 			}
 			break;
-		case 4:
+		case 30:
 			for (int i = 0; i < num; i++)
 			{
 				a = rand() % 4;
@@ -586,235 +632,493 @@ void attitude()
 				scanf(" %d", &answer);
 				if (answer - 1 == b)
 				{
-					printf("정답입니다.");
+					good();
 					Sleep(800);
 					system("cls");
 				}
 				else
 				{
-					printf("오답입니다");
+					bad();
+					Sleep(800);
 					printf("정답은 %d번입니다.\n", b + 1);
 					Sleep(800);
 					system("cls");
 				}
 			}
 			break;
-		default:
-			printf("다시 입력해주세요.");
-			break;
 		}
 		if (end() == 1)
 			break;
 	}
 }
 
-void 더하기(char n, int c, int g)
+void attribute()
 {
-	system("cls");
-	int cnt = 0, a, b, temp, 답, d;
-	a = rand() % c;
-	b = rand() % g;
-	d = b;
-	a = a < b ? d : a;
-	temp = a + b;
-	printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
-	printf("답을 입력하시오\n\n\t   ");
-	printf("%d %c %d = ? \n\n", a, n, b);
-	printf("\t   답 : _\b");
-	scanf(" %d", &답);
-	if (답 == temp)
-	{
-		printf("\n\n\t   정답입니다!!!\n");
-		Score++;
-	}
-	else
-	{
-		printf("\n\n\t   틀렸습니다ㅜㅜ\n");
-		Sleep(800);
-		printf("\t   정답은 %d입니다.", temp);
-	}
-	Sleep(1000);
+
 }
 
-void 빼기(char n, int c, int g)
+void bad()
 {
-	system("cls");
-	int cnt = 0, a, b, temp, 답, d;
-	a = rand() % c;
-	b = rand() % g;
-	d = b;
-	a = a < b ? d : a;
-	temp = a - b;
-	printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
-	printf("답을 입력하시오\n\n\t   ");
-	printf("%d %c %d = ? \n\n", a, n, b);
-	printf("\t   답 : _\b");
-	scanf(" %d", &답);
-	if (답 == temp)
-	{
-		printf("\n\n\t   정답입니다!!!\n");
-		Score++;
-	}
-	else
-	{
-		printf("\n\n\t   틀렸습니다ㅜㅜ\n");
-		Sleep(800);
-		printf("\t   정답은 %d입니다.", temp);
-	}
-	Sleep(800);
-}
-
-void 곱하기(char n, int c, int d)
-{
-	system("cls");
-	int cnt = 0, a, b, temp, 답;
-	a = rand() % c + 1;
-	b = rand() % d + 1;
-	temp = a * b;
-	printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
-	printf("답을 입력하시오\n\n\t   ");
-	printf("%d %c %d = ? \n\n", a, n, b);
-	printf("\t   답 : _\b");
-	scanf(" %d", &답);
-	if (답 == temp)
-	{
-		printf("\n\n\t   정답입니다!!!\n");
-		Score++;
-	}
-	else
-	{
-		printf("\n\n\t   틀렸습니다ㅜㅜ\n");
-		Sleep(800);
-		printf("\t   정답은 %d입니다.", temp);
-	}
-	Sleep(800);
-}
-
-void 나누기(char n, int c, int g)
-{
-	system("cls");
-	int cnt = 0, a, b, d, 답, temp;
-	a = rand() % c;
-	b = rand() % g;
-	d = a;
-	if(a < b)
-	{
-		a = b;
-		b = d;
-	}
-	temp = a / b;
-	printf("\t\t\t   score: %d / %d\n\n\n\n\n\n\n\n\n\t   ", I, Score);
-	printf("답을 입력하시오\n\n\t   ");
-	printf("%d %c %d = ? \n\n", a, n, b);
-	printf("\t   답 : _\b");
-	scanf(" %d", &답);
-	if (답 == temp)
-	{
-		printf("\n\n\t   정답입니다!!!\n");
-		Score++;
-	}
-	else
-	{
-		printf("\n\n\t  틀렸습니다ㅜㅜ\n");
-		Sleep(800);
-		printf("\t   정답은 %d입니다.", temp);
-	}
-	Sleep(800);
-}
-
-int number()
-{
-	int 난이도 = 0, 기호 = 0;
-	char key[20] = {"예"};
 	srand(time(NULL));
+	char bad_word[20][40] =
+	{
+		"아쉽습니다.",
+		"조금 더 노력해봅시다.",
+		"다음엔 꼭 맞춰봅시다.",
+		"틀렸습니다.",
+		"아깝습니다."
+	};
+	int a = rand() % 5;
+	printf("%s", bad_word[a]);
+}
+
+void color(int a)
+{
+	char color, key[10] = "예";
+	int x = 7, y = 6, sum;
+	system("cls");
+
 	while (!strcmp(key, "예"))
 	{
-		do
+		gotoxy(x - 2, y);
+		printf("> 검은색");
+		gotoxy(x + 16, y);
+		printf("회색");
+		gotoxy(x, y + 1);
+		printf("파란색");
+		gotoxy(x + 16, y + 1);
+		printf("연한 파란색");
+		gotoxy(x, y + 2);
+		printf("녹색");
+		gotoxy(x + 16, y + 2);
+		printf("연한 녹색");
+		gotoxy(x, y + 3);
+		printf("청록색");
+		gotoxy(x + 16, y + 3);
+		printf("연한 청록색");
+		gotoxy(x, y + 4);
+		printf("빨간색");
+		gotoxy(x + 16, y + 4);
+		printf("연한 빨간색");
+		gotoxy(x, y + 5);
+		printf("자주색");
+		gotoxy(x + 16, y + 5);
+		printf("연한 자주색");
+		gotoxy(x, y + 6);
+		printf("노란색");
+		gotoxy(x + 16, y + 6);
+		printf("연한 노란색");
+		gotoxy(x , y + 7);
+		printf("흰색");
+		gotoxy(x + 16, y + 7);
+		printf("밝은 흰색");
+		sum = choice(7, 6, 6, 13, 7, 23);
+		switch (sum)
 		{
-			Score = 0;
+		case 13:
+			if (a == 0)
+			{
+				system("color 00");
+				Color = 0;
+			}
+			else if (a == 1)
+			{
+				setcolor(Color, 0);
+			}
 			system("cls");
-			for (;;)
+			break;
+		case 29:
+			if (a == 0)
 			{
-				printf("\n\n\t1 -> 쉬움\n\n\t2 -> 보통\n\n\t");
-				printf("3 -> 어려움\n\n\t4 -> 매우 어려움\n\n\n\n");
-				printf("   원하는 난이도를 입력해주세요\n\n");
-				printf("   입력 : _\b");
-				scanf(" %d", &난이도);
-				if (난이도 > 4 || 난이도 < 1) {
-					printf("\n\n\t   지원되지 않습니다");
-					printf("\n\t   다시 입력해주세요");
-					Sleep(800);
-					system("cls");
-					continue;
-				}
-				printf("\n   문제수를 입력해주세요\n\n");
-				printf("   입력 : _\b");
-				scanf(" %d", &I);
-				if (I > 99 || I < 1)
-				{
-					printf("\n\n\t   지원되지 않습니다");
-					printf("\n\t   다시 입력해주세요");
-					Sleep(800);
-					system("cls");
-					continue;
-				}
-				break;
+				system("color 80");
+				Color = 8;
 			}
-
-			if (난이도 == 1)
+			else if (a == 1)
 			{
-				난이도 = 10;
-				break;
+				setcolor(Color, 8);
 			}
-			else if (난이도 == 2)
+			system("cls");
+			break;
+		case 14:
+			if (a == 0)
 			{
-				난이도 = 20;
-				break;
+				system("color 10");
+				Color = 1;
 			}
-			else if (난이도 == 3)
+			else if (a == 1)
 			{
-				난이도 = 30;
-				break;
+				setcolor(Color, 1);
 			}
-			else if (난이도 == 4)
+			system("cls");
+			break;
+		case 30:
+			if (a == 0)
 			{
-				난이도 = 40;
-				break;
+				system("color 90");
+				Color = 9;
 			}
-		} while (1);
-		for (int l = 0; l < I; l++)
-		{
-			기호 = rand() % 4;
-			if (기호 == 0 || 기호 == 1 || 기호 == 2 || 기호 == 3)
+			else if (a == 1)
 			{
-				switch (기호)
-				{
-				case 0:
-					더하기('+', 난이도, 난이도);
-					break;
-				case 1:
-					곱하기('*', 난이도, 난이도);
-					break;
-				case 2:
-					빼기('-', 난이도, 난이도);
-					break;
-				case 3:
-					나누기('/', 난이도, 난이도);
-					break;
-				}
+				setcolor(Color, 9);
 			}
+			system("cls");
+			break;
+		case 15:
+			if (a == 0) 
+			{
+				system("color 20");
+				Color = 2;
+			}
+			else if (a == 1)
+			{
+				setcolor(Color, 2);
+			}
+			system("cls");
+			break;
+		case 31:
+			if (a == 0) 
+			{
+				system("color A0");
+				Color = 10;
+			}
+			else if (a == 1)
+			{
+				setcolor(Color, 10);
+			}
+			system("cls");
+			break;
+		case 16:
+			if (a == 0) 
+			{
+				system("color 30");
+				Color = 3;
+			}
+			else if (a == 1)
+			{
+				setcolor(Color, 3);
+			}
+			system("cls");
+			break;
+		case 32:
+			if (a == 0) 
+			{
+				system("color B0");
+				Color = 11;
+			}
+			else if (a == 1)
+			{
+				setcolor(Color, 11);
+			}
+			system("cls");
+			break;
+		case 17:
+			if (a == 0)
+			{
+				system("color 40");
+				Color = 4;
+			}
+			else if (a == 1)
+			{
+				setcolor(Color, 4);
+			}
+			system("cls");
+			break;
+		case 33:
+			if (a == 0) 
+			{
+				system("color C0");
+				Color = 12;
+			}
+			else if (a == 1)
+			{
+				setcolor(Color, 12);
+			}
+			system("cls");
+			break;
+		case 18:
+			if (a == 0)
+			{
+				system("color 50");
+				Color = 5;
+			}
+			else if (a == 1)
+			{
+				setcolor(Color, 5);
+			}
+			system("cls");
+			break;
+		case 34:
+			if (a == 0)
+			{
+				system("color D0");
+				Color = 13;
+			}
+			else if (a == 1)
+			{
+				setcolor(Color, 13);
+			}
+			system("cls");
+			break;
+		case 19:
+			if (a == 0) 
+			{
+				system("color 60");
+				Color = 6;
+			}
+			else if (a == 1)
+			{
+				setcolor(Color, 6);
+			}
+			system("cls");
+			break;
+		case 35:
+			if (a == 0) 
+			{
+				system("color E0");
+				Color = 14;
+			}
+			else if (a == 1)
+			{
+				setcolor(Color, 14);
+			}
+			system("cls");
+			break;
+		case 20:
+			if (a == 0)
+			{
+				system("color 70");
+				Color = 7;
+			}
+			else if (a == 1)
+			{
+				setcolor(Color, 7);
+			}
+			system("cls");
+			break;
+		case 36:
+			if (a == 0)
+			{
+				system("color F0");
+				Color = 15;
+			}
+			else if (a == 1)
+			{
+				setcolor(Color, 15);
+			}
+			system("cls");
+			break;
 		}
-		system("cls");
-		printf("\n\n\n\n\n\n\n\n\n\n\t   %d개중 %d개 맞췄습니다.", I, Score);
-		Sleep(800);
+		if (a == 1)
+		{
+			if (end() == 1)
+				break;
+		}
+		else break;
+	}
+}
+
+void cursorView()
+{
+	CONSOLE_CURSOR_INFO cursorInfo = { 0, };
+	cursorInfo.dwSize = 1;
+	cursorInfo.bVisible = FALSE;
+	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursorInfo);
+}
+
+void delete_diary()
+{
+	int x = 7, y = 10, sum;
+	system("cls");
+	gotoxy(5, 8);
+	printf("정말로 일기를 지우시겠습니까?");
+	gotoxy(x - 2, y);
+	printf("> 예");
+	gotoxy(x + 16, y);
+	printf("아니요");
+	sum = choice(7, 10, 10, 10, 7, 23);
+	if (sum == 17)
+	{
+		FILE* fout;
+		char day[20], did[1000];
+
+		if ((fout = fopen("diary.txt", "wt")) == NULL)
+		{
+			puts("diary.txt - 파일을 삭제할 수 없습니다.");
+			return -1;
+			fclose(fout);
+		}
+	}
+	else return;
+}
+
+void diary()
+{
+	system("cls");
+	int num, x = 7, y = 8, sum;
+	for (;;)
+	{
+		gotoxy(x - 2, y);
+		printf("> 일기쓰기");
+		gotoxy(x, y + 1);
+		printf("일기보기");
+		gotoxy(x, y + 2);
+		printf("일기삭제");
+		sum = choice(7, 8, 8, 10, 7, 7);
+		switch (sum)
+		{
+		case 15:
+			update_diary();
+			system("cls");
+			break;
+		case 16:
+			open_diary();
+			system("cls");
+			break;
+		case 17:
+			delete_diary();
+			system("cls");
+			break;
+		}
 		if (end() == 1)
 			break;
 	}
 }
 
-void taza()
+void game()
 {
+	int x = 7, y = 6, sum;
+	char key[10] = { "예" };
+	while (!strcmp(key, "예"))
+	{
+		system("cls");
+		gotoxy(x - 2, y);
+		printf("> 가위바위보");
+		gotoxy(x + 16, y);
+		printf("시간 맞추기");
+		gotoxy(x, y + 1);
+		printf("업다운");
+		gotoxy(x + 16, y + 1);
+		printf("기억려게임");
+		gotoxy(x, y + 2);
+		printf("숫자야구");
+		gotoxy(x + 16, y + 2);
+		printf("모르겠음");
+		sum = choice(7, 6, 6, 8, 7, 23);
+		switch (sum)
+		{
+		case 13:
+			rps();
+			break;
+		case 29:
+			break;
+		case 14:
+			updown();
+			break;
+		case 30:
+			break;
+		case 15:
+			numbase();
+			break;
+		case 31:
+			break;
+		}
+		if (end() == 1)
+			break;
+	}
+}
 
+void good()
+{
+	srand(time(NULL));
+	char good_word[20][40] =
+	{
+		"정답입니다.",
+		"천재입니다.",
+		"축하합니다.",
+		"머리가 좋으시네요.",
+		"최고입니다."
+	};
+	int a = rand() % 5;
+	printf("%s", good_word[a]);
+}
+
+void gotoxy(int x, int y)
+{
+	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD pos;
+	pos.X = x;
+	pos.Y = y;
+	SetConsoleCursorPosition(consoleHandle, pos);
+}
+
+void open_diary()
+{
+	system("cls");
+	char file[] = "C:\\Users\\user\\Documents\\GitHub\\TIL\\programing\\프로젝트\\프로젝트\\diary.txt";
+	FILE* fin;
+	char s[100];
+	if ((fin = fopen(file, "rt")) == NULL) {
+		printf("File not found: %s\n", file);
+		return -1;
+	}
+	while (!feof(fin))
+		printf("%s", fgets(s, 100, fin));
+	fclose(fin);
+	while (1)
+	{
+		if (kbhit())
+			break;
+		Sleep(10);
+	}
+}
+
+void numbase() 
+{
+	system("cls");
+	int user[3], com[3], num = 0, home = 0, ball = 0;
+	srand(time(NULL));
+	for (int i = 0; i < 3; i++)
+	{
+		com[i] = rand() % 9 + 1;
+		if (com[i] == com[i - 1] && i != 0)
+			i--;
+		else if (com[i] == com[i - 2] && i == 2)
+			i--;
+	}
+	do
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			scanf(" %d", &user[i]);
+			printf("\r");
+		}
+		for (int i = 0; i < 3; i++)
+			for (int j = 0; j < 3; j++)
+			{
+				if (user[i] == com[j])
+				{
+					if (i == j)
+						home++;
+					else
+						ball++;
+				}
+			}
+		printf("%d Strike, %dBall\n", home, ball);
+		if (home == 3)
+			break;
+		num++;
+		home = 0;
+		ball = 0;
+	} while (num < 9);
+	if (num < 9) 
+		good();
+	else
+	{
+		bad();
+		Sleep(800);
+		printf("정답은 %d %d %d입니다", com[0], com[1], com[2]);
+	}
+	Sleep(800);
 }
 
 void rps()
@@ -859,31 +1163,45 @@ void rps()
 		system("cls");
 	}
 	printf("\n\n\n\n\n\n\n\n\n\n\n\t   전적 %d전 %d승 %d패 %d무", num, win, lose, draw);
+	Sleep(800);
 }
 
-void game()
+void setcolor(unsigned char _BgColor, unsigned char _TextColor) {
+	if (_BgColor > 15 || _TextColor > 15) return;
+
+	unsigned short ColorNum = (_BgColor << 4) | _TextColor;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), ColorNum);
+}
+
+void taza()
+{
+
+}
+
+void update_diary()
 {
 	system("cls");
-	int key;
-	printf("\n\n\n\n\n\n\n  1 -> 가위바위보   2 -> 시간맞추기\n");
-	printf("  3 -> 업다운       4 -> 기억력게임\n");
-	printf("  5 -> 숫자야구     6 -> 기억력게임\n");
-	printf("\n  입력 : _\b");
-	scanf("%d", &key);
-	switch (key)
+	FILE* fout;
+	char day[20], did[1000];
+
+	if ((fout = fopen("diary.txt", "at")) == NULL)
 	{
-	case 1:
-		rps();
-		break;
-	case 3:
-		updown();
-		break;
-	case 5:
-		numbase();
-		break;
-	default:
-		break;
+		puts("diary.txt - 파일을 생성할 수 없습니다.");
+		return -1;
 	}
+	while (1)
+	{
+		printf("날짜입력");
+		scanf(" %[^\n]s", day);
+		printf("오늘의 일기\n");
+		scanf(" %[^\n]s", did);
+		fprintf(fout, "\n\t날짜 : %s\n\n\t오늘의 일기\n\t%s\n\n\t------------------", day, did);
+		if (end() == 1)
+			break;
+	}
+	fclose(fout);
+	if (kbhit)
+		return;
 }
 
 void updown()
@@ -894,7 +1212,10 @@ void updown()
 	{
 		do
 		{
-			scanf("%d", &ans);
+			system("cls");
+			gotoxy(8, 10);
+			printf("입력 : ");
+			scanf(" %d", &ans);
 			if (ans < 1 || ans > 100)
 				printf("1 ~ 100 까지 입력\n");
 		} while (ans < 1 || ans > 100);
@@ -905,6 +1226,7 @@ void updown()
 		else
 			break;
 		cnt++;
+		Sleep(800);
 	} while (cnt < 9);
 	if (cnt < 9)
 		printf("축하합니다");
@@ -912,6 +1234,61 @@ void updown()
 	{
 		printf("아쉽습니다.\n");
 		printf("정답은 %d", num);
+	}
+}
+
+int choice(int x, int y, int a, int b, int c, int d)
+{
+	int choice;
+	while (1)
+	{
+		choice = keyControl();
+		if (choice == 0)
+		{
+			if (y > a)
+			{
+				gotoxy(x - 2, y);
+				printf(" ");
+				gotoxy(x - 2, --y);
+				printf(">");
+			}
+		}
+		else if (choice == 1)
+		{
+			if (y < b)
+			{
+				gotoxy(x - 2, y);
+				printf(" ");
+				gotoxy(x - 2, ++y);
+				printf(">");
+			}
+		}
+		else if (choice == 2)
+		{
+			if (x > c)
+			{
+				gotoxy(x - 2, y);
+				printf(" ");
+				x -= 16;
+				gotoxy(x - 2, y);
+				printf(">");
+			}
+		}
+		else if (choice == 3)
+		{
+			if (x < d)
+			{
+				gotoxy(x - 2, y);
+				printf(" ");
+				x += 16;
+				gotoxy(x - 2, y);
+				printf(">");
+			}
+		}
+		else if (choice == 4)
+		{
+			return x + y;
+		}
 	}
 }
 
@@ -941,57 +1318,111 @@ int end()
 	} while (1);
 }
 
-void numbase() {
-	while (1)
+int keyControl()
+{
+	int temp = getch();
+	if (temp == 224)
 	{
-		int user[3], com[3], num = 0, home = 0, ball = 0;
-		srand(time(NULL));
-		for (int i = 0; i < 3; i++)
+		temp = getch();
+		switch (temp)
 		{
-			com[i] = rand() % 9 + 1;
-			if (com[i] == com[i - 1] && i != 0)
-				i--;
-			else if (com[i] == com[i - 2] && i == 2)
-				i--;
+		case 72:
+			return UP;
+		case 80:
+			return DOWN;
+		case 75:
+			return LEFT;
+		case 77:
+			return RIGHT;
 		}
+	}
+	else if (temp == 13)
+		return 4;
+}
+
+int number()
+{
+	int 기호 = 0, x = 7, y = 6, sum;
+	char key[20] = { "예" };
+	srand(time(NULL));
+	while (!strcmp(key, "예"))
+	{
 		do
 		{
-			for (int i = 0; i < 3; i++)
+			Score = 0;
+			system("cls");
+			for (;;)
 			{
-				scanf(" %d", &user[i]);
-				printf("\r");
-			}
-			for (int i = 0; i < 3; i++)
-				for (int j = 0; j < 3; j++)
+				gotoxy(x - 2, y);
+				printf("> 쉬움");
+				gotoxy(x, y + 1);
+				printf("보통");
+				gotoxy(x, y + 2);
+				printf("어려움");
+				gotoxy(x, y + 3);
+				printf("매우 어려움");
+				sum = choice(7, 6, 6, 9, 7, 7);
+				printf("\n   문제수를 입력해주세요\n\n");
+				printf("   입력 : _\b");
+				scanf(" %d", &I);
+				if (I > 99 || I < 1)
 				{
-					if (user[i] == com[j])
-					{
-						if (i == j)
-							home++;
-						else
-							ball++;
-					}
+					printf("\n\n\t   지원되지 않습니다");
+					printf("\n\t   다시 입력해주세요");
+					Sleep(800);
+					system("cls");
+					continue;
 				}
-			printf("%d Strike, %dBall\n", home, ball);
-			if (home == 3)
 				break;
-			num++;
-			home = 0;
-			ball = 0;
-		} while (num < 9);
-		if (num < 9)
-			printf("성공입니다");
-		else
+			}
+
+			if (sum == 13)
+			{
+				sum = 10;
+				break;
+			}
+			else if (sum == 14)
+			{
+				sum = 20;
+				break;
+			}
+			else if (sum == 15)
+			{
+				sum = 30;
+				break;
+			}
+			else if (sum == 16)
+			{
+				sum = 40;
+				break;
+			}
+		} while (1);
+		for (int l = 0; l < I; l++)
 		{
-			printf("실패입니다.");
-			printf("정답은 %d %d %d입니다", com[0], com[1], com[2]);
+			기호 = rand() % 4;
+			if (기호 == 0 || 기호 == 1 || 기호 == 2 || 기호 == 3)
+			{
+				switch (기호)
+				{
+				case 0:
+					더하기('+', sum, sum);
+					break;
+				case 1:
+					곱하기('*', sum, sum);
+					break;
+				case 2:
+					빼기('-', sum, sum);
+					break;
+				case 3:
+					나누기('/', sum, sum);
+					break;
+				}
+			}
 		}
+		system("cls");
+		printf("\n\n\n\n\n\n\n\n\n\n\t   %d개중 %d개 맞췄습니다.", I, Score);
+		Sleep(800);
 		if (end() == 1)
 			break;
 	}
-}
-
-void attribute()
-{
-	
 }
