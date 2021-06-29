@@ -49,10 +49,10 @@ weapon_speed = 10
 
 # 공 만들기
 ball_images = [
-  pygame.image.load(os.path.join(image_path, "ballon1.png")),
-  pygame.image.load(os.path.join(image_path, "ballon2.png")),
-  pygame.image.load(os.path.join(image_path, "ballon3.png")),
-  pygame.image.load(os.path.join(image_path, "ballon4.png"))]
+  pygame.image.load(os.path.join(image_path, "balloon1.png")),
+  pygame.image.load(os.path.join(image_path, "balloon2.png")),
+  pygame.image.load(os.path.join(image_path, "balloon3.png")),
+  pygame.image.load(os.path.join(image_path, "balloon4.png"))]
 
 # 공 최초 속도
 ball_speed_y = [-18, -15, -12, -9]
@@ -133,6 +133,7 @@ while running:
       ball_val["to_y"] = ball_val["init_spd_y"]
     else:
       ball_val["to_y"] += 0.5
+
     ball_val["pos_x"] += ball_val["to_x"]
     ball_val["pos_y"] += ball_val["to_y"]
 
@@ -189,6 +190,9 @@ while running:
               "to_y":-6,
               "init_spd_y":ball_speed_y[ball_img_idx + 1]})
         break
+    else:
+      continue
+    break
 
   # 공, 무기 없애기
   if ball_to_remove > -1:
