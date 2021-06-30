@@ -1,3 +1,32 @@
-﻿  스.c
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\스.c(62,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  소스.c
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(291,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(486,17): warning C4098: 'alphabet': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(711,17): warning C4098: 'attitude': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(496,7): warning C4101: 'key1' :참조되지 않은 지역 변수입니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(720,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(987,17): warning C4098: 'color': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(992,19): warning C4098: 'color': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(994,19): warning C4098: 'color': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1025,13): warning C4098: 'delete_diary': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1020,17): warning C4101: 'did' :참조되지 않은 지역 변수입니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1020,8): warning C4101: 'day' :참조되지 않은 지역 변수입니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1064,17): warning C4098: 'diary': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1034,6): warning C4101: 'num' :참조되지 않은 지역 변수입니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1152,17): warning C4098: 'game': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1161,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1275,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1334,12): warning C4098: 'open_diary': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1395,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1508,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1547,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1592,24): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1601,29): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1560,7): warning C4101: '받는거' :참조되지 않은 지역 변수입니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1558,6): warning C4101: 'y' :참조되지 않은 지역 변수입니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1623,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1637,35): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1694,12): warning C4098: 'update_diary': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1709,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1846,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1841): warning C4715: 'keyControl': 모든 제어 경로에서 값을 반환하지는 않습니다.
   프로젝트.vcxproj -> C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\Debug\프로젝트.exe

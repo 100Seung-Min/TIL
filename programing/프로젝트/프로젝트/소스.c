@@ -12,9 +12,32 @@
 #define LEFT 2
 #define RIGHT 3
 
+int map[20][20] = {
+	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+{2,0,1,1,0,1,1,1,0,0,0,0,0,0,0,1,0,1,1,1},
+{1,0,0,0,0,1,1,1,1,1,1,0,0,0,0,1,0,0,0,1},
+{1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,0,0,0,1},
+{1,0,1,1,0,1,1,1,0,0,0,1,0,0,0,1,0,1,0,1},
+{1,0,1,1,0,0,0,0,0,0,0,1,0,1,0,1,0,1,0,1},
+{1,0,0,0,0,1,0,1,1,1,1,1,0,0,0,0,0,1,0,1},
+{1,1,1,1,0,1,0,1,0,0,0,0,0,0,0,0,0,1,0,1},
+{1,0,0,0,0,1,0,1,0,1,0,1,1,1,1,0,0,1,0,1},
+{1,0,0,0,0,1,0,1,0,1,0,0,1,0,0,0,1,1,0,1},
+{1,1,1,1,0,0,1,0,0,1,0,1,1,0,0,0,1,1,0,1},
+{1,1,1,1,0,0,1,0,1,1,0,1,1,0,1,0,1,1,1,1},
+{1,1,1,1,0,1,0,0,0,1,0,1,1,1,0,0,0,0,0,1},
+{1,1,1,0,0,1,0,1,0,1,0,0,1,0,0,0,0,0,0,1},
+{1,1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,1},
+{1,0,1,0,0,1,0,1,0,0,1,0,1,1,1,1,1,0,1,1},
+{1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,1,0,1,1},
+{1,0,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,0,1,1},
+{1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,3},
+{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+};
 int Score;
 int I;
 int Color;
+int Color1 = 15;
 int First;
 int Count;
 
@@ -34,9 +57,13 @@ void exit_EBS();
 void game();
 void good();
 void gotoxy(int, int);
+void light(int x, int y);
+void maze();
+void move(int x, int y);
 void numbase();
 void open_diary();
 void paper();
+void print_light(int z, int x, int y);
 void rock();
 void rps();
 void scissors();
@@ -757,6 +784,7 @@ void color(int a)
 			else if (a == 1)
 			{
 				setcolor(Color, 0);
+				Color1 = 0;
 			}
 			system("cls");
 			break;
@@ -769,6 +797,7 @@ void color(int a)
 			else if (a == 1)
 			{
 				setcolor(Color, 8);
+				Color1 = 8;
 			}
 			system("cls");
 			break;
@@ -781,6 +810,7 @@ void color(int a)
 			else if (a == 1)
 			{
 				setcolor(Color, 1);
+				Color1 = 1;
 			}
 			system("cls");
 			break;
@@ -793,6 +823,7 @@ void color(int a)
 			else if (a == 1)
 			{
 				setcolor(Color, 9);
+				Color1 = 9;
 			}
 			system("cls");
 			break;
@@ -805,6 +836,7 @@ void color(int a)
 			else if (a == 1)
 			{
 				setcolor(Color, 2);
+				Color1 = 2;
 			}
 			system("cls");
 			break;
@@ -817,6 +849,7 @@ void color(int a)
 			else if (a == 1)
 			{
 				setcolor(Color, 10);
+				Color1 = 10;
 			}
 			system("cls");
 			break;
@@ -829,6 +862,7 @@ void color(int a)
 			else if (a == 1)
 			{
 				setcolor(Color, 3);
+				Color1 = 3;
 			}
 			system("cls");
 			break;
@@ -841,6 +875,7 @@ void color(int a)
 			else if (a == 1)
 			{
 				setcolor(Color, 11);
+				Color1 = 11;
 			}
 			system("cls");
 			break;
@@ -853,6 +888,7 @@ void color(int a)
 			else if (a == 1)
 			{
 				setcolor(Color, 4);
+				Color1 = 4;
 			}
 			system("cls");
 			break;
@@ -865,6 +901,7 @@ void color(int a)
 			else if (a == 1)
 			{
 				setcolor(Color, 12);
+				Color1 = 12;
 			}
 			system("cls");
 			break;
@@ -877,6 +914,7 @@ void color(int a)
 			else if (a == 1)
 			{
 				setcolor(Color, 5);
+				Color1 = 5;
 			}
 			system("cls");
 			break;
@@ -889,6 +927,7 @@ void color(int a)
 			else if (a == 1)
 			{
 				setcolor(Color, 13);
+				Color1 = 13;
 			}
 			system("cls");
 			break;
@@ -901,6 +940,7 @@ void color(int a)
 			else if (a == 1)
 			{
 				setcolor(Color, 6);
+				Color1 = 6;
 			}
 			system("cls");
 			break;
@@ -913,6 +953,7 @@ void color(int a)
 			else if (a == 1)
 			{
 				setcolor(Color, 14);
+				Color1 = 14;
 			}
 			system("cls");
 			break;
@@ -925,6 +966,7 @@ void color(int a)
 			else if (a == 1)
 			{
 				setcolor(Color, 7);
+				Color1 = 7;
 			}
 			system("cls");
 			break;
@@ -937,6 +979,7 @@ void color(int a)
 			else if (a == 1)
 			{
 				setcolor(Color, 15);
+				Color1 = 15;
 			}
 			system("cls");
 			break;
@@ -1069,7 +1112,7 @@ void game()
 		gotoxy(x, y + 1);
 		printf("업다운");
 		gotoxy(x + 16, y + 1);
-		printf("기억력게임");
+		printf("미로게임");
 		gotoxy(x, y + 2);
 		printf("숫자야구");
 		gotoxy(x + 16, y + 2);
@@ -1094,6 +1137,8 @@ void game()
 			Count++;
 			break;
 		case 30:
+			maze();
+			Count++;
 			break;
 		case 15:
 			numbase();
@@ -1135,10 +1180,98 @@ void gotoxy(int x, int y)
 	SetConsoleCursorPosition(consoleHandle, pos);
 }
 
+void light(int x, int y)
+{
+	int light[8][9] =
+	{
+		{0,0,0,0,0},
+		{0,0,1,0,0},
+		{0,1,1,1,0},
+		{1,1,1,1,1},
+		{1,1,1,1,1},
+		{1,1,1,1,1},
+		{0,1,1,1,0},
+		{0,0,1,0,0},
+	};
+	for (int i = 0; i < 8; i++)
+	{
+		gotoxy(x, y);
+		for (int j = 0; j < 9; j++)
+		{
+			if (light[i][j] == 0)
+				printf("  ");
+			if (light[i][j] == 1)
+				printf("■");
+		}
+		y++;
+	}
+}
+
+void maze()
+{
+	system("cls");
+	for (int i = 0; i < 20; i++)
+	{
+		for (int j = 0; j < 20; j++)
+		{
+			if (map[i][j] == 1)
+				printf("■");
+			else if (map[i][j] == 0)
+				printf("  ");
+			else if (map[i][j] == 2)
+				printf("●");
+			else if (map[i][j] == 3)
+				printf("끝");
+		}
+		printf("\n");
+	}
+	move(0, 1);
+}
+
+void move(int x, int y)
+{
+	while (1)
+	{
+		if (GetAsyncKeyState(VK_UP) & 0x8000 && map[y - 1][x / 2] != 1)
+		{
+			gotoxy(x, y);
+			printf("  ");
+			gotoxy(x, --y);
+			printf("●");
+		}
+		if (GetAsyncKeyState(VK_DOWN) & 0x8000 && map[y + 1][x / 2] != 1)
+		{
+			gotoxy(x, y);
+			printf("  ");
+			gotoxy(x, ++y);
+			printf("●");
+		}
+		if (GetAsyncKeyState(VK_LEFT) & 0x8000 && map[y][x / 2 - 1] != 1)
+		{
+			gotoxy(x, y);
+			printf("  ");
+			x -= 2;
+			gotoxy(x, y);
+			printf("●");
+		}
+		if (GetAsyncKeyState(VK_RIGHT) & 0x8000 && map[y][x / 2 + 1] != 1)
+		{
+			gotoxy(x, y);
+			printf("  ");
+			x += 2;
+			gotoxy(x, y);
+			printf("●");
+		}
+		Sleep(100);
+		if (map[y][x / 2] == 3)
+			break;
+	}
+}
+
 void numbase()
 {
 	system("cls");
-	int user[3], com[3], num = 0, home = 0, ball = 0;
+	int user[3], com[3], num = 0, home = 0, ball = 0, x = 0, y = 0;
 	srand(time(NULL));
 	for (int i = 0; i < 3; i++)
 	{
@@ -1150,6 +1283,9 @@ void numbase()
 	}
 	do
 	{
+		system("cls");
+		gotoxy(10, 20);
+		printf("입력 : ");
 		for (int i = 0; i < 3; i++)
 		{
 			scanf(" %d", &user[i]);
@@ -1166,18 +1302,21 @@ void numbase()
 						ball++;
 				}
 			}
-		printf("%d Strike, %dBall\n", home, ball);
+		print_light(home, 3, 0);
+		print_light(ball, 3, 10);
+		setcolor(Color, Color1);
 		if (home == 3)
 			break;
 		num++;
 		home = 0;
 		ball = 0;
+		Sleep(1000);
 	} while (num < 9);
 	if (num < 9)
-		good();
+		printf("GOOD");
 	else
 	{
-		bad();
+		printf("BAD");
 		Sleep(800);
 		printf("정답은 %d %d %d입니다", com[0], com[1], com[2]);
 	}
@@ -1220,6 +1359,20 @@ void paper()
 	printf("           □                  □       \n");
 	printf("             □              □         \n");
 	printf("               □□□□□□□           \n");
+}
+
+void print_light(int z, int x, int y)
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
+	if (z == 0)
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+	light(x, y);
+	if (z == 1)
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+	light(x + 11, y);
+	if (z == 2)
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+	light(x + 22, y);
 }
 
 void rock()
@@ -1488,7 +1641,10 @@ void timegame()
 		for (int i = 0; i < 200; i++)
 		{
 			if (kbhit())
+			{
+				FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
 				break;
+			}
 			Sleep(30);
 			sum += 1;
 			system("cls");
@@ -1497,13 +1653,16 @@ void timegame()
 		}
 		if (sum / 10 == j) 
 		{
+			gotoxy(11, 14);
 			good();
 		}
 		else
 		{
+			gotoxy(11, 14);
 			bad();
 			Sleep(800);
-			printf("\n%f초 차이입니다.", j - (sum / 10));
+			gotoxy(11, 15);
+			printf("%f초 차이입니다.", j - (sum / 10));
 		}
 		Sleep(800);
 	}
