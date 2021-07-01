@@ -7,156 +7,91 @@
 #include <conio.h>
 #include <ctype.h>
 
-#define UP 0
-#define DOWN 1
-#define LEFT 2
-#define RIGHT 3
-
+int down[7][5] = {
+	{0,1,1,1,0},
+	{0,1,1,1,0},
+	{0,1,1,1,0},
+	{0,1,1,1,0},
+	{1,1,1,1,1},
+	{0,1,1,1,0},
+	{0,0,1,0,0}
+};
+int up[7][5] = {
+	{0, 0, 1, 0, 0},
+	{0, 1, 1, 1, 0},
+	{1, 1, 1, 1, 1},
+	{0, 1, 1, 1, 0},
+	{0, 1, 1, 1, 0},
+	{0, 1, 1, 1, 0},
+	{0, 1, 1, 1, 0}
+};
 void gotoxy(int x, int y)
 {
-    HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-    COORD pos;
-    pos.X = x;
-    pos.Y = y;
-    SetConsoleCursorPosition(consoleHandle, pos);
+	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD pos;
+	pos.X = x;
+	pos.Y = y;
+	SetConsoleCursorPosition(consoleHandle, pos);
 }
-void light(int x, int y)
+void print_updown(int x)
 {
-    int light[8][9] =
-    {
-        {0,0,0,0,0},
-        {0,0,1,0,0},
-        {0,1,1,1,0},
-        {1,1,1,1,1},
-        {1,1,1,1,1},
-        {1,1,1,1,1},
-        {0,1,1,1,0},
-        {0,0,1,0,0},
-    };
-    for (int i = 0; i < 8; i++) 
-    {
-        gotoxy(x, y);
-        for (int j = 0; j < 9; j++)
-        {
-            if (light[i][j] == 0)
-                printf("  ");
-            if (light[i][j] == 1)
-                printf("■");
-        }
-        y++;
-    }
-}
-
-void setcolor(unsigned char _BgColor, unsigned char _TextColor) {
-	if (_BgColor > 15 || _TextColor > 15) return;
-
-	unsigned short ColorNum = (_BgColor << 4) | _TextColor;
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), ColorNum);
-}
-
-
-void print_light(int z, int x, int y)
-{
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
-	if (z == 0)
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
-	light(x, y);
-	if (z == 1)
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
-	light(x + 11, y);
-	if (z == 2)
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
-	light(x + 22, y);
-}
-
-int keyControl()
-{
-	int temp = getch();
-	if (temp == 224)
+	for (int i = 0; i < 7; i++)
 	{
-		temp = getch();
-		switch (temp)
+		printf("\t");
+		for (int j = 0; j < 5; j++)
 		{
-		case 72:
-			return UP;
-		case 80:
-			return DOWN;
-		case 75:
-			return LEFT;
-		case 77:
-			return RIGHT;
+			if (x == 1 && up[i][j] == 0 || x == 2 && down[i][j] == 0)
+				printf("  ");
+			else if (x == 1 && up[i][j] == 1 || x == 2 && down[i][j] == 1)
+				printf("□");
 		}
-	}
-	else if (temp == 13)
-		return 4;
-}
-
-int map[20][20] = {
-{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-{2,0,1,1,0,1,1,1,0,0,0,0,0,0,0,1,0,1,1,1},
-{1,0,0,0,0,1,1,1,1,1,1,0,0,0,0,1,0,0,0,1},
-{1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,0,0,0,1},
-{1,0,1,1,0,1,1,1,0,0,0,1,0,0,0,1,0,1,0,1},
-{1,0,1,1,0,0,0,0,0,0,0,1,0,1,0,1,0,1,0,1},
-{1,0,0,0,0,1,0,1,1,1,1,1,0,0,0,0,0,1,0,1},
-{1,1,1,1,0,1,0,1,0,0,0,0,0,0,0,0,0,1,0,1},
-{1,0,0,0,0,1,0,1,0,1,0,1,1,1,1,0,0,1,0,1},
-{1,0,0,0,0,1,0,1,0,1,0,0,1,0,0,0,1,1,0,1},
-{1,1,1,1,0,0,1,0,0,1,0,1,1,0,0,0,1,1,0,1},
-{1,1,1,1,0,0,1,0,1,1,0,1,1,0,1,0,1,1,1,1},
-{1,1,1,1,0,1,0,0,0,1,0,1,1,1,0,0,0,0,0,1},
-{1,1,1,0,0,1,0,1,0,1,0,0,1,0,0,0,0,0,0,1},
-{1,1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,1},
-{1,0,1,0,0,1,0,1,0,0,1,0,1,1,1,1,1,0,1,1},
-{1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,1,0,1,1},
-{1,0,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,0,1,1},
-{1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,3},
-{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-};
-
-void move(int x, int y)
-{
-	while (1)
-	{
-		if (GetAsyncKeyState(VK_UP) & 0x8000 && map[y - 1][x / 2] != 1)
-		{
-			gotoxy(x, y);
-			printf("  ");
-			gotoxy(x, --y);
-			printf("●");
-		}
-		if (GetAsyncKeyState(VK_DOWN) & 0x8000 && map[y + 1][x / 2] != 1)
-		{
-			gotoxy(x, y);
-			printf("  ");
-			gotoxy(x, ++y);
-			printf("●");
-		}
-		if (GetAsyncKeyState(VK_LEFT) & 0x8000 && map[y][x / 2 - 1] != 1)
-		{
-			gotoxy(x, y);
-			printf("  ");
-			x -= 2;
-			gotoxy(x, y);
-			printf("●");
-		}
-		if (GetAsyncKeyState(VK_RIGHT) & 0x8000 && map[y][x / 2 + 1] != 1)
-		{
-			gotoxy(x, y);
-			printf("  ");
-			x += 2;
-			gotoxy(x, y);
-			printf("●");
-		}
-		Sleep(100);
-		if (map[y][x / 2] == 3)
-			break;
+		printf("\n");
 	}
 }
-
 int main()
 {
-    system("mode con cols=40 lines=30");
-	
-
+	srand(time(NULL));
+	int num = rand() % 100 + 1, ans, cnt = 0, round = 1;
+	do
+	{
+		do
+		{
+			system("cls");
+			gotoxy(30, 0);
+			printf("%dROUND", round);
+			gotoxy(8, 15);
+			printf("입력 : ");
+			scanf(" %d", &ans);
+			if (ans < 1 || ans > 100)
+				printf("1 ~ 100 까지 입력\n");
+		} while (ans < 1 || ans > 100);
+		if (ans > num)
+		{
+			gotoxy(0, 1);
+			print_updown(2);
+		}
+		else if (ans < num)
+		{
+			gotoxy(0, 1);
+			print_updown(1);
+		}
+		else
+			break;
+		cnt++;
+		round++;
+		Sleep(800);
+	} while (cnt < 9);
+	if (cnt < 9)
+	{
+		gotoxy(9, 14);
+		printf("굿");
+	}
+	else
+	{
+		gotoxy(9, 14);
+		printf("bad");
+		Sleep(800);
+		printf("정답은 %d", num);
+	}
+	Sleep(800);
 }
