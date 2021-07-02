@@ -1,32 +1,25 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include<stdio.h>
-#include<time.h>
-#include<Windows.h>
-#include<string.h>
-int main()
-{ 
-    system("mode con cols=40 lines=30");
-
-    for (int i = 0; i < 7; i++) 
-    {
-        for (int j = 0; j < 19; j++)
-        {
-            if (win[i][j] == 0)
-                printf("  ");
-            else
-                printf("■");
-        }
-        printf("\n");
-    }
-    for (int i = 0; i < 7; i++)
-    {
-        for (int j = 0; j < 20; j++)
-        {
-            if (lose[i][j] == 0)
-                printf("  ");
-            else
-                printf("■");
-        }
-        printf("\n");
-    }
-}
+printf("\n\n\n\n        ┌────────────────────┐\n");
+printf("        │                    │\n");
+printf("        │                    │\n");
+printf("        │                    │\n");
+printf("        │                    │\n");
+printf("        │                    │\n");
+printf("        │                    │\n");
+printf("        │                    │\n");
+printf("        │                    │\n");
+printf("        └────────────────────┘\n");
+Score = 0;
+for (;;)
+{
+	gotoxy(x - 2, y);
+	printf("> 쉬움");
+	gotoxy(x, y + 1);
+	printf("보통");
+	gotoxy(x, y + 2);
+	printf("어려움");
+	gotoxy(x, y + 3);
+	printf("매우 어려움");
+	gotoxy(x, y + 4);
+	printf("뒤로가기");
+	gotoxy(x, y + 5);
+	printf("종료하기");

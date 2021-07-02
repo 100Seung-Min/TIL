@@ -1,5 +1,6 @@
 package com.example.kotlin
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -12,14 +13,8 @@ class MainActivity : AppCompatActivity() {
 
         val button : Button = findViewById(R.id.btn1)
         button.setOnClickListener{
-            makeToast()
-
+           val intent = Intent(this,SubActivity::class.java)
+            startActivity(intent)
         }
-    }
-
-    fun makeToast(){
-        val text="승민아?"
-        val toast = Toast.makeText(applicationContext,text,Toast.LENGTH_SHORT)
-        toast.show()
     }
 }

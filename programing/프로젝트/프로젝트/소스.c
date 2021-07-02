@@ -12,6 +12,15 @@
 #define LEFT 2
 #define RIGHT 3
 
+int bad1[7][20] = {
+	{0,1,1,1,0,0,0,0,0,1,1,1,0,0,1,1,1,1,0,0},
+	{0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,0,0,0,1,0},
+	{0,1,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0},
+	{0,1,1,1,0,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0},
+	{0,1,0,0,1,0,0,1,1,1,1,1,0,0,1,0,0,0,1,0},
+	{0,1,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0},
+	{0,1,1,1,0,0,0,1,0,0,0,1,0,0,1,1,1,1,0,0}
+};
 int down[7][5] = {
 	{0,1,1,1,0},
 	{0,1,1,1,0},
@@ -29,6 +38,15 @@ int draw[7][20] = {
 	{0,1,0,0,1,1,0,1,0,0,1,1,1,1,1,1,0,1,0,1},
 	{0,1,0,0,1,1,0,0,1,0,1,0,0,0,1,1,0,1,0,1},
 	{0,1,1,1,0,1,0,0,0,1,1,0,0,0,1,0,1,0,1,0}
+};
+int good1[7][20] = {
+	{0,0,1,1,0,0,0,1,1,0,0,0,1,1,0,0,1,1,1,0},
+	{0,1,0,0,1,0,1,0,0,1,0,1,0,0,1,0,1,0,0,1},
+	{0,1,0,0,0,0,1,0,0,1,0,1,0,0,1,0,1,0,0,1},
+	{0,1,0,0,0,0,1,0,0,1,0,1,0,0,1,0,1,0,0,1},
+	{0,1,0,1,1,0,1,0,0,1,0,1,0,0,1,0,1,0,0,1},
+	{0,1,0,0,1,0,1,0,0,1,0,1,0,0,1,0,1,0,0,1},
+	{0,0,1,1,0,0,0,1,1,0,0,0,1,1,0,0,1,1,1,0}
 };
 int lose[7][20] = {
 	{0,1,0,0,0,0,1,1,1,0,0,1,1,1,0,1,1,1,1,0},
@@ -213,6 +231,15 @@ int win[7][19] = {
 	   {0,1,0,1,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0},
 	   {0,0,1,0,1,0,0,0,1,1,1,0,0,1,0,0,0,1,0}
 };
+int wow[7][20] = {
+	{0,1,0,0,0,1,0,0,0,1,1,0,0,0,1,0,0,0,1,0},
+	{0,1,0,0,0,1,0,0,1,0,0,1,0,0,1,0,0,0,1,0},
+	{0,1,0,0,0,1,0,0,1,0,0,1,0,0,1,0,0,0,1,0},
+	{0,1,0,0,0,1,0,0,1,0,0,1,0,0,1,0,0,0,1,0},
+	{0,1,0,1,0,1,0,0,1,0,0,1,0,0,1,0,1,0,1,0},
+	{0,1,0,1,0,1,0,0,1,0,0,1,0,0,1,0,1,0,1,0},
+	{0,0,1,0,1,0,0,0,0,1,1,0,0,0,0,1,0,1,0,0}
+};
 int Score;
 int I;
 int Color;
@@ -242,6 +269,7 @@ void numbase();
 void open_diary();
 void print_light(int z, int x, int y);
 void print_result(int x);
+void print_result_slot(int x);
 void print_rps(int x);
 void print_updown(int x);
 void rps();
@@ -260,16 +288,17 @@ int rps_choice(int x, int y, int a, int b, int c, int d);
 int main()
 {
 	cursorView();
+	system("title ¾î¸°ÀÌ Á¾ÇÕ ±³À° ÇÁ·Î±×·¥");
 	int cnt = 0, x = 7, y = 6, sum;
 	system("mode con cols=40 lines=30");
 	if (First == 0)
 	{
 		First++;
-		printf("\n\n\n\n\n\t-------------------------\n");
-		printf("\t|\t\t\t|\n");
-		printf("\t| È­¸éÀ» Å°½Ã°Ú½À´Ï±î?\t|\n");
-		printf("\t|\t\t\t|\n");
-		printf("\t-------------------------\n\n\n\n");
+		printf("\n\n\n\n\n\t¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤\n");
+		printf("\t¦¢\t\t\t¦¢\n");
+		printf("\t¦¢  È­¸éÀ» Å°½Ã°Ú½À´Ï±î?\t¦¢\n");
+		printf("\t¦¢\t\t\t¦¢\n");
+		printf("\t¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥\n\n\n\n");
 		printf("\t   ¾Æ¹« ¹öÆ°ÀÌ³ª Å¬¸¯");
 		while (1)
 		{
@@ -287,18 +316,28 @@ int main()
 	while (1)
 	{
 		system("mode con cols=40 lines=30");
+		printf("\n\n\n   ¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥");
 		gotoxy(x - 2, y);
 		printf("> È¯°æ¼³Á¤");
 		gotoxy(x + 16, y);
 		printf("¾ËÆÄºª°ÔÀÓ");
 		gotoxy(x, y + 1);
-		printf("¼ýÀÚ°è»ê");
+		printf("¼ýÀÚ°ÔÀÓ");
 		gotoxy(x + 16, y + 1);
 		printf("¿¹Àý°øºÎ");
 		gotoxy(x, y + 2);
 		printf("Å¸ÀÚ¿¬½À");
 		gotoxy(x + 16, y + 2);
-		printf("·£´ý°ÔÀÓ");
+		printf("¹Ì´Ï°ÔÀÓ");
 		gotoxy(x, y + 3);
 		printf("ÀÏ±âÀå");
 		gotoxy(x + 16, y + 3);
@@ -464,6 +503,7 @@ void »©±â(char n, int c, int g)
 
 void alphabet()
 {
+	system("title ¾ËÆÄºª°ÔÀÓ");
 	int ran, j = 0, x = 7, y = 6, sum;
 	char en[26], EN[26], answer;
 	srand(time(NULL));
@@ -476,6 +516,15 @@ void alphabet()
 	{
 		Score = 0;
 		system("cls");
+		printf("\n\n\n   ¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤\n");
+		printf("   ¦¢                                ¦¢\n");
+		printf("   ¦¢                                ¦¢\n");
+		printf("   ¦¢                                ¦¢\n");
+		printf("   ¦¢                                ¦¢\n");
+		printf("   ¦¢                                ¦¢\n");
+		printf("   ¦¢                                ¦¢\n");
+		printf("   ¦¢                                ¦¢\n");
+		printf("   ¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥");
 		gotoxy(x - 2, y);
 		printf("> ¼Ò¹®ÀÚ ½¬¿ò");
 		gotoxy(x + 16, y);
@@ -491,7 +540,7 @@ void alphabet()
 		sum = choice(7, 6, 6, 8, 7, 23);
 		if (sum == 14 || sum == 30)
 		{
-			printf("\n\n\n     ¿øÇÏ´Â ¹®Á¦ ¼ö¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä\n");
+			printf("\n\n\n\n\n\n\n     ¿øÇÏ´Â ¹®Á¦ ¼ö¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä\n");
 			printf("     ÀÔ·Â : _\b");
 			scanf_s(" %d", &j);
 		}
@@ -670,6 +719,7 @@ void alphabet()
 
 void attitude()
 {
+	system("title ¿¹Àý°øºÎ");
 	int num, answer, a, b, x = 7, y = 6, sum;
 	char key1[100];
 	char quize1[20][100] = {
@@ -935,6 +985,15 @@ void attitude()
 	while (1)
 	{
 		system("cls");
+		printf("\n\n\n   ¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥");
 		gotoxy(x - 2, y);
 		printf("> ¿ô¾î¸¥¿¹Àý");
 		gotoxy(x + 16, y);
@@ -948,10 +1007,12 @@ void attitude()
 		gotoxy(x + 16, y + 2);
 		printf("Á¾·áÇÏ±â");
 		sum = choice(7, 6, 6, 8, 7, 23);
-		gotoxy(7, 10);
 		if (sum != 15 && sum != 31)
 		{
-			printf("¹®Á¦ ¼ö ¼±ÅÃ : ");
+			if(y == 6)
+				printf("\n\n\n\n\n\n\n     ¹®Á¦ ¼ö ¼±ÅÃ : ");
+			else if(y == 7)
+				printf("\n\n\n\n\n\n\n     ¹®Á¦ ¼ö ¼±ÅÃ : ");
 			scanf(" %d", &num);
 		}
 		system("cls");
@@ -1100,18 +1161,42 @@ void bad()
 		"Á¶±Ý ´õ ³ë·ÂÇØº¾½Ã´Ù.",
 		"´ÙÀ½¿£ ²À ¸ÂÃçº¾½Ã´Ù.",
 		"Æ²·È½À´Ï´Ù.",
-		"¾Æ±õ½À´Ï´Ù."
+		"¾Æ±õ½À´Ï´Ù.",
+		"NOT BAD",
+		"Æ÷±âÇÏÁö ¸¶¼¼¿ä",
+		"FIGHTING!!",
+		"´ÙÀ½ ±âÈ­¿¡"
 	};
-	int a = rand() % 5;
+	int a = rand() % 9;
 	printf("%s", bad_word[a]);
 }
 
 void color(int a)
 {
+	if (a == 0)
+		system("title ¹è°æ »ö");
+	else if (a == 1)
+		system("title ±ÛÀÚ»ö");
 	int x = 7, y = 6, sum;
 	while (1)
 	{
 		system("cls");
+		printf("\n\n\n   ¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤\n");
+		printf("   ¦¢                                ¦¢\n");
+		printf("   ¦¢                                ¦¢\n");
+		printf("   ¦¢                                ¦¢\n");
+		printf("   ¦¢                                ¦¢\n");
+		printf("   ¦¢                                ¦¢\n");
+		printf("   ¦¢                                ¦¢\n");
+		printf("   ¦¢                                ¦¢\n");
+		printf("   ¦¢                                ¦¢\n");
+		printf("   ¦¢                                ¦¢\n");
+		printf("   ¦¢                                ¦¢\n");
+		printf("   ¦¢                                ¦¢\n");
+		printf("   ¦¢                                ¦¢\n");
+		printf("   ¦¢                                ¦¢\n");
+		printf("   ¦¢                                ¦¢\n");
+		printf("   ¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥");
 		gotoxy(x - 2, y);
 		printf("> °ËÀº»ö");
 		gotoxy(x + 16, y);
@@ -1407,10 +1492,22 @@ void delete_diary()
 
 void diary()
 {
-	int num, x = 7, y = 8, sum;
+	system("title ÀÏ±âÀå");
+	int num, x = 15, y = 8, sum;
 	for (;;)
 	{
 		system("cls");
+		printf("\n\n\n\n\n        ¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤\n");
+		printf("        ¦¢                    ¦¢\n");
+		printf("        ¦¢                    ¦¢\n");
+		printf("        ¦¢                    ¦¢\n");
+		printf("        ¦¢                    ¦¢\n");
+		printf("        ¦¢                    ¦¢\n");
+		printf("        ¦¢                    ¦¢\n");
+		printf("        ¦¢                    ¦¢\n");
+		printf("        ¦¢                    ¦¢\n");
+		printf("        ¦¢                    ¦¢\n");
+		printf("        ¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥\n");
 		gotoxy(x - 2, y);
 		printf("> ÀÏ±â¾²±â");
 		gotoxy(x, y + 1);
@@ -1421,24 +1518,24 @@ void diary()
 		printf("µÚ·Î°¡±â");
 		gotoxy(x, y + 4);
 		printf("Á¾·áÇÏ±â");
-		sum = choice(7, 8, 8, 12, 7, 7);
+		sum = choice(15, 8, 8, 12, 15, 15);
 		switch (sum)
 		{
-		case 15:
+		case 23:
 			update_diary();
 			system("cls");
 			break;
-		case 16:
+		case 24:
 			open_diary();
 			system("cls");
 			break;
-		case 17:
+		case 25:
 			delete_diary();
 			system("cls");
 			break;
-		case 18:
+		case 26:
 			return main();
-		case 19:
+		case 27:
 			exit_EBS();
 		}
 	}
@@ -1454,6 +1551,7 @@ void exit_EBS()
 
 void game()
 {
+	system("title ¹Ì´Ï°ÔÀÓ");
 	int x = 7, y = 6, sum;
 	while (1)
 	{
@@ -1468,10 +1566,20 @@ void game()
 			break;
 		}
 		system("cls");
+		printf("\n\n\n   ¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¢                              ¦¢\n");
+		printf("   ¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥");
 		gotoxy(x - 2, y);
 		printf("> °¡À§¹ÙÀ§º¸");
 		gotoxy(x + 16, y);
-		printf("½Ã°£ ¸ÂÃß±â");
+		printf("½Ã°£¸ÂÃß±â");
 		gotoxy(x, y + 1);
 		printf("¾÷´Ù¿î");
 		gotoxy(x + 16, y + 1);
@@ -1528,9 +1636,20 @@ void good()
 		"ÃµÀçÀÔ´Ï´Ù.",
 		"ÃàÇÏÇÕ´Ï´Ù.",
 		"¸Ó¸®°¡ ÁÁÀ¸½Ã³×¿ä.",
-		"ÃÖ°íÀÔ´Ï´Ù."
+		"ÃÖ°íÀÔ´Ï´Ù.",
+		"Âü ÀßÇß½À´Ï´Ù.",
+		"¸ÚÁý´Ï´Ù.",
+		"GOOD",
+		"WONDERFUL",
+		"NICE",
+		"COOL",
+		"AMAZING",
+		"FANTASTIC",
+		"GREAT",
+		"¶È¶ÈÇÏ½Ã³×¿ä",
+		"¾öÁö Ã´"
 	};
-	int a = rand() % 5;
+	int a = rand() % 16;
 	printf("%s", good_word[a]);
 }
 
@@ -1572,6 +1691,7 @@ void light(int x, int y)
 
 void maze()
 {
+	system("title ¹Ì·Î°ÔÀÓ");
 	system("cls");
 	for (int i = 0; i < 20; i++)
 	{
@@ -1627,12 +1747,13 @@ void move(int x, int y)
 		}
 		Sleep(100);
 		if (map[y][x / 2] == 3)
-			break;
+			return game();
 	}
 }
 
 void numbase()
 {
+	system("title ¼ýÀÚ¾ß±¸");
 	system("cls");
 	int user[3], com[3], num = 0, home = 0, ball = 0, x = 0, y = 0, round = 1;
 	srand(time(NULL));
@@ -1763,6 +1884,21 @@ void print_result(int x)
 	}
 }
 
+void print_result_slot(int x)
+{
+	for (int i = 0; i < 7; i++)
+	{
+		for (int j = 0; j < 20; j++)
+		{
+			if (x == 1 && good1[i][j] == 0 || x == 2 && bad1[i][j] == 0 || x == 3 && wow[i][j] == 0)
+				printf("  ");
+			else if (x == 1 && good1[i][j] == 1 || x == 2 && bad1[i][j] == 1 || x == 3 && wow[i][j] == 1)
+				printf("¡á");
+		}
+		printf("\n");
+	}
+}
+
 void print_rps(int x)
 {
 	for (int i = 0; i < 16; i++)
@@ -1797,6 +1933,7 @@ void print_updown(int x)
 
 void rps()
 {
+	system("title °¡À§¹ÙÀ§º¸");
 	int com, num, win = 0, draw = 0, lose = 0, x = 15, y = 25, sum, q = 1, k, j, i, z = 25;
 	srand(time(NULL));
 	do
@@ -1891,20 +2028,40 @@ void setcolor(unsigned char _BgColor, unsigned char _TextColor) {
 
 void slot()
 {
+	system("title ½½·Ô¸Ó½Å");
 	system("cls");
 	int a, b, c;
-	system("mode con cols=40 lines=30");
 	a = rand_num(2, 0, 0, 0);
 	b = rand_num(14, 1, a, 0);
 	c = rand_num(26, 2, a, b);
+	gotoxy(0, 0);
+	printf("¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¸¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¸¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤\n");
+	printf("¦¢           ¦¢           ¦¢             ¦¢\n");
+	printf("¦¢           ¦¢           ¦¢             ¦¢\n");
+	printf("¦¢           ¦¢           ¦¢             ¦¢\n");
+	printf("¦¢           ¦¢           ¦¢             ¦¢\n");
+	printf("¦¢           ¦¢           ¦¢             ¦¢\n");
+	printf("¦¢           ¦¢           ¦¢             ¦¢\n");
+	printf("¦¢           ¦¢           ¦¢             ¦¢\n");
+	printf("¦¢           ¦¢           ¦¢             ¦¢\n");
+	printf("¦¢           ¦¢           ¦¢             ¦¢\n");
+	printf("¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦º¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦º¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥\n");
 	print_num(a, 2, 2);
 	print_num(b, 14, 2);
 	print_num(c, 26, 2);
+	gotoxy(0, 15);
+	if (a == b && b == c)
+		print_result_slot(3);
+	else if (a == b || b == c || a == c)
+		print_result_slot(1);
+	else
+		print_result_slot(2);
 	Sleep(1000);
 }
 
 void taza()
 {
+	system("title Å¸ÀÚ¿¬½À");
 	srand(time(NULL));
 	char p[20][40] = {
 		"¾È³çÇÏ¼¼¿©",
@@ -1972,20 +2129,19 @@ void taza()
 		}
 		else if (sum != 19)
 		{
-			system("cls");
-			printf("Á¾·áÇÕ´Ï´Ù!");
-			break;
+			return main();
 		}
 	}
 }
 
 void timegame()
 {
+	system("title ½Ã°£ ¸ÂÃß±â");
 	srand(time(NULL));
 	float sum = 0, k;
 	int j, a, b;
 	do {
-		j = rand() % 6 + 5;
+		j = rand() % 6 + 4;
 		system("cls");
 		gotoxy(7, 6);
 		printf("¸ñÇ¥´Â %dÃÊÀÔ´Ï´Ù.", j);
@@ -2057,6 +2213,7 @@ void update_diary()
 
 void updown()
 {
+	system("title ¾÷´Ù¿î");
 	srand(time(NULL));
 	int num = rand() % 100 + 1, ans, cnt = 0, round = 1;
 	do
@@ -2090,14 +2247,15 @@ void updown()
 	} while (cnt < 9);
 	if (cnt < 9)
 	{
-		gotoxy(9, 14);
+		gotoxy(8, 17);
 		good();
 	}
 	else
 	{
-		gotoxy(9, 14);
+		gotoxy(8, 17);
 		bad();
 		Sleep(800);
+		gotoxy(8, 18);
 		printf("Á¤´äÀº %d", num);
 	}
 	Sleep(800);
@@ -2203,109 +2361,118 @@ int keyControl()
 
 int number()
 {
+	system("title ¼ýÀÚ°ÔÀÓ");
 	int ±âÈ£ = 0, x = 7, y = 6, sum;
 	srand(time(NULL));
-	while (1)
+	system("cls");
+	printf("\n\n\n   ¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤\n");
+	printf("   ¦¢                                ¦¢\n");
+	printf("   ¦¢                                ¦¢\n");
+	printf("   ¦¢                                ¦¢\n");
+	printf("   ¦¢                                ¦¢\n");
+	printf("   ¦¢                                ¦¢\n");
+	printf("   ¦¢                                ¦¢\n");
+	printf("   ¦¢                                ¦¢\n");
+	printf("   ¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥");
+	gotoxy(x - 2, y);
+	printf("> ½¬¿ò");
+	gotoxy(x + 16, y);
+	printf("º¸Åë");
+	gotoxy(x, y + 1);
+	printf("¾î·Á¿ò");
+	gotoxy(x + 16, y + 1);
+	printf("¸Å¿ì ¾î·Á¿ò");
+	gotoxy(x, y + 2);
+	printf("µÚ·Î°¡±â");
+	gotoxy(x + 16, y + 2);
+	printf("Á¾·áÇÏ±â");
+	Score = 0;
+	for (;;)
 	{
-		do
+		sum = choice(7, 6, 6, 8, 7, 23);
+		if (sum != 15 && sum != 31)
 		{
-			Score = 0;
-			system("cls");
-			for (;;)
+			gotoxy(9, 16);
+			printf("¹®Á¦¼ö¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä\n");
+			printf("         ÀÔ·Â : _\b");
+			scanf(" %d", &I);
+			if (I > 99 || I < 1)
 			{
-				gotoxy(x - 2, y);
-				printf("> ½¬¿ò");
-				gotoxy(x, y + 1);
-				printf("º¸Åë");
-				gotoxy(x, y + 2);
-				printf("¾î·Á¿ò");
-				gotoxy(x, y + 3);
-				printf("¸Å¿ì ¾î·Á¿ò");
-				gotoxy(x, y + 4);
-				printf("µÚ·Î°¡±â");
-				gotoxy(x, y + 5);
-				printf("Á¾·áÇÏ±â");
-				sum = choice(7, 6, 6, 11, 7, 7);
-				if (sum != 17 && sum != 18)
-				{
-					gotoxy(7, 11);
-					printf("¹®Á¦¼ö¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
-					gotoxy(7, 13);
-					printf("ÀÔ·Â : _\b");
-					scanf(" %d", &I);
-					if (I > 99 || I < 1)
-					{
-						printf("\n\n\t   Áö¿øµÇÁö ¾Ê½À´Ï´Ù");
-						printf("\n\t   ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä");
-						Sleep(800);
-						system("cls");
-						continue;
-					}
-				}
-				break;
-			}
-
-			if (sum == 13)
-			{
-				sum = 10;
-				break;
-			}
-			else if (sum == 14)
-			{
-				sum = 20;
-				break;
-			}
-			else if (sum == 15)
-			{
-				sum = 30;
-				break;
-			}
-			else if (sum == 16)
-			{
-				sum = 40;
-				break;
-			}
-			else if (sum == 17)
-			{
-				return main();
-			}
-			else if (sum == 18)
-			{
-				exit_EBS();
-			}
-		} while (1);
-		for (int l = 0; l < I; l++)
-		{
-			±âÈ£ = rand() % 4;
-			if (±âÈ£ == 0 || ±âÈ£ == 1 || ±âÈ£ == 2 || ±âÈ£ == 3)
-			{
-				switch (±âÈ£)
-				{
-				case 0:
-					´õÇÏ±â('+', sum, sum);
-					break;
-				case 1:
-					°öÇÏ±â('*', sum, sum);
-					break;
-				case 2:
-					»©±â('-', sum, sum);
-					break;
-				case 3:
-					³ª´©±â('/', sum, sum);
-					break;
-				}
+				printf("\n\n\t   Áö¿øµÇÁö ¾Ê½À´Ï´Ù");
+				printf("\n\t   ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä");
+				Sleep(800);
+				system("cls");
+				continue;
 			}
 		}
-		system("cls");
-		printf("\n\n\n\n\n\n\n\n\n\n\t   %d°³Áß %d°³ ¸ÂÃè½À´Ï´Ù.", I, Score);
-		Sleep(800);
+		break;
 	}
+	if (sum == 13)
+	{
+		sum = 10;
+	}
+	else if (sum == 29)
+	{
+		sum = 20;
+	}
+	else if (sum == 14)
+	{
+		sum = 30;
+	}
+	else if (sum == 30)
+	{
+		sum = 40;
+	}
+	else if (sum == 15)
+	{
+		return main();
+	}
+	else if (sum == 31)
+	{
+		exit_EBS();
+	}
+	for (int l = 0; l < I; l++)
+	{
+		±âÈ£ = rand() % 4;
+		if (±âÈ£ == 0 || ±âÈ£ == 1 || ±âÈ£ == 2 || ±âÈ£ == 3)
+		{
+			switch (±âÈ£)
+			{
+			case 0:
+				´õÇÏ±â('+', sum, sum);
+				break;
+			case 1:
+				°öÇÏ±â('*', sum, sum);
+				break;
+			case 2:
+				»©±â('-', sum, sum);
+				break;
+			case 3:
+				³ª´©±â('/', sum, sum);
+				break;
+			}
+		}
+	}
+	system("cls");
+	printf("\n\n\n\n\n\n\n\n\n\n\t   %d°³Áß %d°³ ¸ÂÃè½À´Ï´Ù.", I, Score);
+	Sleep(800);
 }
 
 int rand_num(int x, int a, int y, int z)
 {
 	for (int i = 0;; i++)
 	{
+		printf("¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¸¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¸¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤\n");
+		printf("¦¢           ¦¢           ¦¢             ¦¢\n");
+		printf("¦¢           ¦¢           ¦¢             ¦¢\n");
+		printf("¦¢           ¦¢           ¦¢             ¦¢\n");
+		printf("¦¢           ¦¢           ¦¢             ¦¢\n");
+		printf("¦¢           ¦¢           ¦¢             ¦¢\n");
+		printf("¦¢           ¦¢           ¦¢             ¦¢\n");
+		printf("¦¢           ¦¢           ¦¢             ¦¢\n");
+		printf("¦¢           ¦¢           ¦¢             ¦¢\n");
+		printf("¦¢           ¦¢           ¦¢             ¦¢\n");
+		printf("¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦º¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦º¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥\n");
 		if (i == 10)
 			i = 0;
 		if (a == 1)

@@ -4,31 +4,31 @@ C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c
 C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1087,17): warning C4098: 'attitude': 'void' 함수에서 값을 반환하고 있습니다.
 C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(674,7): warning C4101: 'key1' :참조되지 않은 지역 변수입니다.
 C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1096,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1363,17): warning C4098: 'color': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1368,19): warning C4098: 'color': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1370,19): warning C4098: 'color': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1401,13): warning C4098: 'delete_diary': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1396,17): warning C4101: 'did' :참조되지 않은 지역 변수입니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1396,8): warning C4101: 'day' :참조되지 않은 지역 변수입니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1440,17): warning C4098: 'diary': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1410,6): warning C4101: 'num' :참조되지 않은 지역 변수입니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1515,17): warning C4098: 'game': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1524,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1638,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1701,12): warning C4098: 'open_diary': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1801,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1897,14): warning C4013: 'rand_num'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1908,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1953,24): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1962,29): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1921,7): warning C4101: '받는거' :참조되지 않은 지역 변수입니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1919,6): warning C4101: 'y' :참조되지 않은 지역 변수입니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1984,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1998,35): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(2016,16): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(2045,12): warning C4098: 'update_diary': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(2060,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(2207,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(2202): warning C4715: 'keyControl': 모든 제어 경로에서 값을 반환하지는 않습니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(2385): warning C4715: 'rps_choice': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1367,17): warning C4098: 'color': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1372,19): warning C4098: 'color': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1374,19): warning C4098: 'color': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1405,13): warning C4098: 'delete_diary': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1400,17): warning C4101: 'did' :참조되지 않은 지역 변수입니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1400,8): warning C4101: 'day' :참조되지 않은 지역 변수입니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1444,17): warning C4098: 'diary': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1414,6): warning C4101: 'num' :참조되지 않은 지역 변수입니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1519,17): warning C4098: 'game': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1528,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1653,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1716,12): warning C4098: 'open_diary': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1816,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1912,14): warning C4013: 'rand_num'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1923,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1968,24): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1977,29): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1936,7): warning C4101: '받는거' :참조되지 않은 지역 변수입니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1934,6): warning C4101: 'y' :참조되지 않은 지역 변수입니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(1999,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(2013,35): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(2031,16): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(2060,12): warning C4098: 'update_diary': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(2075,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(2222,18): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(2217): warning C4715: 'keyControl': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\프로젝트\소스.c(2400): warning C4715: 'rps_choice': 모든 제어 경로에서 값을 반환하지는 않습니다.
   프로젝트.vcxproj -> C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\Debug\프로젝트.exe
