@@ -71,9 +71,15 @@ balls.append({
 weapon_to_remove = -1
 ball_to_remove = -1
 
+# Font
+game_font = pygame.font.Font(None, 40)
+total_time = 100
+start_ticks = pygame.time.get_ticks()
+game_result = "Game Over"
+
 running = True
 while running:
-  dt = clock.tick(60) # 게임 화면의 초당 프레임 수
+  dt = clock.tick(30) # 게임 화면의 초당 프레임 수
 
   # 2. 이벤트 처리
   for event in pygame.event.get():
@@ -191,6 +197,9 @@ while running:
   if weapon_to_remove > -1:
     del weapons[weapon_to_remove]
     weapon_to_remove = -1
+  if len(balls) == 0:
+    game_result = "Mission Complete"
+    running = False
 
   # 5. 화면에 그리기
   screen.blit(background, (0,0))
@@ -207,6 +216,21 @@ while running:
   screen.blit(stage, (0, screen_height - stage_height))
   screen.blit(character, (character_x_pos, character_y_pos))
 
+  elapsed_time = (pygame.time.get_ticks() - start_ticks) / 1000
+  timer = game_font.render("Time : {}".format(int(total_time - elapsed_time)), True, (255,255,255))
+  screen.blit(timer, (10,10))
+
+  if total_time - elapsed_time <= 0:
+    game_result = "Time Over"
+    running = False
+
   pygame.display.update() # 게임화면 다시 그리기
+
+msg = game_font.render(game_result, True, (255,255,0))
+msg_rect = msg.get_rect(center=(int(screen_width / 2), int(screen_height / 2)))
+screen.blit(msg, msg_rect)
+pygame.display.update()
+
+pygame.time.delay(2000)
 
 pygame.quit()
