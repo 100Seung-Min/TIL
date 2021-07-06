@@ -1,5 +1,6 @@
 #pragma warning(disable:4996)
 #pragma comment (lib,"ws2_32.lib")
+#pragma comment(lib,"winmm.lib")
 #include <winsock2.h>
 #include <windows.h>
 #include <stdio.h>
@@ -8,11 +9,14 @@
 #include <string.h>
 #include <conio.h>
 #include <ctype.h>
+#include <mmsystem.h>  
 
 #define UP 0
 #define DOWN 1
 #define LEFT 2
 #define RIGHT 3
+#define GOOD "C:\\Users\\user\\Downloads\\clap.wav"
+#define BAD "C:\\Users\\user\\Downloads\\disa.wav"
 
 int bad1[7][20] = {
 	{0,1,1,1,0,0,0,0,0,1,1,1,0,0,1,1,1,1,0,0},
@@ -59,27 +63,143 @@ int lose[7][20] = {
 	{0,1,0,0,0,1,0,0,0,1,1,0,0,0,1,1,0,0,0,0},
 	{0,1,1,1,1,0,1,1,1,0,0,1,1,1,0,1,1,1,1,0}
 };
-int map[20][20] = {
-	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-{2,0,1,1,0,1,1,1,0,0,0,0,0,0,0,1,0,1,1,1},
-{1,0,0,0,0,1,1,1,1,1,1,0,0,0,0,1,0,0,0,1},
-{1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,0,0,0,1},
-{1,0,1,1,0,1,1,1,0,0,0,1,0,0,0,1,0,1,0,1},
-{1,0,1,1,0,0,0,0,0,0,0,1,0,1,0,1,0,1,0,1},
-{1,0,0,0,0,1,0,1,1,1,1,1,0,0,0,0,0,1,0,1},
-{1,1,1,1,0,1,0,1,0,0,0,0,0,0,0,0,0,1,0,1},
-{1,0,0,0,0,1,0,1,0,1,0,1,1,1,1,0,0,1,0,1},
-{1,0,0,0,0,1,0,1,0,1,0,0,1,0,0,0,1,1,0,1},
-{1,1,1,1,0,0,1,0,0,1,0,1,1,0,0,0,1,1,0,1},
-{1,1,1,1,0,0,1,0,1,1,0,1,1,0,1,0,1,1,1,1},
-{1,1,1,1,0,1,0,0,0,1,0,1,1,1,0,0,0,0,0,1},
-{1,1,1,0,0,1,0,1,0,1,0,0,1,0,0,0,0,0,0,1},
-{1,1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,1},
-{1,0,1,0,0,1,0,1,0,0,1,0,1,1,1,1,1,0,1,1},
-{1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,1,0,1,1},
-{1,0,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,0,1,1},
-{1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,3},
-{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+int map[4][20][20] = {
+	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+		2,0,1,1,0,1,1,1,0,0,0,0,0,0,0,1,0,1,1,1,
+		1,0,0,0,0,1,1,1,1,1,1,0,0,0,0,1,0,0,0,1,
+		1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,0,0,0,1,
+		1,0,1,1,0,1,1,1,0,0,0,1,0,0,0,1,0,1,0,1,
+		1,0,1,1,0,0,0,0,0,0,0,1,0,1,0,1,0,1,0,1,
+		1,0,0,0,0,1,0,1,1,1,1,1,0,0,0,0,0,1,0,1,
+		1,1,1,1,0,1,0,1,0,0,0,0,0,0,0,0,0,1,0,1,
+		1,0,0,0,0,1,0,1,0,1,0,1,1,1,1,0,0,1,0,1,
+		1,0,0,0,0,1,0,1,0,1,0,0,1,0,0,0,1,1,0,1,
+		1,1,1,1,0,0,1,0,0,1,0,1,1,0,0,0,1,1,0,1,
+		1,1,1,1,0,0,1,0,1,1,0,1,1,0,1,0,1,1,1,1,
+		1,1,1,1,0,1,0,0,0,1,0,1,1,1,0,0,0,0,0,1,
+		1,1,1,0,0,1,0,1,0,1,0,0,1,0,0,0,0,0,0,1,
+		1,1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,1,
+		1,0,1,0,0,1,0,1,0,0,1,0,1,1,1,1,1,0,1,1,
+		1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,1,0,1,1,
+		1,0,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,0,1,1,
+		1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,3,
+		1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+	},
+	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+	   2,0,0,0,0,1,1,1,0,0,0,1,1,1,0,1,1,1,1,1,
+	   1,0,1,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,1,1,
+	   1,0,0,0,1,0,0,1,0,0,1,1,1,0,1,1,0,1,1,1,
+	   1,0,1,0,0,1,0,1,1,1,1,1,0,0,1,1,0,1,1,1,
+	   1,1,1,1,0,0,0,1,1,1,0,1,1,1,1,1,1,1,1,1,
+	   1,0,1,1,1,1,0,1,0,0,0,0,1,1,1,1,1,1,0,3,
+	   1,0,1,0,0,0,0,1,1,1,1,0,0,0,1,0,0,0,0,1,
+	   1,0,0,0,1,1,1,0,0,0,0,1,1,0,0,0,1,1,1,1,
+	   1,0,1,0,0,1,0,0,1,1,1,1,1,1,0,1,1,1,1,1,
+	   1,1,1,1,0,0,0,1,1,1,0,0,1,1,0,1,1,1,0,1,
+	   1,0,1,1,1,1,0,0,0,0,0,1,1,1,0,1,0,0,0,1,
+	   1,0,0,0,0,0,1,0,1,1,0,0,0,0,0,1,0,1,1,1,
+	   1,1,0,1,1,0,0,0,0,1,1,1,1,1,1,1,0,1,1,1,
+	   1,0,0,1,1,0,1,1,1,0,0,0,0,1,1,0,0,1,1,1,
+	   1,0,1,1,1,0,0,1,1,1,0,1,0,0,1,0,1,1,1,1,
+	   1,1,1,1,1,1,0,1,1,1,0,0,1,0,0,0,0,0,0,1,
+	   1,0,1,0,0,0,0,0,0,0,0,1,1,1,1,0,1,1,0,1,
+	   1,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,1,1,0,1,
+	   1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+	  },
+	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+	   2,0,0,0,0,0,1,1,0,0,0,1,1,0,0,0,1,1,1,1,
+	   1,1,0,1,1,0,0,0,0,1,0,1,1,0,1,0,0,0,1,1,
+	   1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,
+	   1,0,0,1,0,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,
+	   1,1,0,0,0,1,1,1,1,1,0,1,0,1,1,0,0,0,1,1,
+	   1,1,1,1,0,1,1,1,1,1,0,1,0,0,1,0,1,1,1,1,
+	   1,1,1,1,0,0,0,0,0,0,0,1,1,1,1,0,1,1,1,1,
+	   1,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,1,1,1,
+	   1,1,1,0,1,1,1,1,1,1,1,1,0,1,1,1,0,0,1,1,
+	   1,1,1,0,1,0,0,0,0,0,0,1,1,1,1,1,1,0,1,1,
+	   1,1,0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,1,1,
+	   1,0,0,1,1,0,0,0,0,0,0,1,1,1,1,1,0,1,1,1,
+	   1,0,1,1,1,0,1,1,0,1,0,1,1,1,1,1,0,1,1,1,
+	   1,1,1,1,1,1,1,0,0,1,1,1,0,0,0,0,0,1,1,1,
+	   1,1,1,1,1,1,0,0,1,0,1,1,0,1,1,1,0,0,0,3,
+	   1,0,0,1,1,1,1,0,1,0,1,1,0,1,1,1,1,1,0,1,
+	   1,1,1,1,1,1,1,0,1,0,1,0,0,0,0,0,0,0,0,1,
+	   1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,
+	   1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+	  },
+	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+	   2,0,1,1,1,1,1,0,0,1,1,1,0,0,0,0,0,0,1,1,
+	   1,0,1,1,1,0,0,0,1,1,1,1,0,1,0,1,1,1,1,1,
+	   1,0,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0,3,
+	   1,1,0,1,1,1,1,1,0,1,0,1,0,1,0,1,0,1,1,1,
+	   1,1,0,1,0,0,1,1,0,1,1,1,0,0,0,1,1,1,1,1,
+	   1,0,0,0,0,1,1,1,1,1,0,0,0,1,1,1,1,1,1,1,
+	   1,0,1,1,1,1,1,1,1,1,0,1,1,1,1,0,0,0,1,1,
+	   1,0,0,0,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,
+	   1,0,1,1,0,1,1,1,0,0,0,0,0,1,1,1,0,1,1,1,
+	   1,1,1,0,0,0,0,1,1,0,1,1,0,0,0,1,0,1,1,1,
+	   1,1,1,1,0,1,1,1,1,0,1,1,1,1,0,0,0,1,1,1,
+	   1,1,0,0,0,1,0,0,0,0,0,0,1,1,0,1,1,1,1,1,
+	   1,1,1,1,0,1,0,1,1,1,0,1,0,0,0,1,1,1,1,1,
+	   1,1,1,1,0,0,0,0,1,1,0,1,1,0,1,0,0,0,1,1,
+	   1,1,1,1,0,1,1,0,1,1,1,0,0,1,1,0,1,1,1,1,
+	   1,1,0,0,0,0,1,1,0,1,1,0,1,0,1,0,0,1,1,1,
+	   1,1,0,1,1,0,1,1,0,0,0,0,0,0,0,1,0,1,1,1,
+	   1,1,1,1,1,0,0,0,0,1,1,0,1,1,0,0,0,0,1,1,
+	   1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+	}
+};
+int map2[3][15][15] ={
+	{0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+   0,1,1,1,1,1,1,1,1,0,0,0,0,0,1,
+   0,1,0,0,1,0,0,0,0,0,0,0,0,0,1,
+   0,1,0,0,1,0,1,0,1,1,1,1,1,0,1,
+   0,1,0,0,0,0,1,0,1,3,0,0,0,0,1,
+   0,1,1,1,1,1,1,0,1,1,1,1,1,1,1,
+   0,1,0,0,0,0,0,0,0,0,0,0,0,0,4,
+   0,1,0,0,0,0,0,0,0,0,0,0,0,0,4,
+   0,1,0,0,0,0,0,0,0,0,0,0,0,0,4,
+   0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
+   0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
+   0,1,1,1,1,1,1,1,1,1,1,1,1,0,1,
+   0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
+   0,1,2,2,0,0,0,0,0,0,0,0,0,0,1,
+   0,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+
+},
+  {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+   0,1,2,2,1,0,0,0,0,0,0,0,0,1,1,
+   0,1,0,0,1,0,1,1,1,1,0,0,0,1,1,
+   0,1,0,1,1,1,1,0,0,1,1,1,0,1,1,
+   0,1,0,0,0,0,0,0,0,0,0,1,0,0,1,
+   0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,
+   0,0,0,0,0,0,0,0,0,1,0,0,0,0,4,
+   0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,
+   0,0,0,0,0,0,0,0,0,1,0,1,1,0,4,
+   0,1,1,1,1,1,1,1,1,1,0,0,1,0,1,
+   0,1,3,1,0,0,0,0,0,0,0,0,1,0,1,
+   0,1,0,1,0,0,1,1,1,1,1,0,1,0,1,
+   0,1,0,1,1,1,1,0,0,0,1,1,1,0,1,
+   0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
+   0,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+
+},
+  {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+   0,1,0,3,0,0,0,0,0,0,0,0,0,0,1,
+   0,1,1,1,1,1,1,1,1,1,1,1,0,1,1,
+   0,1,0,0,1,0,0,0,0,0,0,0,0,1,1,
+   0,1,0,0,1,0,1,0,0,0,0,0,0,0,1,
+   0,1,0,1,1,0,1,0,0,0,0,0,0,0,1,
+   0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,
+   0,0,0,0,0,0,1,0,0,0,0,0,0,0,4,
+   0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,
+   0,1,0,0,0,0,1,0,0,0,0,0,0,0,1,
+   0,1,0,0,0,0,1,0,0,0,0,0,0,0,1,
+   0,1,0,0,0,0,1,1,1,1,1,1,1,1,1,
+   0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
+   0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
+   0,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+}
 };
 int num[10][8][5] = {
 	{1,1,1,1,1,
@@ -249,8 +369,9 @@ int Color1 = 15;
 int First;
 int Count;
 int X = 15;
-int Y = 13;
+int Y = 16;
 int Z = 0;
+int J = 0;
 
 void 곱하기(char n, int c, int d);
 void 나누기(char n, int c, int g);
@@ -259,6 +380,7 @@ void 빼기(char n, int c, int g);
 void alphabet();
 void attitude();
 void attitude_quize(char quize[20][100], char answer[20][100], char wrong[20][100]);
+void attribute();
 void bad();
 void ch_move(int a[10]);
 void clock1();
@@ -267,16 +389,20 @@ void color(int a);
 void cursorView();
 void delete_diary();
 void diary();
+void draw_box();
 void exit_EBS();
 void game();
 void good();
 void gotoxy(int, int);
+void introduce();
 void light(int x, int y);
 void maze();
-void move(int x, int y);
+void move(int x, int y, int k);
 void numbase();
 void open_diary();
 void print_light(int z, int x, int y);
+void print_map();
+void print_num(int k, int x, int y);
 void print_result(int x);
 void print_result_slot(int x);
 void print_rps(int x);
@@ -284,6 +410,7 @@ void print_time(int h, int m, int s);
 void print_updown(int x);
 void rps();
 void setcolor(unsigned char _BgColor, unsigned char _TextColor);
+void sever();
 void slot();
 void taza();
 void taza_krl(char p[5][5][40]);
@@ -350,7 +477,7 @@ int main()
 	{
 		clock1(before);
 		gotoxy(7, 7);
-		printf("환경설정");
+		printf("설정");
 		gotoxy(23, 7);
 		printf("알파벳게임");
 		gotoxy(7, 8);
@@ -377,7 +504,7 @@ int main()
 		switch (sum)
 		{
 		case 14:
-			color(0);
+			attribute();
 			system("cls");
 			break;
 		case 30:
@@ -409,6 +536,7 @@ int main()
 			system("cls");
 			break;
 		case 18:
+			sever();
 			system("cls");
 			break;
 		case 34:
@@ -442,7 +570,8 @@ void 곱하기(char n, int c, int d)
 		Sleep(800);
 		printf("\n\t   정답은 %d입니다.", temp);
 	}
-	Sleep(800);
+	Sleep(1000);
+	PlaySound(NULL, 0, 0);
 }
 
 void 나누기(char n, int c, int g)
@@ -476,7 +605,8 @@ void 나누기(char n, int c, int g)
 		Sleep(800);
 		printf("\n\t   정답은 %d입니다.", temp);
 	}
-	Sleep(800);
+	Sleep(1000);
+	PlaySound(NULL, 0, 0);
 }
 
 void 더하기(char n, int c, int g)
@@ -506,7 +636,8 @@ void 더하기(char n, int c, int g)
 		Sleep(800);
 		printf("\n\t   정답은 %d입니다.", temp);
 	}
-	Sleep(800);
+	Sleep(1000);
+	PlaySound(NULL, 0, 0);
 }
 
 void 빼기(char n, int c, int g)
@@ -536,7 +667,8 @@ void 빼기(char n, int c, int g)
 		Sleep(800);
 		printf("\n\t   정답은 %d입니다.", temp);
 	}
-	Sleep(800);
+	Sleep(1000);
+	PlaySound(NULL, 0, 0);
 }
 
 void alphabet()
@@ -609,8 +741,9 @@ void alphabet()
 					gotoxy(11, 14);
 					good();
 					Score++;
-					Sleep(800);
+					Sleep(1000);
 					system("cls");
+					PlaySound(NULL, 0, 0);
 				}
 				else
 				{
@@ -618,8 +751,9 @@ void alphabet()
 					bad();
 					Sleep(800);
 					printf("\n\t   정답은 %c였습니다\n", en[i]);
-					Sleep(800);
+					Sleep(1000);
 					system("cls");
+					PlaySound(NULL, 0, 0);
 				}
 			}
 			printf("\n\n\n\n\n\n\n\n\n\n\n\t 26개 중에 %d개 맞췄습니다", Score);
@@ -649,8 +783,9 @@ void alphabet()
 					gotoxy(11, 14);
 					good();
 					Score++;
-					Sleep(800);
+					Sleep(1000);
 					system("cls");
+					PlaySound(NULL, 0, 0);
 				}
 				else
 				{
@@ -658,8 +793,9 @@ void alphabet()
 					bad();
 					Sleep(800);
 					printf("\n\t   정답은 %c였습니다\n", EN[i]);
-					Sleep(800);
+					Sleep(1000);
 					system("cls");
+					PlaySound(NULL, 0, 0);
 				}
 			}
 			printf("\n\n\n\n\n\n\n\n\n\n\n\t 26개 중에 %d개 맞췄습니다", Score);
@@ -690,8 +826,9 @@ void alphabet()
 					gotoxy(11, 14);
 					good();
 					Score++;
-					Sleep(800);
+					Sleep(1000);
 					system("cls");
+					PlaySound(NULL, 0, 0);
 				}
 				else
 				{
@@ -699,8 +836,9 @@ void alphabet()
 					bad();
 					Sleep(800);
 					printf("\n\t   정답은 %c였습니다\n", en[ran + 1]);
-					Sleep(800);
+					Sleep(1000);
 					system("cls");
+					PlaySound(NULL, 0, 0);
 				}
 			}
 			printf("\n\n\n\n\n\n\n\n\n\n\n\t %d개 중에 %d개 맞췄습니다", j, Score);
@@ -731,8 +869,9 @@ void alphabet()
 					gotoxy(11, 14);
 					good();
 					Score++;
-					Sleep(800);
+					Sleep(1000);
 					system("cls");
+					PlaySound(NULL, 0, 0);
 				}
 				else
 				{
@@ -740,7 +879,7 @@ void alphabet()
 					bad();
 					Sleep(800);
 					printf("\n\t   정답은 %c였습니다\n", EN[ran + 1]);
-					Sleep(800);
+					Sleep(1000);
 					system("cls");
 				}
 			}
@@ -1119,8 +1258,9 @@ void attitude_quize(char quize[20][100], char answer[20][100], char wrong[20][10
 	{
 		gotoxy(11, 15);
 		good();
-		Sleep(800);
+		Sleep(1000);
 		system("cls");
+		PlaySound(NULL, 0, 0);
 	}
 	else
 	{
@@ -1129,8 +1269,51 @@ void attitude_quize(char quize[20][100], char answer[20][100], char wrong[20][10
 		Sleep(800);
 		gotoxy(11, 16);
 		printf("정답은 %d번입니다.\n", b + 1);
-		Sleep(800);
+		Sleep(1000);
 		system("cls");
+	}
+}
+
+void attribute()
+{
+	system("title 설정");
+	int x = 15, y = 8, sum;
+	system("cls");
+	for (;;)
+	{
+		printf("\n\n\n\n\n        ┌────────────────────┐\n");
+		printf("        │                    │\n");
+		printf("        │                    │\n");
+		printf("        │                    │\n");
+		printf("        │                    │\n");
+		printf("        │                    │\n");
+		printf("        │                    │\n");
+		printf("        │                    │\n");
+		printf("        │                    │\n");
+		printf("        │                    │\n");
+		printf("        └────────────────────┘\n");
+		gotoxy(x - 2, y++);
+		printf("> 색깔 바꾸기");
+		gotoxy(x, y++);
+		printf("기능 설명");
+		gotoxy(x, y++);
+		printf("뒤로가기");
+		gotoxy(x, y);
+		printf("종료하기");
+		sum = choice(15, 8, 8, 11, 15, 15);
+		switch (sum)
+		{
+		case 23:
+			color(0);
+			break;
+		case 24:
+			introduce();
+			break;
+		case 25:
+			return main();
+		case 26:
+			exit_EBS();
+		}
 	}
 }
 
@@ -1151,6 +1334,7 @@ void bad()
 	};
 	int a = rand() % 9;
 	printf("%s", bad_word[a]);
+	PlaySound(TEXT(BAD), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 }
 
 void ch_move(int a[10])
@@ -1160,9 +1344,29 @@ void ch_move(int a[10])
 	{
 		if (a[i] == 0)
 			break;
+		if (map2[J][Y - 3][X / 2] == 5) 
+		{
+			if (J == 2) 
+			{
+				system("cls");
+				gotoxy(10, 20);
+				printf("CLEAR");
+				Sleep(800);
+				return main();
+			}
+			else if (J != 2)
+			{
+				J++;
+				if (X == 29)
+					X = 3;
+				else if (Y == 4)
+					Y = 16;
+			}
+			break;
+		}
 		if (a[i] == 1)
 		{
-			if (Z == 0)
+			if (Z == 0 && map2[J][(Y - 3) - 1][X / 2] != 1 && map2[J][(Y - 3) - 1][X / 2] != 4)
 			{
 				if (Y >= 4)
 				{
@@ -1173,17 +1377,19 @@ void ch_move(int a[10])
 					Sleep(200);
 				}
 			}
-			else if (Z == 1)
+			else if (Z == 1 && map2[J][(Y - 3)][X / 2 + 1] != 1 && map2[J][(Y - 3)][X / 2 + 1] != 4)
 			{
-				if (X <= 28) {
+				if (X <= 28)
+				{
 					gotoxy(X, Y);
 					printf("  ");
-					gotoxy(++X, Y);
+					X += 2;
+					gotoxy(X, Y);
 					printf("◎");
 					Sleep(200);
 				}
 			}
-			else if (Z == 2)
+			else if (Z == 2 && map2[J][(Y - 3) + 1][X / 2] != 1 && map2[J][(Y - 3) + 1][X / 2] != 4)
 			{
 				if (Y <= 16)
 				{
@@ -1194,13 +1400,14 @@ void ch_move(int a[10])
 					Sleep(200);
 				}
 			}
-			else if (Z == 3)
+			else if (Z == 3 && map2[J][(Y - 3)][X / 2 - 1] != 1 && map2[J][(Y - 3)][X / 2 - 1] != 4)
 			{
 				if (X >= 3)
 				{
 					gotoxy(X, Y);
 					printf("  ");
-					gotoxy(--X, Y);
+					X -= 2;
+					gotoxy(X, Y);
 					printf("◎");
 					Sleep(200);
 				}
@@ -1221,6 +1428,21 @@ void ch_move(int a[10])
 			else
 				Z--;
 			Sleep(100);
+		}
+		else if (a[i] == 4)
+		{
+			if (map2[J][Y - 3][X / 2] == 2)
+			{
+				map2[J][Y - 3][X / 2] = 0;
+			}
+			else if (map2[J][Y - 3][X / 2] == 3)
+			{
+				map2[J][Y - 3][X / 2] = 0;
+				for (int i = 0; i < 15; i++)
+					for (int j = 0; j < 15; j++)
+						if (map2[J][i][j] == 4)
+							map2[J][i][j] = 5;
+			}
 		}
 	}
 	x = 4, y = 23;
@@ -1265,6 +1487,7 @@ void coding()
 {
 	int sum, x = 4, y = 23, a = 35, b = 3, move[10] = { 0, }, i = 0;
 	system("mode con cols=40 lines=30");
+	gotoxy(0, 0);
 	printf("\n\n┌──────────────────────────────┯──────┐\n");
 	printf("│                              │      │\n");
 	printf("│                              │      │\n");
@@ -1296,8 +1519,6 @@ void coding()
 	printf("■");
 	gotoxy(35, 15);
 	printf("▲");
-	gotoxy(15, 13);
-	printf("◎");
 	gotoxy(0, 22);
 	printf("┌──────┯───────┯───────┯───────┯──────┐\n");
 	printf("│      │       │       │       │      │\n");
@@ -1306,6 +1527,9 @@ void coding()
 	printf("└──────┷───────┷───────┷───────┷──────┘\n");
 	while (1)
 	{
+		print_map();
+		gotoxy(X, Y);
+		printf("◎");
 		sum = choice3(a, b, 3, 15, 35, 35);
 		switch (sum)
 		{
@@ -1319,7 +1543,6 @@ void coding()
 					x += 8;
 				printf("↑");
 				move[i] = 1;
-
 				i++;
 			}
 			b = 3;
@@ -1334,7 +1557,6 @@ void coding()
 					x += 8;
 				printf("→");
 				move[i] = 2;
-
 				i++;
 			}
 			b = 5;
@@ -1349,7 +1571,6 @@ void coding()
 					x += 8;
 				printf("←");
 				move[i] = 3;
-
 				i++;
 			}
 			b = 7;
@@ -1444,7 +1665,7 @@ void color(int a)
 		printf("노란색");
 		gotoxy(x + 16, y + 6);
 		printf("연한 노란색");
-		gotoxy(x , y + 7);
+		gotoxy(x, y + 7);
 		printf("흰색");
 		gotoxy(x + 16, y + 7);
 		printf("밝은 흰색");
@@ -1508,7 +1729,7 @@ void color(int a)
 			system("cls");
 			break;
 		case 15:
-			if (a == 0) 
+			if (a == 0)
 			{
 				system("color 20");
 				Color = 2;
@@ -1521,7 +1742,7 @@ void color(int a)
 			system("cls");
 			break;
 		case 31:
-			if (a == 0) 
+			if (a == 0)
 			{
 				system("color A0");
 				Color = 10;
@@ -1534,7 +1755,7 @@ void color(int a)
 			system("cls");
 			break;
 		case 16:
-			if (a == 0) 
+			if (a == 0)
 			{
 				system("color 30");
 				Color = 3;
@@ -1547,7 +1768,7 @@ void color(int a)
 			system("cls");
 			break;
 		case 32:
-			if (a == 0) 
+			if (a == 0)
 			{
 				system("color B0");
 				Color = 11;
@@ -1573,7 +1794,7 @@ void color(int a)
 			system("cls");
 			break;
 		case 33:
-			if (a == 0) 
+			if (a == 0)
 			{
 				system("color C0");
 				Color = 12;
@@ -1612,7 +1833,7 @@ void color(int a)
 			system("cls");
 			break;
 		case 19:
-			if (a == 0) 
+			if (a == 0)
 			{
 				system("color 60");
 				Color = 6;
@@ -1625,7 +1846,7 @@ void color(int a)
 			system("cls");
 			break;
 		case 35:
-			if (a == 0) 
+			if (a == 0)
 			{
 				system("color E0");
 				Color = 14;
@@ -1664,7 +1885,7 @@ void color(int a)
 			system("cls");
 			break;
 		case 21:
-			return main();
+			return attribute();
 		case 37:
 			exit_EBS();
 		}
@@ -1758,6 +1979,23 @@ void diary()
 			exit_EBS();
 		}
 	}
+}
+
+void draw_box()
+{
+	printf("\n\n\n   ┌──────────────────────────────┐\n");
+	printf("   │                              │\n");
+	printf("   │                              │\n");
+	printf("   │                              │\n");
+	printf("   │                              │\n");
+	printf("   │                              │\n");
+	printf("   │                              │\n");
+	printf("   │                              │\n");
+	printf("   │                              │\n");
+	printf("   │                              │\n");
+	printf("   │                              │\n");
+	printf("   │                              │\n");
+	printf("   └──────────────────────────────┘");
 }
 
 void exit_EBS()
@@ -1870,6 +2108,7 @@ void good()
 	};
 	int a = rand() % 16;
 	printf("%s", good_word[a]);
+	PlaySound(TEXT(GOOD), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 }
 
 void gotoxy(int x, int y)
@@ -1879,6 +2118,282 @@ void gotoxy(int x, int y)
 	pos.X = x;
 	pos.Y = y;
 	SetConsoleCursorPosition(consoleHandle, pos);
+}
+
+void introduce()
+{
+	system("title 기능설명");
+	system("cls");
+	int sum;
+	for (;;)
+	{
+		printf("\n\n\n   ┌──────────────────────────────┐\n");
+		printf("   │                              │\n");
+		printf("   │                              │\n");
+		printf("   │                              │\n");
+		printf("   │                              │\n");
+		printf("   │                              │\n");
+		printf("   │                              │\n");
+		printf("   │                              │\n");
+		printf("   │                              │\n");
+		printf("   │                              │\n");
+		printf("   │                              │\n");
+		printf("   │                              │\n");
+		printf("   │                              │\n");
+		printf("   │                              │\n");
+		printf("   └──────────────────────────────┘");
+		gotoxy(5, 7);
+		printf("> 숫자게임");
+		gotoxy(23, 7);
+		printf("타자연습");
+		gotoxy(7, 8);
+		printf("알파벳 게임");
+		gotoxy(23, 8);
+		printf("코딩게임");
+		gotoxy(7, 9);
+		printf("일기장");
+		gotoxy(23, 9);
+		printf("예절공부");
+		gotoxy(7, 10);
+		printf("슬롯머신");
+		gotoxy(23, 10);
+		printf("가위바위보");
+		gotoxy(7, 11);
+		printf("업다운 게임");
+		gotoxy(23, 11);
+		printf("미로게임");
+		gotoxy(7, 12);
+		printf("숫자야구");
+		gotoxy(23, 12);
+		printf("시간 맞추기");
+		gotoxy(7, 13);
+		printf("뒤로가기");
+		gotoxy(23, 13);
+		printf("종료하기");
+		sum = choice(7, 7, 7, 13, 7, 23);
+		system("cls");
+		draw_box();
+		switch (sum)
+		{
+		case 14:
+			while (1)
+			{
+				gotoxy(5, 7);
+				printf("1. 난이도를 선택한다");
+				gotoxy(5, 8);
+				printf("2. 문제 수를 선택한다");
+				gotoxy(5, 9);
+				printf("3. 계산한 값을 입력에 적는다");
+				gotoxy(5, 11);
+				printf("* 숫자만 입력해주세요");
+				gotoxy(5, 12);
+				printf("* 나눗셈은 몫을 적어주세요");
+				if (kbhit())
+				{
+					FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+					break;
+				}
+			}
+			break;
+		case 30:
+			while (1)
+			{
+				gotoxy(5, 7);
+				printf("1. 원하는 기능을 선택한다");
+				gotoxy(5, 8);
+				printf("2. 열심히 타자를 친다");
+				gotoxy(5, 10);
+				printf("* 한글로만 입력을 해주세요");
+				if (kbhit())
+				{
+					FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+					break;
+				}
+			}
+			break;
+		case 15:
+			while (1)
+			{
+				gotoxy(5, 7);
+				printf("1. 원하는 난이도를 선택하세요");
+				gotoxy(5, 8);
+				printf("2. 문제수를 입력하세요");
+				gotoxy(5, 10);
+				printf("* 쉬움은 순서대로");
+				gotoxy(5, 11);
+				printf("* 어려움은 다음 알파벳");
+				gotoxy(5, 12);
+				printf("* 한글은 입력하지 말아주세요");
+				if (kbhit())
+				{
+					FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+					break;
+				}
+			}
+			break;
+		case 31:
+			while (1)
+			{
+				gotoxy(5, 7);
+				printf("1. 원하는 방향을 선택하세요");
+				gotoxy(5, 8);
+				printf("2. 열쇠를 얻으러 가세요");
+				gotoxy(5, 9);
+				printf("3. 문이 열리면 탈출을 하세요");
+				gotoxy(5, 11);
+				printf("→ -> 우회전     ← -> 좌회전");
+				gotoxy(5, 12);
+				printf("☏ -> 줍기       ◈ -> 시작");
+				gotoxy(5, 13);
+				printf("■ -> 그만하기   ▲ -> 종료");
+				if (kbhit())
+				{
+					FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+					break;
+				}
+			}
+			break;
+		case 16:
+			while (1)
+			{
+				gotoxy(5, 7);
+				printf("1. 일기를 적어주세요");
+				gotoxy(5, 8);
+				printf("2. 무조건 4문장을 적어주세요");
+				gotoxy(5, 10);
+				printf("* 모든 내용이 삭제됩니다");
+				gotoxy(5, 11);
+				printf("* 짧은 문장으로 적어주세요");
+				if (kbhit())
+				{
+					FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+					break;
+				}
+			}
+			break;
+		case 32:
+			while (1)
+			{
+				gotoxy(5, 7);
+				printf("1. 예절 문제를 선택하세요");
+				gotoxy(5, 8);
+				printf("2. 문제수를 선택하세요");
+				gotoxy(5, 9);
+				printf("3. 정답을 골라주세요");
+				if (kbhit())
+				{
+					FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+					break;
+				}
+			}
+			break;
+		case 17:
+			while (1)
+			{
+				gotoxy(5, 9);
+				printf("1. 아무키나 눌러주세요");
+				gotoxy(5, 10);
+				printf("2. 모두 같은 수로 맞춰주세요");
+				if (kbhit())
+				{
+					FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+					break;
+				}
+			}
+			break;
+		case 33:
+			while (1)
+			{
+				gotoxy(5, 7);
+				printf("1. 판 수를 입력 해주세요");
+				gotoxy(5, 8);
+				printf("2. 원하는 것을 선택해주세요");
+				gotoxy(5, 10);
+				printf("* 키를 입력후 기다려주세요");
+				if (kbhit())
+				{
+					FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+					break;
+				}
+			}
+			break;
+		case 18:
+			while (1)
+			{
+				gotoxy(5, 7);
+				printf("1. 숫자를 입력합니다");
+				gotoxy(5, 8);
+				printf("2. ↑는 입력보다 작습니다");
+				gotoxy(5, 9);
+				printf("3. ↓는 입력보다 큽니다");
+				if (kbhit())
+				{
+					FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+					break;
+				}
+			}
+			break;
+		case 34:
+			while (1)
+			{
+				gotoxy(5, 9);
+				printf("1. 방향키로 이동합니다");
+				gotoxy(5, 10);
+				printf("2. 끝으로 이동합니다");
+				if (kbhit())
+				{
+					FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+					break;
+				}
+			}
+			break;
+		case 19:
+			while (1)
+			{
+				gotoxy(5, 6);
+				printf("1. 3개의 숫자를 입력합니다");
+				gotoxy(5, 7);
+				printf("2. 자리, 수 일치는 스트라이크");
+				gotoxy(5, 8);
+				printf("3. 수만 일치하면 볼");
+				gotoxy(5, 9);
+				printf("4. 9라운드 안에 수를 맞추세요");
+				gotoxy(5, 11);
+				printf("* 띄어쓰기, 숫자만 입력");
+				if (kbhit())
+				{
+					FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+					break;
+				}
+			}
+			break;
+		case 35:
+			while (1)
+			{
+				gotoxy(5, 7);
+				printf("1. 맞춰야 할 초가 나옵니다");
+				gotoxy(5, 8);
+				printf("2. 시간이 흘러갑니다");
+				gotoxy(5, 9);
+				printf("3. 아무키나 클릭을 하세요");
+				gotoxy(5, 10);
+				printf("4. 제시된 초를 맞추면 됩니다");
+				gotoxy(5, 12);
+				printf("* 초를 바꾸려면 아니요 선택");
+				if (kbhit()) 
+				{
+					FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+					break;
+				}
+			}
+			break;
+		case 20:
+			return attribute();
+		case 36:
+			exit_EBS();
+		}
+		system("cls");
+	}
 }
 
 void light(int x, int y)
@@ -1912,43 +2427,45 @@ void maze()
 {
 	system("title 미로게임");
 	system("cls");
+	srand(time(NULL));
+	int k = rand() % 4;
 	for (int i = 0; i < 20; i++)
 	{
 		for (int j = 0; j < 20; j++)
 		{
-			if (map[i][j] == 1)
+			if (map[k][i][j] == 1)
 				printf("■");
-			else if (map[i][j] == 0)
+			else if (map[k][i][j] == 0)
 				printf("  ");
-			else if (map[i][j] == 2)
+			else if (map[k][i][j] == 2)
 				printf("●");
-			else if (map[i][j] == 3)
+			else if (map[k][i][j] == 3)
 				printf("끝");
 		}
 		printf("\n");
 	}
-	move(0, 1);
+	move(0, 1, k);
 }
 
-void move(int x, int y)
+void move(int x, int y, int k)
 {
 	while (1)
 	{
-		if (GetAsyncKeyState(VK_UP) & 0x8000 && map[y - 1][x / 2] != 1)
+		if (GetAsyncKeyState(VK_UP) & 0x8000 && map[k][y - 1][x / 2] != 1)
 		{
 			gotoxy(x, y);
 			printf("  ");
 			gotoxy(x, --y);
 			printf("●");
 		}
-		if (GetAsyncKeyState(VK_DOWN) & 0x8000 && map[y + 1][x / 2] != 1)
+		if (GetAsyncKeyState(VK_DOWN) & 0x8000 && map[k][y + 1][x / 2] != 1)
 		{
 			gotoxy(x, y);
 			printf("  ");
 			gotoxy(x, ++y);
 			printf("●");
 		}
-		if (GetAsyncKeyState(VK_LEFT) & 0x8000 && map[y][x / 2 - 1] != 1)
+		if (GetAsyncKeyState(VK_LEFT) & 0x8000 && map[k][y][x / 2 - 1] != 1)
 		{
 			gotoxy(x, y);
 			printf("  ");
@@ -1956,7 +2473,7 @@ void move(int x, int y)
 			gotoxy(x, y);
 			printf("●");
 		}
-		if (GetAsyncKeyState(VK_RIGHT) & 0x8000 && map[y][x / 2 + 1] != 1)
+		if (GetAsyncKeyState(VK_RIGHT) & 0x8000 && map[k][y][x / 2 + 1] != 1)
 		{
 			gotoxy(x, y);
 			printf("  ");
@@ -1965,7 +2482,7 @@ void move(int x, int y)
 			printf("●");
 		}
 		Sleep(100);
-		if (map[y][x / 2] == 3)
+		if (map[k][y][x / 2] == 3)
 			return game();
 	}
 }
@@ -2020,14 +2537,15 @@ void numbase()
 	} while (num < 9);
 	gotoxy(10, 24);
 	if (num < 9)
-		printf("GOOD");
+		good();
 	else
 	{
-		printf("BAD");
+		bad();
 		Sleep(800);
 		printf("\n정답은 %d %d %d입니다", com[0], com[1], com[2]);
 	}
-	Sleep(800);
+	Sleep(1000);
+	PlaySound(NULL, 0, 0);
 }
 
 void open_diary()
@@ -2071,6 +2589,28 @@ void print_light(int z, int x, int y)
 	printf("STRIKE");
 	gotoxy(3, 12);
 	printf("BALL");
+}
+
+void print_map()
+{
+	int x = 3, y = 3;
+	for (int i = 0; i < 15; i++)
+	{
+		gotoxy(x, y++);
+		for (int j = 0; j < 15; j++)
+		{
+			if(map2[J][i][j] == 0 && j != 0 || map2[J][i][j] == 5)
+				printf("  ");
+			else if (map2[J][i][j] == 1)
+				printf("■");
+			else if (map2[J][i][j] == 2)
+				printf("♣");
+			else if (map2[J][i][j] == 3)
+				printf("¶");
+			else if (map2[J][i][j] == 4)
+				printf("▥");
+		}
+	}
 }
 
 void print_num(int k, int x, int y)
@@ -2255,6 +2795,72 @@ void setcolor(unsigned char _BgColor, unsigned char _TextColor) {
 
 	unsigned short ColorNum = (_BgColor << 4) | _TextColor;
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), ColorNum);
+}
+
+void sever()
+{
+	system("title 채팅하기");
+	system("cls");
+	SOCKET s, cs;
+	WSADATA wsaData;
+	SOCKADDR_IN sin, cli_addr;
+
+	if (WSAStartup(WINSOCK_VERSION, &wsaData) != 0) {
+		printf("WSAStartup 실패, 에러코드 : %d\n", WSAGetLastError());
+		return 0;
+	}
+
+	s = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+
+	if (s == INVALID_SOCKET) {
+		printf("소켓 생성 실패, 에러코드 : %d\n", WSAGetLastError());
+		WSACleanup(); return 0;
+	}
+
+	sin.sin_family = AF_INET;
+	sin.sin_port = htons(8888);
+	sin.sin_addr.S_un.S_addr = htonl(ADDR_ANY);
+
+	if (bind(s, (SOCKADDR*)&sin, sizeof(sin)) == SOCKET_ERROR) {
+		printf("bind 실패, 에러코드 : %d\n", WSAGetLastError());
+		closesocket(s); WSACleanup(); return 0;
+	}
+
+	if (listen(s, 10) != 0) {
+		printf("listen 모드 설정 실패, 에러코드 : %d\n", WSAGetLastError());
+		closesocket(s); WSACleanup(); return 0;
+	}
+
+
+	int cli_size = sizeof(cli_addr);
+	cs = accept(s, (SOCKADDR*)&cli_addr, &cli_size);
+	if (cs == INVALID_SOCKET) {
+		printf("접속 승인 실패, 에러코드 : %d\n", WSAGetLastError());
+		closesocket(s); WSACleanup(); return 0;
+	}
+
+	printf("시훈님과 연결되었습니다.\n");
+
+	char Buffer[1024];
+	while (1) {
+		recv(cs, Buffer, 1024, 0);
+		printf("\n시훈 ; %s\n", Buffer);
+		printf("\n");
+			printf("승민 : ");
+		scanf("%s", Buffer);
+		send(cs, Buffer, strlen(Buffer) + 1, 0);
+	}
+	if (closesocket(cs) != 0 || closesocket(s) != 0) {
+		printf("소켓 제거 실패, 에러코드 : %d\n", WSAGetLastError());
+		WSACleanup(); return 0;
+	}
+
+	if (WSACleanup() != 0) {
+		printf("WSACleanup 실패, 에러코드 : %d\n", WSAGetLastError());
+	}
+
+	printf("서버를 종료합니다.\n");
+	return main();
 }
 
 void slot()
@@ -2825,7 +3431,8 @@ void updown()
 		gotoxy(8, 18);
 		printf("정답은 %d", num);
 	}
-	Sleep(800);
+	Sleep(1000);
+	PlaySound(NULL, 0, 0);
 }
 
 int choice(int x, int y, int a, int b, int c, int d)
@@ -3138,6 +3745,7 @@ int number()
 	system("cls");
 	printf("\n\n\n\n\n\n\n\n\n\n\t   %d개중 %d개 맞췄습니다.", I, Score);
 	Sleep(800);
+	return number();
 }
 
 int rand_num(int x, int a, int y, int z)
