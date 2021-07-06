@@ -1,47 +1,68 @@
-#include <Windows.h>
-#include <stdio.h>
-#include <time.h>
-#include <conio.h>
 #pragma warning(disable:4996)
+#include <windows.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
+#include <conio.h>
+#include <ctype.h>
+
+#define UP 0
+#define DOWN 1
+#define LEFT 2
+#define RIGHT 3
+
+
+
+void gotoxy(int x, int y);
+int choice3(int x, int y, int a, int b, int c, int d);
+int keyControl();
+void ch_move();
+
+int main()
+{
+	
+}
 
 void gotoxy(int x, int y)
 {
-    HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-    COORD pos;
-    pos.X = x;
-    pos.Y = y;
-    SetConsoleCursorPosition(consoleHandle, pos);
+	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD pos;
+	pos.X = x;
+	pos.Y = y;
+	SetConsoleCursorPosition(consoleHandle, pos);
 }
 
-void print_time(int h, int m, int s)
+int keyControl()
 {
-    printf("%d", h / 10);
-    printf("%d", h % 10);
-    printf(" : ");
-    printf("%d", m / 10);
-    printf("%d", m % 10);
-    printf(" : ");
-    printf("%d", s / 10);
-    printf("%d", s % 10);
+	int temp = getch();
+	if (temp == 224)
+	{
+		temp = getch();
+		switch (temp)
+		{
+		case 72:
+			FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+			return UP;
+		case 80:
+			FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+			return DOWN;
+		case 75:
+			FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+			return LEFT;
+		case 77:
+			FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+			return RIGHT;
+		}
+	}
+	else if (temp == 13)
+	{
+		FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+		return 4;
+	}
 }
 
-int main(void)
+void ch_move(int a[10])
 {
-    gotoxy(0, 0);
-    time_t now, before;
-    struct tm nt;
-    now = before = time(0);
-    localtime_s(&nt, &now);
-    print_time(nt.tm_hour, nt.tm_min, nt.tm_sec);
-    while (kbhit() == 0)
-    {
-        gotoxy(0, 0);
-        now = time(0);
-        if (now != before)
-        {
-            before = now;
-            localtime_s(&nt, &now);
-            print_time(nt.tm_hour, nt.tm_min, nt.tm_sec);
-        }
-    }
+	
 }

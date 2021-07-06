@@ -7,6 +7,11 @@
 #include <conio.h>
 #include <ctype.h>
 
+#define UP 0
+#define DOWN 1
+#define LEFT 2
+#define RIGHT 3
+
 void gotoxy(int x, int y)
 {
 	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -18,5 +23,4 @@ void gotoxy(int x, int y)
 
 int main()
 {
-	system("mode con cols=40 lines=30");
 }

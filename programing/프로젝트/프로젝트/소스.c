@@ -1,4 +1,6 @@
 #pragma warning(disable:4996)
+#pragma comment (lib,"ws2_32.lib")
+#include <winsock2.h>
 #include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -246,6 +248,9 @@ int Color;
 int Color1 = 15;
 int First;
 int Count;
+int X = 15;
+int Y = 13;
+int Z = 0;
 
 void 곱하기(char n, int c, int d);
 void 나누기(char n, int c, int g);
@@ -255,7 +260,9 @@ void alphabet();
 void attitude();
 void attitude_quize(char quize[20][100], char answer[20][100], char wrong[20][100]);
 void bad();
+void ch_move(int a[10]);
 void clock1();
+void coding();
 void color(int a);
 void cursorView();
 void delete_diary();
@@ -279,11 +286,15 @@ void rps();
 void setcolor(unsigned char _BgColor, unsigned char _TextColor);
 void slot();
 void taza();
+void taza_krl(char p[5][5][40]);
+void taza_krs(char p[20][40]);
+void taza_kwo(char p[90][20]);
 void timegame();
 void update_diary();
 void updown();
 int choice(int x, int y, int a, int b, int c, int d);
 int choice2(int x, int y, int a, int b, int c, int d);
+int choice3(int x, int y, int a, int b, int c, int d);
 int end();
 int keyControl();
 int number();
@@ -386,6 +397,7 @@ int main()
 			system("cls");
 			break;
 		case 32:
+			coding();
 			system("cls");
 			break;
 		case 17:
@@ -1141,6 +1153,94 @@ void bad()
 	printf("%s", bad_word[a]);
 }
 
+void ch_move(int a[10])
+{
+	int x, y;
+	for (int i = 0; i < 10; i++)
+	{
+		if (a[i] == 0)
+			break;
+		if (a[i] == 1)
+		{
+			if (Z == 0)
+			{
+				if (Y >= 4)
+				{
+					gotoxy(X, Y);
+					printf("  ");
+					gotoxy(X, --Y);
+					printf("◎");
+					Sleep(200);
+				}
+			}
+			else if (Z == 1)
+			{
+				if (X <= 28) {
+					gotoxy(X, Y);
+					printf("  ");
+					gotoxy(++X, Y);
+					printf("◎");
+					Sleep(200);
+				}
+			}
+			else if (Z == 2)
+			{
+				if (Y <= 16)
+				{
+					gotoxy(X, Y);
+					printf("  ");
+					gotoxy(X, ++Y);
+					printf("◎");
+					Sleep(200);
+				}
+			}
+			else if (Z == 3)
+			{
+				if (X >= 3)
+				{
+					gotoxy(X, Y);
+					printf("  ");
+					gotoxy(--X, Y);
+					printf("◎");
+					Sleep(200);
+				}
+			}
+		}
+		else if (a[i] == 2)
+		{
+			if (Z == 3)
+				Z = 0;
+			else
+				Z++;
+			Sleep(100);
+		}
+		else if (a[i] == 3)
+		{
+			if (Z == 0)
+				Z = 3;
+			else
+				Z--;
+			Sleep(100);
+		}
+	}
+	x = 4, y = 23;
+	for (int i = 0; i < 10; i++)
+	{
+		gotoxy(x, y);
+		printf("  ");
+		if (x == 4 || x == 27)
+			x += 7;
+		else x += 8;
+		if (x >= 40)
+		{
+			y += 2;
+			x = 4;
+		}
+	}
+	for (int i = 0; i < 10; i++)
+		a[i] = 0;
+}
+
 void clock1(time_t before)
 {
 	time_t now;
@@ -1159,6 +1259,135 @@ void clock1(time_t before)
 		print_time(nt.tm_hour, nt.tm_min, nt.tm_sec);
 	}
 	return before;
+}
+
+void coding()
+{
+	int sum, x = 4, y = 23, a = 35, b = 3, move[10] = { 0, }, i = 0;
+	system("mode con cols=40 lines=30");
+	printf("\n\n┌──────────────────────────────┯──────┐\n");
+	printf("│                              │      │\n");
+	printf("│                              │      │\n");
+	printf("│                              │      │\n");
+	printf("│                              │      │\n");
+	printf("│                              │      │\n");
+	printf("│                              │      │\n");
+	printf("│                              │      │\n");
+	printf("│                              │      │\n");
+	printf("│                              │      │\n");
+	printf("│                              │      │\n");
+	printf("│                              │      │\n");
+	printf("│                              │      │\n");
+	printf("│                              │      │\n");
+	printf("│                              │      │\n");
+	printf("│                              │      │\n");
+	printf("└──────────────────────────────┷──────┘");
+	gotoxy(33, 3);
+	printf("> ↑");
+	gotoxy(35, 5);
+	printf("→");
+	gotoxy(35, 7);
+	printf("←");
+	gotoxy(35, 9);
+	printf("☏");
+	gotoxy(35, 11);
+	printf("◈");
+	gotoxy(35, 13);
+	printf("■");
+	gotoxy(35, 15);
+	printf("▲");
+	gotoxy(15, 13);
+	printf("◎");
+	gotoxy(0, 22);
+	printf("┌──────┯───────┯───────┯───────┯──────┐\n");
+	printf("│      │       │       │       │      │\n");
+	printf("┣──────┿───────┿───────┿───────┿──────┫\n");
+	printf("│      │       │       │       │      │\n");
+	printf("└──────┷───────┷───────┷───────┷──────┘\n");
+	while (1)
+	{
+		sum = choice3(a, b, 3, 15, 35, 35);
+		switch (sum)
+		{
+		case 38:
+			if (y == 23 || y == 25)
+			{
+				gotoxy(x, y);
+				if (x == 4 || x == 27)
+					x += 7;
+				else
+					x += 8;
+				printf("↑");
+				move[i] = 1;
+
+				i++;
+			}
+			b = 3;
+			break;
+		case 40:
+			if (y == 23 || y == 25)
+			{
+				gotoxy(x, y);
+				if (x == 4 || x == 27)
+					x += 7;
+				else
+					x += 8;
+				printf("→");
+				move[i] = 2;
+
+				i++;
+			}
+			b = 5;
+			break;
+		case 42:
+			if (y == 23 || y == 25)
+			{
+				gotoxy(x, y);
+				if (x == 4 || x == 27)
+					x += 7;
+				else
+					x += 8;
+				printf("←");
+				move[i] = 3;
+
+				i++;
+			}
+			b = 7;
+			break;
+		case 44:
+			if (y == 23 || y == 25)
+			{
+				gotoxy(x, y);
+				if (x == 4 || x == 27)
+					x += 7;
+				else
+					x += 8;
+				printf("☏");
+				move[i] = 4;
+				i++;
+			}
+			b = 9;
+			break;
+		case 46:
+			ch_move(move);
+			x = 4, y = 23;
+			b = 11;
+			i = 0;
+			break;
+		case 48:
+			return main();
+			b = 13;
+			break;
+		case 50:
+			exit_EBS();
+			break;
+		}
+		if (x >= 40)
+		{
+			y += 2;
+			x = 4;
+		}
+	}
 }
 
 void color(int a)
@@ -2063,9 +2292,10 @@ void slot()
 
 void taza()
 {
+	system("mode con cols=40 lines=30");
 	system("title 타자연습");
 	srand(time(NULL));
-	char p[20][40] = {
+	char kr_sh[20][40] = {
 		"안녕하세요",
 		"남의 발에 버선 신긴다",
 		"내 물건이 좋아야 값을 받는다",
@@ -2075,33 +2305,280 @@ void taza()
 		"콩에서 콩 나고 팥에서 팥 난다",
 		"가난한 집 신주 굶듯 한다",
 		"가는 세월, 오는 백발",
-		"오늘은 하늘이 맑다"};
-	int y;
+		"오늘은 하늘이 맑다" };
+	char kr_lo[5][5][40] = {
+		{
+			{"애국가 1절"},
+			{"동해물과 백두산이 마르고 닳도록"},
+			{"하느님이 보우하사 우리나라 만세"},
+			{"무궁화 삼천리 화려 강산"},
+			{"대한 사람 대한으로 길이 보전하세"}
+		},
+		{
+			{"애국가 2절"},
+			{"남산 위에 저 소나무 철갑을 두른 듯"},
+			{"바람 서리 불변함은 우리 기상일세"},
+			{"무궁화 삼천리 화려 강산"},
+			{"대한 사람 대한으로 길이 보전하세"}
+		},
+		{
+			{"애국가 3절"},
+			{"가을 하늘 공활한데 높고 구름 없이"},
+			{"밝은 달은 우리 가슴 일편 단심일세"},
+			{"무궁화 삼천리 화려 강산"},
+			{"대한 사람 대한으로 길이 보전하세"}
+		},
+		{
+			{"애국가 4절"},
+			{"이 기상과 이 맘으로 충성을 다하여"},
+			{"괴로우나 즐거우나 나라 사랑하세"},
+			{"무궁화 삼천리 화려 강산"},
+			{"대한 사람 대한으로 길이 보전하세"}
+		}
+	};
+	char kr_wo[90][20] = {
+		"상어",
+		"자전거",
+		"할머니",
+		"가방",
+		"개울가",
+		"산기슭",
+		"오스트랄로 피테쿠스",
+		"오페라의 유령",
+		"악어",
+		"꿈",
+		"벌",
+		"늑대",
+		"노트북",
+		"컴퓨터",
+		"스마트폰",
+		"아파트",
+		"프로그래밍",
+		"햄버거",
+		"피자",
+		"닭볶음탕",
+		"제육볶음",
+		"태극기",
+		"애국가",
+		"서울",
+		"노래방",
+		"마스크",
+		"옷장",
+		"영화관",
+		"선생님",
+		"아버지",
+		"어머니",
+		"할아버지",
+		"나무",
+		"감자튀김",
+		"키보드",
+		"마우스",
+		"장난감",
+		"강아지",
+		"고양이",
+		"코끼리",
+		"호랑이",
+		"사자",
+		"거북이",
+		"사막",
+		"늪지",
+		"장마",
+		"전봇대",
+		"전갈",
+		"잠자리",
+		"개구리",
+		"농구",
+		"축구",
+		"배드민턴",
+		"수영",
+		"핸드볼",
+		"피구",
+		"대학교",
+		"고등학교",
+		"중학교",
+		"초등학교",
+		"서점",
+		"소방관",
+		"경찰관",
+		"변호사",
+		"검사",
+		"환경미화원",
+		"판사",
+		"회사원",
+		"미용사",
+		"과학자",
+		"요리사",
+		"재빵사",
+		"금붕어",
+		"잉어",
+		"스위스",
+		"핀란드",
+		"네덜란드",
+		"뉴욕",
+		"워싱턴",
+		"홍콩",
+		"이탈리아",
+		"상하이",
+		"도쿄",
+		"광주소마고",
+		"손가락",
+		"발가락",
+		"심장",
+		"폐",
+		"신발",
+		"바지",
+	};
+	int y = 8, x = 15;
 	int cnt = 0, c = 0, b = 1, sum, kr;
 	char 받는거;
 	while (1)
 	{
 		system("cls");
+		printf("\n\n\n\n\n        ┌────────────────────┐\n");
+		printf("        │                    │\n");
+		printf("        │                    │\n");
+		printf("        │                    │\n");
+		printf("        │                    │\n");
+		printf("        │                    │\n");
+		printf("        │                    │\n");
+		printf("        │                    │\n");
+		printf("        │                    │\n");
+		printf("        │                    │\n");
+		printf("        └────────────────────┘\n");
+		gotoxy(x - 2, y);
+		printf("> 짧은 글");
+		gotoxy(x, y + 1);
+		printf("긴 글");
+		gotoxy(x, y + 2);
+		printf("단어 연습");
+		gotoxy(x, y + 3);
+		printf("뒤로가기");
+		gotoxy(x, y + 4);
+		printf("종료하기");
+		sum = choice(15, 8, 8, 12, 15, 15);
+		system("cls");
+		switch (sum)
+		{
+		case 23:
+			taza_krs(kr_sh);
+			break;
+		case 24:
+			taza_krl(kr_lo);
+			break;
+		case 25:
+			taza_kwo(kr_wo);
+			break;
+		case 26:
+			return main();
+		case 27:
+			exit_EBS();
+			break;
+		}
+	}
+}
+
+void taza_krl(char p[5][5][40])
+{
+	srand(time(NULL));
+	char c[5][40];
+	clock_t before;
+	double result = 0, speed = 0;
+	int cnt = 0, discnt = 0, k = rand() % 4, x = 0, y = 3, b = 0, sum = 19;
+	for (;;) {
 		if (b == 1) {
-			kr = rand() % 10;
+			system("cls");
+			k = rand() % 4;
 			gotoxy(8, 7);
-			printf("시작하시겠습니까?");
+			printf("계속하시겠습니까?");
 			gotoxy(6, 11);
 			printf("> 예");
 			gotoxy(24, 11);
 			printf("아니요");
 			cnt = 0;
+			discnt = 0;
+			x = 0;
+			y = 0;
+			result = 0;
 			sum = choice(8, 11, 11, 11, 8, 27);
 		}
 		if (sum == 19)
 		{
 			system("cls");
+			for (int i = 0; i < 5; i++)
+			{
+				gotoxy(x, y);
+				y += 3;
+				printf("%s\n", p[k][i]);
+			}
+			y = 4;
+			for (int i = 0; i < 5; i++)
+			{
+				before = clock();
+				gotoxy(x, y);
+				y += 3;
+				gets(c[i]);
+				result += (double)(clock() - before) / CLOCKS_PER_SEC;
+			}
+			for (int j = 0; j < 5; j++)
+			{
+				for (int i = 0; i < 40; i++)
+				{
+					if (p[k][j][i] == '\0')
+						break;
+					if (c[j][i] == p[k][j][i])
+						cnt++;
+					else
+					{
+						cnt++;
+						discnt++;
+					}
+				}
+			}
+			printf("오타수 : %d\n", discnt - (discnt / 2));
+			speed = (cnt - discnt - (discnt / 2)) * 60 / result;
+			printf("%.2f", speed);
+			Sleep(800);
+			b = 1;
+		}
+		else if (sum != 19)
+		{
+			return;
+		}
+	}
+}
+
+void taza_krs(char p[20][40])
+{
+	srand(time(NULL));
+	double result, speed;
+	clock_t before;
+	int cnt = 0, discnt = 0, c = 0, b = 0, sum = 19, kr = rand() % 10;
+	for (;;) {
+		if (b == 1) {
+			kr = rand() % 10;
+			gotoxy(8, 7);
+			printf("계속하시겠습니까?");
+			gotoxy(6, 11);
+			printf("> 예");
+			gotoxy(24, 11);
+			printf("아니요");
+			cnt = 0;
+			discnt = 0;
+			result = 0;
+			sum = choice(8, 11, 11, 11, 8, 27);
+		}
+		if (sum == 19)
+		{
+			before = clock();
+			system("cls");
 			gotoxy(4, 10);
 			printf("%s\n", p[kr]);
-			char 답[40] = {'\0',};
+			char 답[40] = { '\0', };
 			gotoxy(4, 13);
 			printf("입력 : ");
 			scanf(" %[^\n]s", 답);
+			while (getchar() != '\n');
+			result = (double)(clock() - before) / CLOCKS_PER_SEC;
 			for (int i = 0; i < 40; i++)
 			{
 				if (답[i] > 'a' && 답[i] < 'z')
@@ -2124,12 +2601,20 @@ void taza()
 				for (int i = 0; i < 39; i++)
 				{
 					if (답[i] != p[kr][i])
+					{
+						discnt++;
+						cnt++;
+					}
+					else if (답[i] == p[kr][i])
 						cnt++;
 					else if (답[i] == NULL)
 						break;
 				}
-				gotoxy(10, 15);
-				printf("오타수%d개\n", cnt - (cnt / 2));
+				gotoxy(20, 0);
+				speed = (cnt - discnt - (discnt / 2)) * 60 / result;
+				printf("오타수 : %d개\n", discnt - (discnt / 2));
+				gotoxy(20, 1);
+				printf("타자속도 : %.2f", speed);
 				Sleep(800);
 				system("cls");
 				b = 1;
@@ -2145,7 +2630,67 @@ void taza()
 		}
 		else if (sum != 19)
 		{
-			return main();
+			return;
+		}
+	}
+}
+
+void taza_kwo(char p[90][20])
+{
+	srand(time(NULL));
+	char c[20];
+	clock_t before;
+	double result = 0, speed = 0;
+	int cnt = 0, discnt = 0, b = 0, sum = 19, k;
+	for (;;) {
+		if (b == 1) {
+			system("cls");
+			k = rand() % 90;
+			gotoxy(8, 7);
+			printf("계속하시겠습니까?");
+			gotoxy(6, 11);
+			printf("> 예");
+			gotoxy(24, 11);
+			printf("아니요");
+			cnt = 0;
+			discnt = 0;
+			result = 0;
+			sum = choice(8, 11, 11, 11, 8, 27);
+		}
+		if (sum == 19)
+		{
+			for (int i = 0; i < 20; i++)
+			{
+				system("cls");
+				k = rand() % 90;
+				gotoxy(5, 20);
+				printf("%s\n", p[k]);
+				before = clock();
+				gotoxy(5, 23);
+				gets(c);
+				result += (double)(clock() - before) / CLOCKS_PER_SEC;
+				for (int j = 0; j < 20; j++)
+				{
+					if (p[k][j] == '\0')
+						break;
+					if (c[j] == p[k][j])
+						cnt++;
+					else
+					{
+						cnt++;
+						discnt++;
+					}
+				}
+			}
+			printf("오타수 : %d\n", discnt - (discnt / 2));
+			speed = (cnt - discnt - (discnt / 2)) * 60 / result;
+			printf("%.2f", speed);
+			Sleep(800);
+			b = 1;
+		}
+		else if (sum != 19)
+		{
+			return;
 		}
 	}
 }
@@ -2216,12 +2761,18 @@ void update_diary()
 		puts("diary.txt - 파일을 생성할 수 없습니다.");
 		return -1;
 	}
-	printf("날짜입력");
+	gotoxy(2, 5);
+	printf("날짜입력 : ");
 	scanf(" %[^\n]s", day);
-	printf("오늘의 일기\n");
+	gotoxy(2, 7);
+	printf("오늘의 일기");
+	gotoxy(2, 9);
 	scanf(" %[^\n]s", did);
+	gotoxy(2, 10);
 	scanf(" %[^\n]s", did1);
+	gotoxy(2, 11);
 	scanf(" %[^\n]s", did2);
+	gotoxy(2, 12);
 	scanf(" %[^\n]s", did3);
 	fprintf(fout, "\n\t날짜 : %s\n\n\t오늘의 일기\n\t%s\n\t%s\n\t%s\n\t%s\n\n\t------------------", day, did, did1, did2, did3);
 	fclose(fout);
@@ -2387,6 +2938,63 @@ int choice2(int x, int y, int a, int b, int c, int d)
 	else if (choice == 4)
 	{
 		return x + y;
+	}
+}
+
+int choice3(int x, int y, int a, int b, int c, int d)
+{
+	int choice;
+	while (1)
+	{
+		choice = keyControl();
+		if (choice == 0)
+		{
+			if (y > a)
+			{
+				gotoxy(x - 2, y);
+				printf(" ");
+				y -= 2;
+				gotoxy(x - 2, y);
+				printf(">");
+			}
+		}
+		else if (choice == 1)
+		{
+			if (y < b)
+			{
+				gotoxy(x - 2, y);
+				printf(" ");
+				y += 2;
+				gotoxy(x - 2, y);
+				printf(">");
+			}
+		}
+		else if (choice == 2)
+		{
+			if (x > c)
+			{
+				gotoxy(x - 2, y);
+				printf(" ");
+				x -= 16;
+				gotoxy(x - 2, y);
+				printf(">");
+			}
+		}
+		else if (choice == 3)
+		{
+			if (x < d)
+			{
+				gotoxy(x - 2, y);
+				printf(" ");
+				x += 16;
+				gotoxy(x - 2, y);
+				printf(">");
+			}
+		}
+		else if (choice == 4)
+		{
+			return x + y;
+		}
 	}
 }
 
@@ -2558,7 +3166,7 @@ int rand_num(int x, int a, int y, int z)
 			print_num(z, 14, 2);
 		}
 		print_num(i, x, 2);
-		Sleep(30);
+		Sleep(70);
 		if (kbhit())
 		{
 			FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
