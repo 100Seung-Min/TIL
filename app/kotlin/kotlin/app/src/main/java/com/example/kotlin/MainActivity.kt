@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_Kotlin)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         binding.btn1.setOnClickListener{
             val text = "로그인 되었습니다"
             Toast.makeText(this,text,Toast.LENGTH_SHORT).show()
-            val intent = Intent(this,Calculator::class.java)
+            val intent = Intent(this, Calculator::class.java)
             startActivity(intent)
         }
     }

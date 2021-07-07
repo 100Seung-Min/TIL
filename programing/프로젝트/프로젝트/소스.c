@@ -493,7 +493,7 @@ int main()
 		gotoxy(23, 10);
 		printf("미니게임");
 		gotoxy(7, 11);
-		printf("채팅하기");
+		printf("끝말잇기");
 		gotoxy(23, 11);
 		printf("종료하기");
 		sum = choice2(x, y, 7, 11, 7, 23);
@@ -2799,7 +2799,7 @@ void setcolor(unsigned char _BgColor, unsigned char _TextColor) {
 
 void sever()
 {
-	system("title 채팅하기");
+	system("title 끝말잇기");
 	system("cls");
 	SOCKET s, cs;
 	WSADATA wsaData;
@@ -2848,6 +2848,8 @@ void sever()
 		printf("\n");
 			printf("승민 : ");
 		scanf("%s", Buffer);
+		if (strcmp(Buffer, "/x") == 0)
+			break;
 		send(cs, Buffer, strlen(Buffer) + 1, 0);
 	}
 	if (closesocket(cs) != 0 || closesocket(s) != 0) {
@@ -3352,7 +3354,8 @@ void timegame()
 			gotoxy(11, 15);
 			printf("%f초 차이입니다.", j - (sum / 10));
 		}
-		Sleep(800);
+		Sleep(1000);
+		PlaySound(NULL, 0, 0);
 	}
 }
 
