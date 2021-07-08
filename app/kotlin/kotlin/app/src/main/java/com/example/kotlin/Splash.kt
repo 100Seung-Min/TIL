@@ -1,26 +1,24 @@
 package com.example.kotlin
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+
 import android.os.Handler
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
+import com.example.kotlin.databinding.ActivityMainBinding
+
 class Splash : AppCompatActivity(){
+
+    lateinit var handler: Handler
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash)
 
-        Handler().postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        handler = Handler()
+        handler.postDelayed({
+            val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
             finish()
-        },DURATION)
-
-    }
-    companion object {
-        private const val DURATION : Long = 3000
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
+        }, 3000)
     }
 }

@@ -12,13 +12,13 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainBinding
 
-    @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.Theme_Kotlin)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setContentView(R.layout.activity_main)
+
+        Toast.makeText(this,"welcome",Toast.LENGTH_SHORT).show()
 
         binding.btn1.setOnClickListener{
             val text = "로그인 되었습니다"
