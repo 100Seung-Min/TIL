@@ -4,7 +4,6 @@ import android.os.Handler
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
-import com.example.kotlin.databinding.ActivityMainBinding
 
 class Splash : AppCompatActivity(){
 
@@ -16,9 +15,9 @@ class Splash : AppCompatActivity(){
 
         handler = Handler()
         handler.postDelayed({
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this,Login::class.java)
             startActivity(intent)
             finish()
-        }, 3000)
+        }, 2000)
     }
 }
