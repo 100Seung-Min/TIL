@@ -159,6 +159,29 @@ while running:
       if weapon_rect.colliderect(ball_rect):
         weapon_to_remove = weapon_idx
         ball_to_remove = ball_idx
+
+        if ball_img_idx < 3:
+          ball_width = ball_rect.size[0]
+          ball_height = ball_rect.size[1]
+
+          small_ball_rect = ball_images[ball_img_idx + 1].get_rect()
+          small_ball_width = small_ball_rect.size[0]
+          small_ball_height = small_ball_rect.size[1]
+
+          balls.append({
+              "pos_x":ball_pos_x + (ball_width / 2) - (small_ball_width / 2),
+              "pos_y":ball_pos_y + (ball_height / 2) - (small_ball_height / 2),
+              "img_idx":ball_img_idx + 1,
+              "to_x":-3,
+              "to_y":-6,
+              "init_spd_y":ball_speed_y[ball_img_idx + 1]})
+          balls.append({ 
+              "pos_x":ball_pos_x + (ball_width / 2) - (small_ball_width / 2),
+              "pos_y":ball_pos_y + (ball_height / 2) - (small_ball_height / 2),
+              "img_idx":ball_img_idx + 1,
+              "to_x":3,
+              "to_y":-6,
+              "init_spd_y":ball_speed_y[ball_img_idx + 1]})
         break
 
   # 공, 무기 없애기
