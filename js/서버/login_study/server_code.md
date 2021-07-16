@@ -110,3 +110,4 @@ app.set("view engine", "ejs");
 ```js
  res.render("파일경로");
  ```
+> 여러 모듈 분리
