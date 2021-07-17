@@ -17,6 +17,12 @@
             android:layout_height="wrap_content"
             android:text="계산기"
             android:id="@+id/calculator"></androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="갤러리"
+            android:id="@+id/galary"></androidx.appcompat.widget.AppCompatButton>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
