@@ -2,4 +2,7 @@ ai/GAN/GAN_tutorial/
 *.zip
 *.jpg
 *.png
+*.mp4
+*.webm
+*.mp3
 study/tensorflow/

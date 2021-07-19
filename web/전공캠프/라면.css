@@ -1,0 +1,25 @@
+body {
+  background-color: blanchedalmond;
+}
+
+table {
+  border: 1px solid black;
+  width: 100%;
+  border-collapse:collapse"
+}
+
+thead {
+  background-color: aqua;
+}
+
+th,td {
+  border: 1px solid black;
+}
+
+tbody {
+  background-color:bisque;
+}
+
+.method {
+  background-color: brown;
+}
