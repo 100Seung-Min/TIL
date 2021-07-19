@@ -31,7 +31,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
-            android:name=".garaly"
+            android:name=".Garaly2"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
     </application>

@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity(){
         }
 
         binding.galary.setOnClickListener(){
-            val intent = Intent(this, garaly::class.java)
+            val intent = Intent(this, Garaly2::class.java)
             startActivity(intent)
         }
     }
