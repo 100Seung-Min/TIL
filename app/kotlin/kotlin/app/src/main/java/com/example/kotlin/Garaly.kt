@@ -9,7 +9,24 @@ class Garaly: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.viewmain)
 
+        var currentPosition=0
+
         val adapter = ViewPagerAdapter()
         pager.adapter=adapter
+
+        right.setOnClickListener {
+            if(currentPosition < 5)
+                currentPosition+=1
+            if(currentPosition == 5)
+                currentPosition = 0
+            pager.setCurrentItem(currentPosition, true)
+        }
+        left.setOnClickListener {
+            if(currentPosition >= 0)
+                currentPosition-=1
+            if(currentPosition == -1)
+                currentPosition = 5
+            pager.setCurrentItem(currentPosition, true)
+        }
     }
 }

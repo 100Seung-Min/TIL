@@ -19,7 +19,7 @@ class Garaly2: AppCompatActivity() {
 
         viewpager2.adapter=adapter
 
-        TabLayoutMediator(tabLayout, viewpager2){tab, position ->
+        TabLayoutMediator(tabLayout, viewpager2) {tab, position ->
             when (position){
                 0 -> {
                     tab.text="First"
@@ -29,6 +29,9 @@ class Garaly2: AppCompatActivity() {
                 }
                 2 -> {
                     tab.text="Third"
+                }
+                3 -> {
+                    tab.text="Forth"
                 }
             }
         }.attach()
