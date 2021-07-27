@@ -44,3 +44,326 @@ MD_json = json.loads(text)
 
 for i in MD_json['boxOfficeResult']['dailyBoxOfficeList'] :
     print(i['rank'], i['rankOldAndNew'], i['movieCd'], i['movieNm'], i['salesAmt'])
+
+"""무작위 데이터"""
+
+import numpy as np
+from scipy import stats
+
+np.random.seed(0)
+
+data_A = np.random.randint(0,100,10000)
+
+mean = np.mean(data_A)
+median = np.median(data_A)
+mode = stats.mode(data_A)
+data_A_var = np.var(data_A)
+data_A_std = np.std(data_A)
+
+print("평균값 : ", mean.round(2))
+print("중앙값 : ", median)
+print("최빈값 : {} ( {} )". format(mode[0][0], mode[1][0]))
+print("분산 : ", data_A_var.round(2))
+print("표준편차 : ", data_A_std.round(2))
+
+import numpy as np
+from scipy import stats
+
+np.random.seed(0)
+
+data_B = np.random.normal(size = 100)
+
+mean = np.mean(data_B)
+median = np.median(data_B)
+mode = stats.mode(data_B)
+data_B_var = np.var(data_B)
+data_B_std = np.std(data_B)
+
+print("평균값 : ", mean.round(2))
+print("중앙값 : ", median)
+print("최빈값 : {} ( {} )". format(mode[0][0], mode[1][0]))
+print("분산 : ", data_B_var.round(2))
+print("표준편차 : ", data_B_std.round(2))
+
+"""사분위수"""
+
+import pandas as pd
+
+store_a = pd.Series([20,21,23,22,26,28,35,35,41,42,43,45,44,45,46,47,47,46,47,58,58,59,60,56,57,57,80])
+store_b = pd.Series([5,6,11,13,15,16,20,20,21,23,22,27,27,30,30,32,36,37,37,40,40,43,44,45,51,54,70])
+
+A_Q1 = store_a.quantile(0.25) ; print("1사분위수 : ", A_Q1)
+A_Q2 = store_a.quantile(0.50) ; print("2사분위수(중앙값) : ", A_Q2)
+A_Q3 = store_a.quantile(0.75) ; print("3사분위수 : ", A_Q3)
+A_Q4 = store_a.quantile(1) ; print("4사분위수 : ", A_Q4,'\n')
+
+B_Q1 = store_b.quantile(0.25) ; print("1사분위수 : ", B_Q1)
+B_Q2 = store_b.quantile(0.50) ; print("2사분위수(중앙값) : ", B_Q2)
+B_Q3 = store_b.quantile(0.75) ; print("3사분위수 : ", B_Q3)
+B_Q4 = store_b.quantile(1) ; print("4사분위수 : ", B_Q4,'\n')
+
+"""박스플롯, IQR"""
+
+import matplotlib.pyplot as plt
+
+plt.boxplot((store_a, store_b))
+plt.grid()
+plt.show()
+
+A_IQR = A_Q3 - A_Q1
+print("A_IQR: ", A_IQR)
+A_STEP1 = A_IQR * 1.5
+print("A_STEP1 : ", A_STEP1)
+A_Lower_fence = A_Q1 - A_STEP1
+print(A_Lower_fence)
+A_Upper_fence = A_Q3 + A_STEP1
+print(A_Upper_fence)
+
+
+B_IQR = B_Q3 - B_Q1
+print("B_IQR: ", B_IQR)
+B_STEP1 = B_IQR * 1.5
+print("B_STEP1 : ", B_STEP1)
+B_Lower_fence = B_Q1 - B_STEP1
+print(B_Lower_fence)
+B_Upper_fence = B_Q3 + B_STEP1
+print(B_Upper_fence)
+
+"""로지스틱 회귀"""
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+def sigmoid(z):
+    return 1.0 / (1.0 + np.exp(-z))
+
+z = np.arange(-7,7,0.1)
+f_x = sigmoid(z)
+
+plt.plot(z,f_x)
+plt.axvline(0,0,color = 'k')
+plt.ylim(-0.1,1,1)
+plt.xlabel('z')
+plt.ylabel('f(x)')
+
+plt.yticks([0.0,0.5,1.0])
+ax = plt.gca()
+ax.yaxis.grid(True)
+plt.tight_layout()
+plt.show()
+
+"""k 평균"""
+
+from sklearn.datasets import make_blobs
+X,y = make_blobs(n_samples = 150,
+                 n_features = 2,
+                 centers = 3,
+                 cluster_std = 0.5,
+                 shuffle = True,
+                 random_state = 0)
+import matplotlib.pyplot as plt
+plt.scatter(X[:,0],
+            X[:,1],
+            c = 'white',
+            marker = 'o',
+            edgecolor = 'black',
+            s = 50)
+plt.grid()
+plt.tight_layout()
+plt.show()
+
+from sklearn.cluster import KMeans
+km = KMeans(n_clusters = 3,
+            init = 'random',
+            n_init = 10,
+            max_iter = 300,
+            tol = 1e-04,
+            random_state = 0)
+y_km = km.fit_predict(X)
+plt.scatter(X[y_km == 0,0],
+            X[y_km == 0,1],
+            s = 50, c = 'lightgreen',
+            marker = 's', edgecolor = 'black',
+            label = 'cluster 1')
+plt.scatter(X[y_km == 1,0],
+            X[y_km == 1,1],
+            s = 50, c = 'orange',
+            marker = 'o', edgecolor = 'black',
+            label = 'cluster 2')
+plt.scatter(X[y_km == 2,0],
+            X[y_km == 2,1],
+            s = 50, c = 'lightblue',
+            marker = 'v', edgecolor = 'black',
+            label = 'cluster 3')
+plt.scatter(km.cluster_centers_[:,0],
+            km.cluster_centers_[:,1],
+            s = 250, c = 'red',
+            marker = '*', edgecolor = 'black',
+            label = 'centroids')
+plt.legend(scatterpoints=1)
+plt.grid()
+plt.tight_layout()
+plt.show()
+
+"""k 평균++"""
+
+km = KMeans(n_clusters = 3,
+            init = 'k-means++',
+            n_init = 10,
+            max_iter = 300,
+            tol = 1e-04,
+            random_state = 0)
+plt.scatter(X[:,0],
+            X[:,1],
+            c = 'white',
+            marker = 'o',
+            edgecolor = 'black',
+            s = 50)
+plt.grid()
+plt.tight_layout()
+plt.show()
+
+"""엘보우 방법"""
+
+distortions = []
+for i in range(1,11):
+    km = KMeans(n_clusters = i,
+            init = 'k-means++',
+            n_init = 10,
+            max_iter = 300,
+            random_state = 0)
+    km.fit(X)
+    distortions.append(km.inertia_)
+plt.plot(range(1,11), distortions,marker='o')
+plt.xlabel('Number of clusters')
+plt.ylabel('Distortion')
+plt.tight_layout()
+plt.show()
+
+"""실루엣 그래프"""
+
+import numpy as np
+from matplotlib import cm
+from sklearn.metrics import silhouette_samples
+
+km = KMeans(n_clusters = 3,
+            init = 'k-means++',
+            n_init = 10,
+            max_iter = 300,
+            tol = 1e-04,
+            random_state = 0)
+y_km = km.fit_predict(X)
+
+cluster_labels = np.unique(y_km)
+n_clusters = cluster_labels.shape[0]
+
+silhouette_vals = silhouette_samples(X, y_km, metric = 'euclidean')
+
+y_ax_lower, y_ax_upper = 0, 0
+yticks = []
+for i, c in enumerate(cluster_labels):
+    c_silhouette_vals = silhouette_vals[y_km == c]
+    c_silhouette_vals.sort()
+    y_ax_upper += len(c_silhouette_vals)
+    color = cm.jet(float(i) / n_clusters)
+    plt.barh(range(y_ax_lower, y_ax_upper), c_silhouette_vals, height=1.0,
+             edgecolor='none', color=color)
+    
+    yticks.append((y_ax_lower + y_ax_upper) / 2.)
+    y_ax_lower += len(c_silhouette_vals)
+
+silhouette_avg = np.mean(silhouette_vals)
+plt.axvline(silhouette_avg, color="red", linestyle="--")
+
+plt.yticks(yticks, cluster_labels + 1)
+plt.ylabel('Cluster')
+plt.xlabel('Silhouette coefficient')
+
+plt.tight_layout()
+plt.show()
+
+"""계층군집"""
+
+# 모든 데이터의 거리행렬을 계산한다
+import numpy as np
+np.random.seed(123)
+X = np.random.random_sample([5,3]) * 10
+import pandas as pd
+variables = ['X', 'Y', 'Z']
+labels = ['ID_0','ID_1','ID_2','ID_3','ID_4']
+df = pd.DataFrame(X, columns=variables,index=labels)
+df
+from scipy.spatial.distance import pdist, squareform
+Y = pdist(df)
+Y
+row_dist = pd.DataFrame(squareform(pdist(df, metric='euclidean')),
+                        columns = labels, index = labels)
+from scipy.cluster.hierarchy import linkage
+# row_clusters = linkage(row_dist,
+#                        method='complete',
+#                        metric='euclidean')
+row_clusters = linkage(pdist(df,metric='euclidean'),
+                       method='complete')
+# row_clusters = linkage(df.values,
+#                        method='complete',
+#                        metric='euclidean')
+pd.DataFrame(row_clusters,
+             columns = ['row label 1','row label 2','distance','no of items in clust'],
+             index = ['Cluster %d' % (i + 1) for i in range(row_clusters.shape[0])])
+# help(linkage)
+# import matplotlib.pyplot as plt
+# row_dendr = dendrogram(row_clusters,
+#                       labels = labels)
+# plt.tight_layout()
+# plt.ylabel('Euclidean distance')
+# plt.show()
+
+"""밀집도 기반 군집"""
+
+from sklearn.datasets import make_moons
+from sklearn.cluster import KMeans
+X,y = make_moons(n_samples = 200,
+                 noise = 0.05,
+                 random_state = 0)
+plt.scatter(X[:,0],X[:,1])
+plt.tight_layout()
+plt.show()
+
+f, (ax1, ax2) = plt.subplots(1,2,figsize=(8,3))
+km = KMeans (n_clusters=2, random_state=0)
+y_km = km.fit_predict(X)
+ax1.scatter(X[y_km == 0,0], X[y_km == 0,1],
+            edgecolor='black',
+            c='lightblue', marker='o', s=40, label='cluster 1')
+ax1.scatter(X[y_km == 1,0], X[y_km == 1,1],
+            edgecolor='black',
+            c='red', marker='s', s=40, label='cluster 2')
+ax1.set_title('K-means clustering')
+ac = AgglomerativeClustering(n_clusters=2,
+                             affinity='euclidean',
+                             linkage='complete')
+y_ac = ac.fit_predict(X)
+ax2.scatter(X[y_ac == 0,0], X[y_ac == 0,1], c='lightblue',
+            edgecolor='black',
+            marker='o', s=40, label='cluster 1')
+ax2.scatter(X[y_ac == 1,0], X[y_ac == 1,1], c='red',
+            edgecolor='black',
+            marker='s', s=40, label='cluster 2')
+ax2.set_title('Agglomerative clustering')
+plt.legend()
+plt.tight_layout()
+plt.show( )
+
+from sklearn.cluster import DBSCAN
+db = DBSCAN(eps=0.2, min_samples=5, metric='euclidean')
+y_db = db.fit_predict(X)
+plt.scatter(X[y_db == 0,0], X[y_db == 0,1],
+            edgecolor='black',
+            c='lightblue', marker='o', s=40, label='cluster 1')
+plt.scatter(X[y_db == 1,0], X[y_db == 1,1],
+            edgecolor='black',
+            c='red', marker='s', s=40, label='cluster 2')
+plt.legend()
+plt.tight_layout()
+plt.show( )
+
