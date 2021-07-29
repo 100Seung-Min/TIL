@@ -47,6 +47,26 @@ weapon_width = weapon_size[0]
 weapons = []
 weapon_speed = 10
 
+# 공 만들기
+ball_images = [
+  pygame.image.load(os.path.join(image_path, "ballon1.png")),
+  pygame.image.load(os.path.join(image_path, "ballon2.png")),
+  pygame.image.load(os.path.join(image_path, "ballon3.png")),
+  pygame.image.load(os.path.join(image_path, "ballon4.png"))]
+
+# 공 최초 속도
+ball_speed_y = [-18, -15, -12, -9]
+
+# 공들
+balls = []
+balls.append({
+  "pos_x":50,
+  "pos_y":50,
+  "img_idx":0,
+  "to_x":3,
+  "to_y":-6,
+  "init_spd_y":ball_speed_y[0]})
+
 running = True
 while running:
   dt = clock.tick(60) # 게임 화면의 초당 프레임 수
@@ -84,6 +104,28 @@ while running:
   # 무기 없애기
   weapons = [ [w[0], w[1]] for w in weapons if w[1] > 0]
 
+  # 공 위치 정의
+  for ball_idx, ball_val in enumerate(balls):
+    ball_pos_x = ball_val["pos_x"]
+    ball_pos_y = ball_val["pos_y"]
+    ball_img_idx = ball_val["img_idx"]
+
+    ball_size = ball_images[ball_img_idx].get_rect().size
+    ball_width = ball_size[0]
+    ball_height = ball_size[1]
+
+    # 가로효과
+    if ball_pos_x < 0 or ball_pos_x > screen_width - ball_width:
+      ball_val["to_x"] = ball_val["to_x"] * -1
+
+    # 세로 효과
+    if ball_pos_y >= screen_height - stage_height - ball_height:
+      ball_val["to_y"] = ball_val["init_spd_y"]
+    else:
+      ball_val["to_y"] += 0.5
+    ball_val["pos_x"] += ball_val["to_x"]
+    ball_val["pos_y"] += ball_val["to_y"]
+
   # 4. 충돌 처리
 
   # 5. 화면에 그리기
@@ -91,6 +133,12 @@ while running:
 
   for weapon_x_pos, weapon_y_pos in weapons:
     screen.blit(weapon, (weapon_x_pos, weapon_y_pos))
+
+  for idx, val in enumerate(balls):
+    ball_pos_x = val["pos_x"]
+    ball_pos_y = val["pos_y"]
+    ball_img_idx = val["img_idx"]
+    screen.blit(ball_images[ball_img_idx], (ball_pos_x, ball_pos_y))
 
   screen.blit(stage, (0, screen_height - stage_height))
   screen.blit(character, (character_x_pos, character_y_pos))
