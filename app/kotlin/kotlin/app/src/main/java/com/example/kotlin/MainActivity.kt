@@ -28,5 +28,10 @@ class MainActivity : AppCompatActivity(){
             val intent = Intent(this, Garaly::class.java)
             startActivity(intent)
         }
+
+        binding.recycler.setOnClickListener() {
+            val intent = Intent(this, RecyclerView::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -41,6 +41,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="갤러리2"></androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/recycler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="리사이클러뷰"></androidx.appcompat.widget.AppCompatButton>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,11 @@
-package com.example.kotlin
+package com.example.kotlin.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
+import com.example.kotlin.R
 import kotlinx.android.synthetic.main.viewpage.view.*
 
 class ViewPagerAdapter :PagerAdapter() {
