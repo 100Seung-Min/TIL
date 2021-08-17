@@ -15,7 +15,7 @@ btn3.pack()
 btn4 = Button(root, width=10, height=5, text="버튼4")
 btn4.pack()
 
-btn5 = Button(root, fg="red", bg="yellow", text="버튼5")
+btn5 = Button(root, fg="r3ed", bg="yellow", text="버튼5")
 btn5.pack()
 
 photo = PhotoImage(file="image.png")
