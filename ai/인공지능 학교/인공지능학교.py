@@ -25,7 +25,8 @@ e.sender = "bsmin0417@naver.com"
 recv_list = ["s21030@gsm.hs.kr", "s21030@likelion.org"]
 
 for recv in recv_list:
-    e.send_mail(recv,"환영합니다", "함수와 클래스")
+    e.send_mail(recv,"광주 인공지능사관학교에 오신것을 환영합니다.",
+     "이번 온라인 강의는 함수와 클래스입니다.")
 
 """json파일 & open AP"""
 
