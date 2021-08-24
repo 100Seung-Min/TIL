@@ -49,4 +49,16 @@
             android:layout_height="50dp"
             android:hint="email" />
     </com.google.android.material.textfield.TextInputLayout>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_year"/>
+    <TextView
+        android:id="@+id/txt_year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="16dp"
+        android:text="Selected: "
+        android:textSize="40dp"/>
 </LinearLayout>
