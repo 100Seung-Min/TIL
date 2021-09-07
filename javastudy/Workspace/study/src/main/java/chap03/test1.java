@@ -17,5 +17,6 @@ public class test1 {
 			grade = 'D';
 		else
 			grade = 'F';
+		System.out.println("당신의 학점은 " + grade);
 	}
 }

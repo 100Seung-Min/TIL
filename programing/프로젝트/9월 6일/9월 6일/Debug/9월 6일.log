@@ -1,0 +1,4 @@
+﻿  스택.c
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\9월 6일\9월 6일\스택.c(37,17): warning C4098: 'pop': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\9월 6일\9월 6일\스택.c(41,28): warning C4098: 'pop': 'void' 함수에서 값을 반환하고 있습니다.
+  9월 6일.vcxproj -> C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\9월 6일\Debug\9월 6일.exe
