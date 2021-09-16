@@ -14,8 +14,6 @@ public class Test2 {
 		for(int i = 0; i < scores.length; i++) {
 			sum += scores[i];
 		}
-		System.out.println(sum);
-		System.out.println(scores.length);
 		System.out.println("ЦђБе : " + sum / (float)(scores.length));
 	}
 }
