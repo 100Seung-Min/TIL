@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Retrofit</string>
+
+    <string name="search_item_hint">사진검색</string>
+</resources>
