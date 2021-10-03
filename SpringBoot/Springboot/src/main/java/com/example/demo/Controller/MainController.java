@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
     @RequestMapping(value = "/")
     public String main(){
-        return "main";
+        return "main.html";
     }
     @RequestMapping(value = "/menu")
     public String menu(){
-        return "menu";
+        return "menu.html";
     }
     @RequestMapping(value = "/promotion")
     public String promotion(){
-        return "promotion";
+        return "promotion.html";
     }
     @RequestMapping(value = "/survey")
     public String survey(){
-        return "survey";
+        return "survey.html";
     }
 }
 
