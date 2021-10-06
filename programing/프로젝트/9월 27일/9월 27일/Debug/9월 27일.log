@@ -1,6 +1,2 @@
 ﻿  단순 연결 리스트.c
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\9월 27일\9월 27일\단순 연결 리스트.c(38,30): warning C4047: '함수': 'node *'의 간접 참조 수준이 'node **'과(와) 다릅니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\9월 27일\9월 27일\단순 연결 리스트.c(38,25): warning C4024: 'insert_node': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\9월 27일\9월 27일\단순 연결 리스트.c(38,37): warning C4047: '함수': 'node *'의 간접 참조 수준이 'node **'과(와) 다릅니다.
-C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\9월 27일\9월 27일\단순 연결 리스트.c(38,32): warning C4024: 'insert_node': 형식 및 실제 매개 변수 2의 형식이 서로 다릅니다.
   9월 27일.vcxproj -> C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\9월 27일\Debug\9월 27일.exe

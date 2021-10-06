@@ -6,41 +6,56 @@ typedef struct ListNode {
 	struct ListNode* link;      // 링크 필드: 현재 구조체를 가리키는 포인터 정의
 }node;
 
-void insert_node(node* head, node* tail, int data) {
-    node* newnode = (node*)malloc(sizeof(node));        //malloc 앞은 반환타입, 뒤는 크기
-    newnode->data = data;
-    if (head->data == -1) {     //head가 null일 때 head와 tail을 newnode로
-        head = newnode;
+node* head = NULL;      //head 포인터 생성
+node* tail = NULL;      //tail 포인터 생성
+
+void insert_node(node** newnode) {
+    if (head == NULL) {     //head가 null일 때 head와 tail을 newnode로
+        head = (*newnode);
     }
     else {      //head가 nuul이 아닐때 마지막에 추가 시켜준다.
-        tail->link = newnode;
+        tail->link = (*newnode);
     }
-    tail = newnode;
-    printf("삽입완료: %d, %d\n", head->data, tail->data);
+    tail = (*newnode);
 }
 
-void print_node(node* head) {
+void insert_node_front(node** newnode) {
+    if (tail == NULL) {
+        tail = (*newnode);
+    }
+    else {
+        (*newnode)->link = head;
+    }
+    head = *newnode;
+}
+
+void delete_node(int index) {
+    node* p = head;
+    p->link = p->link->link;
+    free(p->link);
+}
+
+void print_node() {
     node* p = head;
     while (p) {
-        printf("%d", p->data);
+        printf("%d\t", p->data);
         p = p->link;
     }
 }
 
 int main(){
-    node* head = NULL;      //head 포인터 생성
-    head->data = -1;
-    node* tail = NULL;      //tail 포인터 생성
     for (;;) {
+        node* newnode = (node*)malloc(sizeof(node));        //malloc 앞은 반환타입, 뒤는 크기
         int data;
         scanf_s("%d", &data);
+        newnode->data = data;
+        newnode->link = NULL;
         if (data >= 0) {
-            insert_node(&head, &tail, data);
+            insert_node_front(&newnode);
         }
         else {
             break;
         }
     }
-    printf("%d", head->data);
-    print_node(head);
+    print_node();
 }
