@@ -31,8 +31,18 @@ void insert_node_front(node** newnode) {
 
 void delete_node(int index) {
     node* p = head;
-    p->link = p->link->link;
-    free(p->link);
+    node* de = p;
+    for (int i = 1; i < index; i++) {
+        p = p->link;
+    }
+    if (index == 0) {
+        head = p->link;
+    }
+    else {
+        de = p->link;
+        p->link = p->link->link;
+    }
+    free(de);
 }
 
 void print_node() {
@@ -41,6 +51,7 @@ void print_node() {
         printf("%d\t", p->data);
         p = p->link;
     }
+    printf("\n");
 }
 
 int main(){
@@ -51,11 +62,13 @@ int main(){
         newnode->data = data;
         newnode->link = NULL;
         if (data >= 0) {
-            insert_node_front(&newnode);
+            insert_node(&newnode);
         }
         else {
             break;
         }
     }
+    print_node();
+    delete_node(0);
     print_node();
 }

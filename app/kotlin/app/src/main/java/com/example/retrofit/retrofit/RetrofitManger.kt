@@ -1,6 +1,7 @@
 package com.example.retrofit.retrofit
 
 import android.util.Log
+import com.example.retrofit.model.Photo
 import com.example.retrofit.utils.API
 import com.example.retrofit.utils.Constants.TAG
 import com.example.retrofit.utils.RESPONSE_STATE
@@ -25,10 +26,26 @@ class RetrofitManger {
 
         val call = iRetrofit?.searchPhotos(searchTerm = term) ?: return
 
-        call.enqueue(object : retrofit2.Callback<JsonElement>{
+        call.enqueue(object : retrofit2.Callback<JsonElement> {
             override fun onResponse(call: Call<JsonElement>, response: Response<JsonElement>) {
                 Log.d(TAG, "Retrofit - onResponse() called / response : ${response.body()}")
-                completion(RESPONSE_STATE.OKAY, response.body().toString())
+
+                when (response.code()) {
+                    200 -> {
+                        response.body()?.let {
+                            var parsedPhotoDataArray = ArrayList<Photo>()
+                            val body = it.asJsonObject
+                            val results = body.getAsJsonArray("results")
+                            val total = body.get("total").asInt
+                            Log.d(TAG, "RetrofitManager - onReponse() called / total: $total")
+                            results.forEach { resultItem ->
+                                val resultItemObject = resultItem.asJsonObject
+                                val user = resultItemObject.get("user").asJsonObject
+                            }
+                        }
+                        completion(RESPONSE_STATE.OKAY, response.body().toString())
+                    }
+                }
             }
 
             override fun onFailure(call: Call<JsonElement>, t: Throwable) {

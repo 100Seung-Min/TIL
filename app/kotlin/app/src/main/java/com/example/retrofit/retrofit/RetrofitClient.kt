@@ -1,6 +1,10 @@
 package com.example.retrofit.retrofit
 
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
+import android.widget.Toast
+import com.example.retrofit.App
 import com.example.retrofit.utils.API
 import com.example.retrofit.utils.Constants.TAG
 import com.example.retrofit.utils.isJsonArray
@@ -13,6 +17,7 @@ import org.json.JSONObject
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.Exception
+import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
     private var retrofitClient: Retrofit? = null
@@ -22,7 +27,6 @@ object RetrofitClient {
     fun getClient(baseUrl: String):Retrofit? {
         Log.d(TAG, "RetrofitClient - getClient() called")
 
-        //
         //okhttp 인스턴스 생성
         val client = OkHttpClient.Builder()
 
@@ -73,11 +77,23 @@ object RetrofitClient {
                     .method(originalRequest.method, originalRequest.body)
                     .build()
 
-                return chain.proceed(finalRequest)
+                val response: Response = chain.proceed(finalRequest)
+
+                if(response.code != 200){
+                    Handler(Looper.getMainLooper()).post{
+                        Toast.makeText(App.instance, "${response.code} 에러 입니다.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                return response
             }
 
         })
         client.addInterceptor(baseParameterInterceptor)
+
+        client.connectTimeout(10, TimeUnit.SECONDS)
+        client.readTimeout(10, TimeUnit.SECONDS)
+        client.writeTimeout(10, TimeUnit.SECONDS)
+        client.retryOnConnectionFailure(true)
 
 
         //레트로핏 빌더를 통해 인스턴스 생성

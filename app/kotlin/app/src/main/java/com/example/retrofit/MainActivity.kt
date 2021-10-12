@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
        mbinding.btnSearch.setOnClickListener {
            Log.d(TAG, "MainActivity -검색버튼이 클릭되었다. / currentSearchType : $currentSearchType")
            this.handleSearchButtonUi()
-            RetrofitManger.instance.searchPhotos(searchTerm = mbinding.searchTermEditText.toString(), completion = {
+            RetrofitManger.instance.searchPhotos(searchTerm = mbinding.searchTermEditText.text.toString(), completion = {
                 reponseState, responseBody ->
                 when(reponseState){
                     RESPONSE_STATE.OKAY -> {
