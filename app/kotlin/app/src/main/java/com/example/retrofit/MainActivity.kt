@@ -1,19 +1,17 @@
 package com.example.retrofit
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import com.example.retrofit.databinding.ActivityMainBinding
 import com.example.retrofit.retrofit.RetrofitManger
-import com.example.retrofit.utils.Constants
 import com.example.retrofit.utils.Constants.TAG
-import com.example.retrofit.utils.RESPONSE_STATE
+import com.example.retrofit.utils.RESPONSE_STATUS
 import com.example.retrofit.utils.SEARCH_TYPE
 
 class MainActivity : AppCompatActivity() {
@@ -67,21 +65,38 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
+        //검색 버튼 클릭시
        mbinding.btnSearch.setOnClickListener {
            Log.d(TAG, "MainActivity -검색버튼이 클릭되었다. / currentSearchType : $currentSearchType")
+
+           val userSearchInput = mbinding.searchTermEditText.text.toString()
+
            this.handleSearchButtonUi()
+
+           //검색 api 호출
             RetrofitManger.instance.searchPhotos(searchTerm = mbinding.searchTermEditText.text.toString(), completion = {
-                reponseState, responseBody ->
+                reponseState, responseDataArrayList ->
                 when(reponseState){
-                    RESPONSE_STATE.OKAY -> {
-                        Log.d(TAG, "api 호출 성공 : ${responseBody}")
+                    RESPONSE_STATUS.OKAY -> {
+                        Log.d(TAG, "api 호출 성공 : ${responseDataArrayList?.size}")
+                        val intent = Intent(this, PhotoCollectionActivity::class.java)
+                        val bundle = Bundle()
+                        bundle.putSerializable("photo_array_list", responseDataArrayList)
+                        intent.putExtra("array_bundle", bundle)
+                        intent.putExtra("search_term", userSearchInput)
+                        startActivity(intent)
                     }
-                    RESPONSE_STATE.FAIL -> {
+                    RESPONSE_STATUS.FAIL -> {
                         Toast.makeText(this, "api 호출 에러", Toast.LENGTH_SHORT).show()
-                        Log.d(TAG, "api 호출 실패 : ${responseBody}")
+                        Log.d(TAG, "api 호출 실패 : ${responseDataArrayList}")
+                    }
+                    RESPONSE_STATUS.NO_CONTENT -> {
+                        Toast.makeText(this, "검색결과가 없습니다.", Toast.LENGTH_SHORT).show()
                     }
                 }
+                mbinding.btnProgress.visibility = View.INVISIBLE
+                mbinding.btnSearch.text = "검색"
+                mbinding.searchTermEditText.setText("")
             })
         }
     } //onCreate
