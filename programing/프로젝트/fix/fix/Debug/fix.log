@@ -1,0 +1,6 @@
+﻿  소스.c
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\fix\fix\소스.c(22,29): warning C4133: '=': 'node *'과(와) 'listnode *' 사이의 형식이 호환되지 않습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\fix\fix\소스.c(23,29): warning C4133: '=': 'node *'과(와) 'listnode *' 사이의 형식이 호환되지 않습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\fix\fix\소스.c(24,26): warning C4133: '=': 'listnode *'과(와) 'node *' 사이의 형식이 호환되지 않습니다.
+C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\fix\fix\소스.c(33,26): warning C4133: '=': 'listnode *'과(와) 'node *' 사이의 형식이 호환되지 않습니다.
+  fix.vcxproj -> C:\Users\user\Documents\GitHub\TIL\programing\프로젝트\fix\Debug\fix.exe
