@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Test04 {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
-		char com = (char)((int)(Math.random() * 36 + 65));
+		char com = (char)((int)(Math.random() * 26 + 65));
 		int cnt = 0;
 		while(true) {
 			cnt++;

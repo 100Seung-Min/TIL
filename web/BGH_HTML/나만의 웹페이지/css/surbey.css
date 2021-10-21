@@ -36,3 +36,70 @@
 a {
   text-decoration: none;
 }
+
+footer{
+  margin-left: 30px;
+  text-align: center;
+  font-size: 1rem;
+}
+footer a{
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+#surbey{
+  width: 600px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  margin-top: 70px;
+}
+
+input{
+  width: 600px;
+  background-color: #0bd;
+  border: 1.6px solid black;
+}
+
+#buy_item{
+  height: 60px;
+  background-color: #0bd;
+  border: 1.6px solid black;
+}
+
+#age{
+  height: 30px;
+}
+
+#name{
+  height: 30px;
+}
+
+#add_item{
+  height: 90px;
+}
+
+#favorite{
+  height: 30px;
+}
+
+#location {
+  padding: 4% 0;
+}
+
+#location .wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+
+#location-info {
+  width: 22%;
+}
+
+#location-info p {
+  padding: 12px 10px;
+  color: #432;
+}
+
+#location-map {
+  width: 74%;
+}

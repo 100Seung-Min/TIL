@@ -35,25 +35,17 @@
 }
 
 
-
-
-
-.promotion{
-  margin: 0 auto;
-  width: 800px;
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
-#promotion .wrapper{
-  display: flex;
-  justify-content: space-between;
-}
-
-td{
+.item p{
   text-align: center;
 }
 
-caption {
-  font-size: 2rem;
+.item img{
+  max-width: 100%;
 }
 
 #location {
@@ -79,4 +71,13 @@ caption {
 }
 a {
   text-decoration: none;
+}
+footer{
+  margin-left: 30px;
+  text-align: center;
+  font-size: 1rem;
+}
+footer a{
+  margin-right: 10px;
+  margin-left: 10px;
 }

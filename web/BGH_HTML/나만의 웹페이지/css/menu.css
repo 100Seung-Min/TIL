@@ -36,3 +36,92 @@
 a {
   text-decoration: none;
 }
+
+footer{
+  margin-left: 30px;
+  text-align: center;
+  font-size: 1rem;
+}
+footer a{
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.searchbox{
+  width: 90%;
+  margin: 10px auto;
+}
+.head{
+  background: rgb(103, 163, 103);
+  overflow: hidden;
+  padding: 20px;
+  text-align: center;
+}
+.head h1{
+  text-transform: uppercase;
+  color: white;
+  margin: 0;
+  margin-bottom: 8px;
+}
+#value{
+  border: none;
+  background: rgb(29, 99, 29);
+  padding: 6px;
+  font-size: 18px;
+  width: 80%;
+  border-radius: 6px;
+  color: white;
+}
+#value:focus{
+  outline: none;
+}
+#value::placeholder{
+  color: white;
+}
+.container{
+  background: #FFFFF5;
+  padding: 1%;
+}
+.item{
+  margin: 3% 0px;
+  display: flex;
+  align-items: center;
+}
+.icon{
+  width: 25px;
+  height: 25px;
+  background:rgb(226, 200, 55);
+  color: black;
+  font-size: 15px;
+  text-align: center;
+  line-height: 25px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+.name{
+  font-size: 17px;
+  font-weight: 470;
+  color: #333;
+}
+
+#location {
+  padding: 4% 0;
+}
+
+#location .wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+
+#location-info {
+  width: 22%;
+}
+
+#location-info p {
+  padding: 12px 10px;
+  color: #432;
+}
+
+#location-map {
+  width: 74%;
+}
