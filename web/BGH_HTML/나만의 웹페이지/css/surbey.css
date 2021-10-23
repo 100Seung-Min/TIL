@@ -58,12 +58,14 @@ input{
   width: 600px;
   background-color: #0bd;
   border: 1.6px solid black;
+  border-radius: 10px
 }
 
 #buy_item{
   height: 60px;
   background-color: #0bd;
   border: 1.6px solid black;
+  border-radius: 10px
 }
 
 #age{
