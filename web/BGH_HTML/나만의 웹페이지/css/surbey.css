@@ -47,11 +47,20 @@ footer a{
   margin-left: 10px;
 }
 
-#surbey{
+#surbey_item{
+  margin: 0 auto;
   width: 600px;
+}
+
+#surbey{
+  width: 800px;
   margin: 0 auto;
   margin-bottom: 50px;
   margin-top: 70px;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 input{
@@ -77,11 +86,19 @@ input{
 }
 
 #add_item{
-  height: 90px;
+  height: 60px;
+  background-color: #0bd;
+  border: 1.6px solid black;
+  border-radius: 10px
 }
 
 #favorite{
   height: 30px;
+}
+
+#submit{
+  text-align: center;
+  margin-top: 20px;
 }
 
 #location {
