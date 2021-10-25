@@ -71,6 +71,7 @@ input{
 }
 
 #buy_item{
+  resize: none;
   height: 60px;
   background-color: #0bd;
   border: 1.6px solid black;
@@ -86,6 +87,7 @@ input{
 }
 
 #add_item{
+  resize: none;
   height: 60px;
   background-color: #0bd;
   border: 1.6px solid black;
@@ -97,8 +99,17 @@ input{
 }
 
 #submit{
-  text-align: center;
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+#submit_btn{
+  width: 150px;
+  background-color: #0bd;
+  border: 1px solid black;
+  border-radius: 10px;
+  font-size: 1rem;
 }
 
 #location {

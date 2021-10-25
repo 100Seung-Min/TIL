@@ -23,10 +23,11 @@ void insert_node(int data) {
 }
 void print_node() {
     node* temp = head;
-    while (tail->rlink != NULL)
+    printf("%d\n", temp->data);
+    while (temp != tail)
     {
-        printf("%d\n", temp->data);
         temp = temp->rlink;
+        printf("%d\n", temp->data);
     }
 }
 void delete_node(int index) {
@@ -40,9 +41,10 @@ void delete_node(int index) {
         head->llink = NULL;
     }
     else {
-
+        de = p->rlink;
+        p->rlink = p->rlink->rlink;
+        p->rlink->llink = p;
     }
-    printf("%d", head->data);
     free(de);
 }
 int main() {

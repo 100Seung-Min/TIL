@@ -40,6 +40,14 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
+.item:nth-child(1){
+  grid-column: 1 / span 2;
+}
+
+.item:nth-child(5){
+  grid-column: 1 / span 2;
+}
+
 .item p{
   text-align: center;
 }
