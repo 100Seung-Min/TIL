@@ -24,7 +24,7 @@ class MyAnimal{
 	void sleep() {
 		System.out.println("ÄðÄð");
 	}
-	
+		
 	void sound() {
 		System.out.println("--");
 	}
