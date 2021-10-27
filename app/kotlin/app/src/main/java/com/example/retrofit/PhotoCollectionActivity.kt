@@ -8,6 +8,7 @@ import android.text.InputFilter
 import android.util.Log
 import android.view.Menu
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.SearchView
@@ -92,6 +93,10 @@ class PhotoCollectionActivity:AppCompatActivity(),SearchView.OnQueryTextListener
     //검색어 입력 이벤트
     override fun onQueryTextSubmit(query: String?): Boolean {
         Log.d(TAG, "PhotoCollectionActivity - onQueryTextSubmit() called / query : $query")
+        val userInputText = query ?: ""
+        if(userInputText.count() == 12){
+            Toast.makeText(this, "검색어는 12자 까지만 입력 가능합니다.", Toast.LENGTH_SHORT).show()
+        }
         return true
     }
 }
