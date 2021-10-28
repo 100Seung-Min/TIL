@@ -3,8 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/user/Documents/GitHub/TIL/app/kotlin/app/src/main/res/layout/activity_main.xml" value="0.10790273556231003" />
-        <entry key="..\:/Users/user/Documents/GitHub/TIL/app/kotlin/app/src/main/res/layout/activity_photo_collection.xml" value="0.1" />
+        <entry key="..\:/Users/user/Documents/GitHub/TIL/app/app/src/main/res/layout/activity_main.xml" value="0.12335359675785208" />
+        <entry key="..\:/Users/user/Documents/GitHub/TIL/app/app/src/main/res/layout/fragment_main.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/user/Documents/GitHub/TIL/app/app/src/main/res/layout/todo_item.xml" value="0.176" />
       </map>
     </option>
   </component>

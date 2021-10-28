@@ -32,7 +32,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="사진검색"
+                android:textSize="14sp"
                 android:checked="true"
+                android:theme="@style/MyRadioBtn"
                 android:layout_marginEnd="20dp"
                 />
             <com.google.android.material.radiobutton.MaterialRadioButton
@@ -40,6 +42,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="사용자 검색"
+                android:textSize="14sp"
+                android:theme="@style/MyRadioBtn"
                 android:checked="false"
                 />
         </RadioGroup>
@@ -67,11 +71,12 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <FrameLayout
-            android:id="@+id/frame_search_content"
-            android:layout_height="wrap_content"
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:visibility="invisible">
+            android:id="@+id/frame_search_content"
+            android:visibility="visible">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_search"
@@ -82,17 +87,21 @@
                 android:textAlignment="center"
                 android:text="검색"
                 android:textStyle="bold"
-                android:clickable="true" />
+                android:clickable="true"
+                />
+
+            <!-- 어느정도 진행되는지 보여주는 -->
             <ProgressBar
                 android:id="@+id/btn_progress"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_gravity="center"
-                android:visibility="invisible"
                 android:indeterminateTint="#fff"
+                android:visibility="invisible"
                 />
-        </FrameLayout>
 
+
+        </FrameLayout>
 
 
     </LinearLayout>

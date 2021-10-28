@@ -10,4 +10,10 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    
+    <style name="MyRadioBtn" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="colorControlNormal">@color/colorLightGray</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="android:colorControlHighlight">@color/colorLightPink</item>
+    </style>
 </resources>

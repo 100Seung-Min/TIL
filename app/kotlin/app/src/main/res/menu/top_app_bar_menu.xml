@@ -7,7 +7,7 @@
         android:icon="@drawable/ic_baseline_search_24"
         android:title="검색"
         android:contentDescription="사진을 검색함 ㅇㅇ"
-        app:showAsAction="ifRoom"
+        app:showAsAction="ifRoom|collapseActionView"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
 
     <item

@@ -7,10 +7,10 @@ import android.os.Bundle
 import android.text.InputFilter
 import android.util.Log
 import android.view.Menu
+import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.retrofit.databinding.ActivityPhotoCollectionBinding
@@ -67,9 +67,11 @@ class PhotoCollectionActivity:AppCompatActivity(),SearchView.OnQueryTextListener
                 when(hasExpaned){
                     true -> {
                         Log.d(TAG, "서치뷰 열림")
+                        binding.linearSearchHistoryView.visibility = View.VISIBLE
                     }
                     false -> {
                         Log.d(TAG, "서치뷰 닫힘")
+                        binding.linearSearchHistoryView.visibility = View.INVISIBLE
                     }
                 }
             }
@@ -87,6 +89,12 @@ class PhotoCollectionActivity:AppCompatActivity(),SearchView.OnQueryTextListener
 
     override fun onQueryTextChange(newText: String?): Boolean {
         Log.d(TAG, "PhotoCollectionActivity onQueryTextChange() called / query: $newText")
+        if(!newText.isNullOrEmpty()){
+            this.binding.topAppBar.title = newText
+        }
+        this.mySearchView.setQuery("", false)
+        this.mySearchView.clearFocus()
+        this.binding.topAppBar.collapseActionView()
         return true
     }
 
