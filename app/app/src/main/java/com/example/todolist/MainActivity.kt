@@ -22,10 +22,6 @@ class MainActivity : AppCompatActivity() {
         binding.saveBtn.setOnClickListener {
             Toast.makeText(this, "추가되었습니다.", Toast.LENGTH_SHORT).show()
         }
-        findViewById<RecyclerView>(R.id.recyclerview).apply {
-            val adapter = NoteAdapter(itemlist, context)
-            this.adapter = adapter
-            this.layoutManager = LinearLayoutManager(context)
-        }
+        findViewById<RecyclerView>(R.id.recyclerview).adapter = NoteAdapter(itemlist)
     }
 }

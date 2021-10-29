@@ -1,21 +1,19 @@
 package com.example.todolist.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.R
 import com.example.todolist.data.Note
 
-class NoteAdapter(val itemlist: ArrayList<Note>, val context: Context): RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
+class NoteAdapter(val itemlist: ArrayList<Note>): RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
     class ViewHolder(v: View): RecyclerView.ViewHolder(v){
-        fun bind(item: Note, context: Context){
+        fun bind(item: Note){
             itemView.findViewById<Button>(R.id.delete_btn).setOnClickListener {
-                Toast.makeText(context, "클릭", Toast.LENGTH_SHORT).show()
+                Toast.makeText(itemView.context, "클릭", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -26,7 +24,7 @@ class NoteAdapter(val itemlist: ArrayList<Note>, val context: Context): Recycler
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(itemlist[position], context)
+        holder.bind(itemlist[position])
     }
 
     override fun getItemCount(): Int {
