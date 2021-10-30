@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.R
@@ -15,11 +16,13 @@ class NoteAdapter(val itemlist: ArrayList<Note>): RecyclerView.Adapter<NoteAdapt
             itemView.findViewById<Button>(R.id.delete_btn).setOnClickListener {
                 Toast.makeText(itemView.context, "클릭", Toast.LENGTH_SHORT).show()
             }
+            itemView.findViewById<CheckBox>(R.id.checkbox).text = item.todo
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.todo_item, parent, false)
+        println("오류")
         return NoteAdapter.ViewHolder(view)
     }
 

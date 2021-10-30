@@ -11,7 +11,6 @@ import com.example.todolist.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     val binding by lazy { ActivityMainBinding.inflate(layoutInflater)}
-    var itemlist: ArrayList<Note> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +21,5 @@ class MainActivity : AppCompatActivity() {
         binding.saveBtn.setOnClickListener {
             Toast.makeText(this, "추가되었습니다.", Toast.LENGTH_SHORT).show()
         }
-        findViewById<RecyclerView>(R.id.recyclerview).adapter = NoteAdapter(itemlist)
     }
 }
