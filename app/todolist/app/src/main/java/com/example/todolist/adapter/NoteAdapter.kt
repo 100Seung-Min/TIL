@@ -13,16 +13,12 @@ import com.example.todolist.data.Note
 class NoteAdapter(val itemlist: ArrayList<Note>): RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
     class ViewHolder(v: View): RecyclerView.ViewHolder(v){
         fun bind(item: Note){
-            itemView.findViewById<Button>(R.id.delete_btn).setOnClickListener {
-                Toast.makeText(itemView.context, "클릭", Toast.LENGTH_SHORT).show()
-            }
             itemView.findViewById<CheckBox>(R.id.checkbox).text = item.todo
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.todo_item, parent, false)
-        println("오류")
         return NoteAdapter.ViewHolder(view)
     }
 

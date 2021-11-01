@@ -50,7 +50,6 @@ object RetrofitClient {
                     }
                 }
             }
-
         })
 
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
