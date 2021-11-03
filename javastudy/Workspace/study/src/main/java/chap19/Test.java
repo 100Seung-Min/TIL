@@ -1,16 +1,12 @@
 package chap19;
 
 public class Test {
-	static double radious;
-	static double findArea() {
-		return 3.14*radious*radious;
-	}
-	static void show(double x, double y) {
-		System.out.printf("¹ÝÁö¸§ = %.1f, ³ÐÀÌ = %.1f\n",x,y );
-	}
 	public static void main(String[] args) {
-		radious = 10;
-		double area = findArea();
-		show(radious, area);
+		byte a = 0b1111;
+		System.out.println((int)a);
+		int b = 0xF;
+		System.out.println(b);
+		int c = 017;
+		System.out.println(c);
 	}
 }
