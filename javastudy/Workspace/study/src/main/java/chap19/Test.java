@@ -1,22 +1,45 @@
 package chap19;
 
 public class Test {
-	static int d;
 	public static void main(String[] args) {
-		byte a = 0b1111;
-		System.out.println((int)a);
-		int b = 0xF;
-		System.out.println(b);
-		int c = 017;
-		System.out.println(c);
-		System.out.println(d);
-		String abcd = "abcd";
-		System.out.println(abcd);
-		a(abcd);
-		System.out.println(abcd);
+		Parent c = new Child();
+		
+		c.fun();
+		System.out.println(c.a);
+		String a = "abcd";
+		System.out.println(a);
+		string(a);
+		System.out.println(a);
+		
+		int[][] b = {{1,2}, {1}, {1,2,3}};
+		for(int[]d : b) {
+			System.out.println(d.length);
+		}
 	}
-	
-	static void a(String a) {
+	static void string(String a) {
 		a.concat("efgh");
 	}
+	
+	
+}
+
+class Parent{
+	int a;
+	static void fun() {
+		System.out.println("±èµ¿Çö");
+	}
+}
+
+class Child extends Parent{
+	int b;
+	
+	static void fun() {
+		System.out.println("±èÇü·Ï");
+	}
+	
+	void fun2() {
+		fun();
+		super.fun();
+	}
+	
 }
