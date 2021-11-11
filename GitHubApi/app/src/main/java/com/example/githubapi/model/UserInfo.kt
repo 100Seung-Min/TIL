@@ -8,5 +8,5 @@ data class UserInfo(
     @SerializedName("avatar_url")
     val profile_img: String,
     val followers: Int,
-    val following: Int
+    val following: Int,
 )
