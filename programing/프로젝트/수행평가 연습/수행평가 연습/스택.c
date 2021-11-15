@@ -30,29 +30,29 @@ void print_stack() {
     printf("\n");
 }
 
-int main() {
-    for (;;)
-    {
-        printf("\n\n무엇을 하시겠습니까?\n");
-        printf("1번 푸시   2번 팝    3번 출력   그외 종료\n");
-        int choose;
-        scanf_s("%d", &choose);
-        switch (choose)
-        {
-        case 1:
-            printf("데이터를 입력하세요 : ");
-            int data;
-            scanf_s("%d", &data);
-            push(data);
-            break;
-        case 2:
-            pop();
-            break;
-        case 3:
-            print_stack();
-            break;
-        default:
-            break;
-        }
-    }
-}
+//int main() {
+//    for (;;)
+//    {
+//        printf("\n\n무엇을 하시겠습니까?\n");
+//        printf("1번 푸시   2번 팝    3번 출력   그외 종료\n");
+//        int choose;
+//        scanf_s("%d", &choose);
+//        switch (choose)
+//        {
+//        case 1:
+//            printf("데이터를 입력하세요 : ");
+//            int data;
+//            scanf_s("%d", &data);
+//            push(data);
+//            break;
+//        case 2:
+//            pop();
+//            break;
+//        case 3:
+//            print_stack();
+//            break;
+//        default:
+//            break;
+//        }
+//    }
+//}
