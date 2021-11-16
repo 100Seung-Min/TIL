@@ -6,6 +6,9 @@ public class Interface2 {
 		System.out.println(c.sum(2, 1));
 		c.print();
 		System.out.println(c.PI);
+		Student s = new  Student();
+		s.number = "한글입니다";
+		System.out.println(s.number);
 	}
 }
 
@@ -31,5 +34,13 @@ class RealCal implements Calculable, Printable{
 	
 	public void print() {
 		System.out.println("This is RealCal!");
+	}
+}
+
+class Student<N>{
+	N number;
+	
+	public static <N> N[] hello(N[] in) {
+		return in;
 	}
 }
