@@ -1,5 +1,7 @@
 package chap19;
 
+import java.util.Scanner;
+
 public class Interface2 {
 	public static void main(String[] args) {
 		RealCal c = new RealCal();
@@ -9,6 +11,8 @@ public class Interface2 {
 		Student s = new  Student();
 		s.number = "한글입니다";
 		System.out.println(s.number);
+		Scanner in = new Scanner(System.in);
+		in.nextLine();
 	}
 }
 

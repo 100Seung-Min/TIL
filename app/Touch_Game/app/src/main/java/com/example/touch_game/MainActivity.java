@@ -10,7 +10,7 @@ import com.example.touch_game.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
-    int count = 10;
+    int count = 1000;
     int power = 1;
 
     @Override
