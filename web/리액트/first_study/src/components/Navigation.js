@@ -1,7 +1,14 @@
 import React, {Component} from "react";
 
 class Navigation extends Component{
+  shouldComponentUpdate(newProps, newState){
+    if(this.props.data === newProps.data){
+      return false;
+    }
+    return true;
+  }
   render(){
+    console.log("호출");
     let lists = [];
     let data = this.props.data;
     let i = 0;
