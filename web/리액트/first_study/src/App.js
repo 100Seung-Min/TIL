@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import './App.css';
 import Navigation from './components/Navigation';
 import Subject from './components/Subject';
-import Article from './components/Article';
+import ReadArticle from './components/ReadArticle';
+import Control from './components/Control';
+import CreateArticle from './components/CreateArticle';
 
 class App extends Component {
 
@@ -22,14 +24,20 @@ class App extends Component {
   }
 
   render() {
-    let _title, _desc = null;
+    let _title, _desc, _article = null;
     if(this.state.mode === 'welcome'){
       _title = this.state.welcome.title;
       _desc = this.state.welcome.desc;
+      _article = <ReadArticle title={_title} desc={_desc}></ReadArticle>;
     } else if(this.state.mode === 'read'){
       _title = this.state.contents[this.state.selected_content_id - 1].title;
       _desc = this.state.contents[this.state.selected_content_id - 1].desc;
-    }
+      _article = <ReadArticle title={_title} desc={_desc}></ReadArticle>;
+    } else if(this.state.mode === 'create'){
+      _article = <CreateArticle></CreateArticle>
+    } else if(this.state.mode === 'update'){
+      _article = <CreateArticle></CreateArticle>
+    } 
     return (
       <div className="App">
         <Subject 
@@ -50,9 +58,13 @@ class App extends Component {
           })
         }.bind(this)}></Navigation>
 
-        <Article 
-        title={_title} 
-        desc={_desc}></Article>
+        <Control onChangeMode={function(_mode){
+          this.setState({
+            mode:_mode
+          })
+        }.bind(this)}></Control>
+
+       {_article}
       </div>
     );
   }
