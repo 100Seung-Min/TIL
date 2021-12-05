@@ -10,6 +10,7 @@ class App extends Component {
 
   constructor(props){
     super(props);
+    this.max_contents_id = 3;
     this.state = {
       mode:'welcome',
       selected_content_id:2,
@@ -34,10 +35,16 @@ class App extends Component {
       _desc = this.state.contents[this.state.selected_content_id - 1].desc;
       _article = <ReadArticle title={_title} desc={_desc}></ReadArticle>;
     } else if(this.state.mode === 'create'){
-      _article = <CreateArticle></CreateArticle>
-    } else if(this.state.mode === 'update'){
-      _article = <CreateArticle></CreateArticle>
-    } 
+      _article = <CreateArticle onSubmit={function(_title, _desc){
+        this.max_contents_id += 1;
+        this.state.contents.push(
+          {id:this.max_content_id, title: _title, desc: _desc}
+        );
+        this.setState({
+          contents: this.state.contents
+        });
+      }}></CreateArticle>
+    }
     return (
       <div className="App">
         <Subject 
@@ -65,6 +72,7 @@ class App extends Component {
         }.bind(this)}></Control>
 
        {_article}
+
       </div>
     );
   }
