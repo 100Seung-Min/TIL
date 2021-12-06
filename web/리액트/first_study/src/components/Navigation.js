@@ -8,7 +8,6 @@ class Navigation extends Component{
     return true;
   }
   render(){
-    console.log("호출");
     let lists = [];
     let data = this.props.data;
     let i = 0;
