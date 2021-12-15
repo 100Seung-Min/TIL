@@ -5,20 +5,30 @@ const Canvas = () => {
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
 
-  var x;
-  var y;
-
+  let list = new Array(20);
+  for(let i = 0; i < 20; i++){
+    list[i] = new Array(100).fill(0)
+  }
   const [ctx, setCtx] = useState();
   const [isDrawing, setIsDrawing] = useState(false);
+  const [x, setX] = useState(0);
+  const[y, setY] = useState(0);
+  const[map, setMap] = useState(list);
+
+  const[height, setHeight] = useState();
+  const[width, setWidth] = useState();
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    
     canvas.height = (window.innerHeight - 300) * 2;
     canvas.width = (window.innerWidth - 100) * 0.85;
+    setHeight(canvas.height);
+    setWidth(canvas.width);
 
     const context = canvas.getContext("2d");
-    context.strokeStyle = "red";
-    context.lineWidth = 10;
+    // context.strokeStyle = "red";
+    // context.lineWidth = 10;
     contextRef.current = context;
 
     setCtx(contextRef.current);
@@ -34,17 +44,16 @@ const Canvas = () => {
 
   const drawing = ({nativeEvent}) => {
     let {offsetX, offsetY} = nativeEvent;
-    x = 100 / ((window.innerWidth - 100) * 0.85) * offsetX;
-    y = 100 / ((window.innerHeight - 300) * 2) * offsetY;
-    console.log("x좌표", x, " y좌표", y)
+    setX(Math.floor(100 / ((window.innerWidth - 100) * 0.85) * offsetX));
+    setY(Math.floor(100 / ((window.innerHeight - 300) * 2) * offsetY));
     if(ctx){
-      if(!isDrawing){
-        ctx.beginPath();
-        ctx.moveTo(offsetX, offsetY);
-      } else{
-        ctx.lineTo(offsetX, offsetY);
-        ctx.stroke();
-      }
+    //   if(!isDrawing){
+    //     ctx.beginPath();
+    //     ctx.moveTo(offsetX, offsetY);
+    //   } else{
+    //     ctx.lineTo(offsetX, offsetY);
+    //     ctx.stroke();
+    //   }
     }
   };
 
@@ -60,7 +69,7 @@ const Canvas = () => {
        onMouseMove={drawing}
        onMouseLeave={finishDrawing}>
        </canvas>
-       <Block x={x} y={y}></Block>
+       <Block x={x} y={y} isDrawing={isDrawing} map={map} width={width} height={height}></Block>
     </div>
   );
 }

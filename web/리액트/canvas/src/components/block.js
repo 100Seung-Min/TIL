@@ -2,18 +2,35 @@ import React from "react";
 
 const Block = (props) => {
 
-  console.log(props.x, props.y)
   let i;
+  let j;
   let list = [];
-  for(i = 0;i < 2000; i++){
-    if(i % 100 === 0 && i !== 0){
+
+  if(props.isDrawing === true){
+    props.map[Math.floor(props.y / 5)][props.x] = 1
+  }
+
+  console.log(props.x, props.y)
+
+
+  for(i = 0;i < 20; i++){
+    if(i !== 0){
       list.push(
         <tr></tr>
       )
     }
-    list.push(
-      <td style={{border: "1px solid black", width: ((window.innerWidth - 100) * 0.85 / 100) - 1, height: ((window.innerHeight - 300) / 10) - 1, padding: "0px"}}></td>
-    )
+    for(j = 0; j < 100; j++){
+      if(props.map[i][j] === 1){
+        list.push(
+          <td style={{border: "1px solid black", width: (props.width / 100) - 1, height: ((props.height / 10) - 1) / 2, padding: "0px", backgroundColor: "black"}}></td>
+        )
+      }
+      else{
+        list.push(
+          <td style={{border: "1px solid black", width: (props.width / 100) - 1, height: ((props.height / 10) - 1) / 2, padding: "0px"}}></td>
+        )
+      }
+    }
   }
   return(
     <div>
