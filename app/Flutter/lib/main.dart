@@ -12,7 +12,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(),
-        body: Container(),
+        body: Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+               Icon(Icons.star),
+              Icon(Icons.star)
+            ],
+          )
+        ),
         bottomNavigationBar: BottomAppBar(),
       )
     );
