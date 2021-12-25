@@ -20,7 +20,12 @@ class MyApp extends StatelessWidget {
               color: Colors.blue,
             ),
             margin: EdgeInsets.fromLTRB(20,20,20,20), padding: EdgeInsets.fromLTRB(20,20,20,20 ),
-            child: Text("이것은 앱입니다"),
+            child: Row(
+              children: [
+                Text("이것은 앱입니다", style: TextStyle(color: Colors.red),),
+                ElevatedButton(child: Text('버튼'), onPressed: (){})
+              ],
+            ),
           ),
         )
       )
