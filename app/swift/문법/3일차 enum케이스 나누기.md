@@ -76,6 +76,6 @@ enum SchoolDetail{
   }
 }
 
-let yourMidlleSchoolName = SchoolDetail.middle("영암중학교")
+let yourMidlleSchoolName = SchoolDetail.middle(name: "영암중학교")
 print("yourMidlleSchoolName : \(yourMidlleSchoolName.getName())")
 ```
