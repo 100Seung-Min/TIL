@@ -10,6 +10,7 @@
 </head>
 <body>
 <%
+request.setCharacterEncoding("UTF-8");
 Connection conn = null;
 Statement stmt = null;
 String mode = request.getParameter("mode");
@@ -34,16 +35,6 @@ try{
 											"TO_DATE('" + joindate + "', 'yyyy-MM-dd'), " +
 											"'" + grade + "', " + 
 											"'" + city + "')";
-		/*
-		sql = "INSERT INTO member_tbl VALUES(?, ?, ?, ?, TO_DATE(?, 'yyyy-MM-dd'), ?, ?)";
-		stmt = conn.prepareStatement(sql);
-		stmt.setString(1, custno);
-		stmt.setString(2, custname);
-		stmt.setString(3, phone);
-		stmt.setString(4, address);
-		stmt.setString(5, joindate);
-		stmt.setString(6, grade);
-		stmt.setString(7, city);*/
 		stmt.executeUpdate(sql);
 		
 %>
@@ -59,6 +50,7 @@ try{
 				"grade = '" + grade + "', " + 
 				"city = '" + city + "' " + 
 				"WHERE custno = " + custno;
+		System.out.println(sql);
 		stmt.executeUpdate(sql);
 %>
 <jsp:forward page="modify.jsp"></jsp:forward>
