@@ -21,12 +21,17 @@ print("값 넣은 후 devBaek: \(devBaek.name)")
 
 ### 2. class 클래스
 ```swift
-struct YoutuberStruct {
+class YoutuberClass {
   var name: String
   var subcribersCount: Int
+
+  init(_ name: String, _ subcribersCount: Int){
+    self.name = name
+    self.subcribersCount = subcribersCount
+  }
 }
 
-var devBaek = YoutuberStruct(name: "백승민", subcribersCount: 99999)
+var devBaek = YoutuberClass( "백승민", 9999)
 
 var devBaekClone = devBaek
 

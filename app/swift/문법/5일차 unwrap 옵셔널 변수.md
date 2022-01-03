@@ -7,7 +7,7 @@
 ```swift
 var someVariable: Int? = nil
 
-if some Variable == nill {
+if someVariable == nill {
   somVariable = 90
 }
 ```
