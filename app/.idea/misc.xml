@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/user/Documents/GitHub/TIL/app/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/user/Documents/GitHub/TIL/app/app/src/main/res/layout/fragment_detail.xml" value="0.264" />
+        <entry key="..\:/Users/user/Documents/GitHub/TIL/app/app/src/main/res/layout/fragment_search.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/user/Documents/GitHub/TIL/app/app/src/main/res/layout/item_repository.xml" value="0.25364583333333335" />
       </map>
     </option>
   </component>

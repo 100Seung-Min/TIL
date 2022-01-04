@@ -2,8 +2,7 @@ package com.example.studymvvm.data.model
 
 import android.content.Context
 import android.text.TextUtils
-import android.text.format.DateUtils
-import com.example.studymvvm.R
+import com.example.studymvvm.ui.model.RepoItem
 import com.google.gson.annotations.SerializedName
 import java.lang.IllegalArgumentException
 
@@ -40,19 +39,19 @@ fun RepoModel.mapToPresentation(context: Context) = RepoItem(
     ),
 
     description = if(TextUtils.isEmpty(description))
-        "설명이 없습니다"
+        "Description"
     else
         description,
 
     language = if(TextUtils.isEmpty(language))
-        "언어가 없습니다"
+        "Language"
     else
         language,
 
     updatedAt = try{
-        updatedAt
+        com.example.studymvvm.utils.DateUtils.dateFormatToShow.format(updatedAt)
     } catch (e: IllegalArgumentException){
-        "알 수 없음"
+        "Unknown"
     },
 
     stars = stars.toString()

@@ -1,6 +1,7 @@
 package com.example.studymvvm.data.model
 
 import android.content.Context
+import com.example.studymvvm.ui.model.UserItem
 import com.google.gson.annotations.SerializedName
 
 data class UserModel(
@@ -38,10 +39,10 @@ data class UserModel(
 
 fun UserModel.mapToView(context: Context) = UserItem(
     followers = followers.let{
-        if(it > 100) "99" else it.toString()
+        if(it > 100) "99+" else "followers : ${it}"
     },
 
     following = following.let{
-        if(it > 100) "99" else it.toString()
+        if(it > 100) "99+" else "following : ${it}"
     }
 )

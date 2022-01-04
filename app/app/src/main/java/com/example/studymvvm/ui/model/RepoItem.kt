@@ -1,4 +1,4 @@
-package com.example.studymvvm.data.model
+package com.example.studymvvm.ui.model
 
 data class RepoItem(
     val title: String,

@@ -24,6 +24,10 @@ object ApiProvider {
     }.build()
 
     private fun getLoggingIntercepter() = HttpLoggingInterceptor().apply {
-
+        level = HttpLoggingInterceptor.Level.BODY
     }
+
+    fun provideRepoApi(): RepoApi = getRetrofitBuilder().create(RepoApi::class.java)
+
+    fun provideUserApi(): UserApi = getRetrofitBuilder().create(UserApi::class.java)
 }
