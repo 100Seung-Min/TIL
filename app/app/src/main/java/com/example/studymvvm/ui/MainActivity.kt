@@ -27,7 +27,7 @@ class MainActivity: AppCompatActivity() {
     fun goToDetailFragment(ownerName: String, repoName: String){
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.lylFragmentContainer, DetailFragment.newInstance(ownerName, repoName))
+            .replace(R.id.lylFragmentContainer, DetailFragment.newInstance(ownerName, repoName))
             .addToBackStack(null)
             .commit()
     }

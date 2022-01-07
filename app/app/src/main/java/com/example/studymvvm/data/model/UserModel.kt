@@ -37,7 +37,7 @@ data class UserModel(
     val profileImgUrl: String
 )
 
-fun UserModel.mapToView(context: Context) = UserItem(
+fun UserModel.mapToPresentation(context: Context) = UserItem(
     followers = followers.let{
         if(it > 100) "99+" else "followers : ${it}"
     },

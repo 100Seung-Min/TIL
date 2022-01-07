@@ -101,7 +101,7 @@ class SearchFragment: Fragment() {
 
                 override fun onFailure(call: Call<RepoSearchResponse>, t: Throwable) {
                     hideProgress()
-                    showError(t.message!!)
+                    showError(t.message)
                 }
             })
         }
@@ -123,7 +123,7 @@ class SearchFragment: Fragment() {
         binding!!.pbLoading.visibility = View.GONE
     }
 
-    private fun showError(message: String){
+    private fun showError(message: String?){
         with(binding!!.tvMessage) {
             text = message ?: "Unexpected Error"
             visibility = View.VISIBLE

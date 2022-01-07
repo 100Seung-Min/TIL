@@ -11,7 +11,7 @@ interface RepoApi {
     @GET("search/repositories")
     fun searchRepositories(@Query("q") query: String): Call<RepoSearchResponse>
 
-    @GET("repos//")
+    @GET("repos/{owner}/{name}")
     fun getRepository(
         @Path("owner") ownerLogin: String,
         @Path("name") repoName: String
