@@ -1,0 +1,16 @@
+C:\Users\user\Documents\GitHub\TIL\C#\Hello\Hello\bin\Debug\net5.0\Hello.exe
+C:\Users\user\Documents\GitHub\TIL\C#\Hello\Hello\bin\Debug\net5.0\Hello.deps.json
+C:\Users\user\Documents\GitHub\TIL\C#\Hello\Hello\bin\Debug\net5.0\Hello.runtimeconfig.json
+C:\Users\user\Documents\GitHub\TIL\C#\Hello\Hello\bin\Debug\net5.0\Hello.runtimeconfig.dev.json
+C:\Users\user\Documents\GitHub\TIL\C#\Hello\Hello\bin\Debug\net5.0\Hello.dll
+C:\Users\user\Documents\GitHub\TIL\C#\Hello\Hello\bin\Debug\net5.0\ref\Hello.dll
+C:\Users\user\Documents\GitHub\TIL\C#\Hello\Hello\bin\Debug\net5.0\Hello.pdb
+C:\Users\user\Documents\GitHub\TIL\C#\Hello\Hello\obj\Debug\net5.0\Hello.csprojAssemblyReference.cache
+C:\Users\user\Documents\GitHub\TIL\C#\Hello\Hello\obj\Debug\net5.0\Hello.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Documents\GitHub\TIL\C#\Hello\Hello\obj\Debug\net5.0\Hello.AssemblyInfoInputs.cache
+C:\Users\user\Documents\GitHub\TIL\C#\Hello\Hello\obj\Debug\net5.0\Hello.AssemblyInfo.cs
+C:\Users\user\Documents\GitHub\TIL\C#\Hello\Hello\obj\Debug\net5.0\Hello.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\GitHub\TIL\C#\Hello\Hello\obj\Debug\net5.0\Hello.dll
+C:\Users\user\Documents\GitHub\TIL\C#\Hello\Hello\obj\Debug\net5.0\ref\Hello.dll
+C:\Users\user\Documents\GitHub\TIL\C#\Hello\Hello\obj\Debug\net5.0\Hello.pdb
+C:\Users\user\Documents\GitHub\TIL\C#\Hello\Hello\obj\Debug\net5.0\Hello.genruntimeconfig.cache
