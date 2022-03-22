@@ -7,6 +7,38 @@ namespace Hello
 
     {
         enum People { 성은, 동현, 민채, 승원, 채훈, 도균, 영재};
+
+        public static void swap(ref int a, ref int b)
+        {
+            int temp = a;
+            a = b;
+            b = temp;
+        }
+
+        public static double Square(double arg)
+        {
+            return arg * arg;
+        }
+
+        class Calculator
+        {
+            public static int Plus(int a, int b)
+            {
+                return a + b;
+            }
+            public static int Minus(int a, int b)
+            {
+                return a - b;
+            }
+            public static int Multiply(int a, int b)
+            {
+                return a * b;
+            }
+            public static int Division(int a, int b)
+            {
+                return a / b;
+            }
+        }
         static void Main(string[] args)
         {
             //char a = '안';
@@ -121,24 +153,58 @@ namespace Hello
             //    WriteLine();
             //}
 
-            WriteLine("가위바위보 게임: 바위(1) 가위(2) 보(3)");
-            int user = int.Parse(ReadLine());
-            Random random = new Random();
-            int com = random.Next(1, 4);
+            //WriteLine("가위바위보 게임: 바위(1) 가위(2) 보(3)");
+            //int user = int.Parse(ReadLine());
+            //int com = new Random().Next(1,4);
 
-            switch (user - com)
-            {
-                case 0:
-                    Write("비김 {0} {1}", com, user);
-                    break;
-                case -1:
-                case 2:
-                    Write("이김 {0} {1}", com, user);
-                    break;
-                default:
-                    Write("짐 {0} {1}", com, user);
-                    break;
-            }
+            //switch (user - com)
+            //{
+            //    case 0:
+            //        Write("비김 {0} {1}", com, user);
+            //        break;
+            //    case -1:
+            //    case 2:
+            //        Write("이김 {0} {1}", com, user);
+            //        break;
+            //    default:
+            //        Write("짐 {0} {1}", com, user);
+            //        break;
+            //}
+
+            //WriteLine("숫자 입력");
+            //int a = int.Parse(ReadLine());
+            //WriteLine("숫자 입력");
+            //int b = int.Parse(ReadLine());
+            //WriteLine("기호를 숫자로 입력");
+            //WriteLine("1.더하기/ 2.빼기/ 3.곱셈/ 4.나누기");
+            //int c = int.Parse(ReadLine());
+            //switch (c)
+            //{
+            //    case 1:
+            //        WriteLine("{0}", Calculator.Plus(a, b));
+            //        break;
+            //    case 2:
+            //        WriteLine("{0}", Calculator.Minus(a, b));
+            //        break;
+            //    case 3:
+            //        WriteLine("{0}", Calculator.Multiply(a, b));
+            //        break;
+            //    case 4:
+            //        WriteLine("{0}", Calculator.Division(a, b));
+            //        break;
+            //    default:
+            //        WriteLine("허용되지 않음");
+            //        break;
+            //}
+
+            //int a = 1, b = 3;
+            //WriteLine("{0}, {1}", a, b);
+            //swap(ref a, ref b);
+            //WriteLine("{0}, {1}", a, b);
+
+            Write("숫자를 입력하세요 : ");
+            double a = double.Parse(ReadLine());
+            Write("결과 : {0}", Square(a));
         }
     }
 }
