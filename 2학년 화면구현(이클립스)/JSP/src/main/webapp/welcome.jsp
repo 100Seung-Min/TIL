@@ -1,3 +1,6 @@
+<%@page import="java.util.Date"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR" trimDirectiveWhitespaces="true"%>
 <html>
 <head>
 <title>Welcome</title>
@@ -9,24 +12,27 @@ margin: 0
 </style>
 </head>
 <body>
-<%!
-String name = "Book Market Mall";
-String welcome = "Welcome to Web Market!";
-%>
-<header style="background: black;width: 100%; height: 50px">
-<a><p style="color: white; line-height: 50px; margin-left: 10px">Home</p></a>
-</header>
+
+<%@ include file="menu.jsp" %>
+
 
 <article style="background: #e0e0e0; width: 100%; height: 170px">
-<h1 style="line-height: 170px; margin-left: 10px; font-size: 60px"><%= name %></h1>
+<h1 style="line-height: 170px; margin-left: 10px; font-size: 70px; text-align: center">À¥ ¼îÇÎ¸ô¿¡ ¿À½Å °ÍÀ» È¯¿µÇÕ´Ï´Ù</h1>
 </article>
 
 <article style="width: 100%; height: 70px">
-<h1 style="text-align: center; line-height: 70px"><%= welcome %></h1>
+<h1 style="text-align: center; line-height: 70px; font-size: 30px">Welcome to Web Market!</h1>
 </article>
 
-<footer style="width: 100%; height: 20px">
-<p style="margin-left: 10px; font-size: 15px">â“’BookMarket</p>
-</footer>
+<%! 
+Date date = new Date();
+String day = (date.getHours()>12 ? date.getHours()-12 : date.getHours()) + ":" + date.getMinutes() + ":" + date.getSeconds(); 
+%>
+<article style="width: 100%; height: 70px">
+<p style="text-align: center; font-size: 17px">ÇöÀç Á¢¼Ó ½Ã°£Àº <%= day%> <% if(date.getHours() > 12) out.print(" PM"); else out.print(" AM"); %>
+</article>
+
+
+<%@ include file="footer.jsp" %>
 </body>
 </html>
