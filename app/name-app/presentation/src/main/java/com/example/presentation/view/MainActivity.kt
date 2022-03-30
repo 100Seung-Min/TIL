@@ -2,11 +2,18 @@ package com.example.presentation.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.example.presentation.R
+import com.example.presentation.base.BaseActivity
+import com.example.presentation.databinding.ActivityMainBinding
+import com.example.presentation.viewmodel.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+@AndroidEntryPoint
+class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
+    private val mainviewModel by viewModels<MainViewModel>()
+    override fun init() {
+
     }
+
 }
