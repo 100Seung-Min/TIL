@@ -33,6 +33,6 @@ String day = (date.getHours()>12 ? date.getHours()-12 : date.getHours()) + ":" +
 </article>
 
 
-<%@ include file="footer.jsp" %>
+<%@ include file="footer2.jsp" %>
 </body>
 </html>
