@@ -3,42 +3,88 @@ using static System.Console;
 
 namespace Hello
 {
-    class MainApp
+    //class 동동
+    //{
+    //    public string Name;
+    //    public int age;
+    //    public string game;
+    //    public string novel;
 
+    //    public void 변명()
+    //    {
+    //        WriteLine("아 억울해");
+    //    }
+
+    //    public void 웃기()
+    //    {
+    //        WriteLine("우히 우히 우히히");
+    //    }
+
+    //    public void 화내기()
+    //    {
+    //        WriteLine("아 이건 아니지");
+    //    }
+
+    //    public void 소설읽기()
+    //    {
+    //        WriteLine($".......{novel}읽는 중........");
+    //    }
+
+    //    public void 게임하기()
+    //    {
+    //        WriteLine($".......{game}하는 중........");
+    //    }
+
+    //    public void 자기소개()
+    //    {
+    //        WriteLine($"어 안...안녕...나는 {Name}이야....잘...잘부탁해...");
+    //    }
+    //}
+
+    class Car
     {
-        enum People { 성은, 동현, 민채, 승원, 채훈, 도균, 영재};
-
-        public static void swap(ref int a, ref int b)
+        public int wheel;
+        Car(int wheel)
         {
-            int temp = a;
-            a = b;
-            b = temp;
+            this.wheel = wheel;
         }
+    }
 
-        public static double Square(double arg)
-        {
-            return arg * arg;
-        }
+    class MainApp
+    {
+        //enum People { 성은, 동현, 민채, 승원, 채훈, 도균, 영재};
 
-        class Calculator
-        {
-            public static int Plus(int a, int b)
-            {
-                return a + b;
-            }
-            public static int Minus(int a, int b)
-            {
-                return a - b;
-            }
-            public static int Multiply(int a, int b)
-            {
-                return a * b;
-            }
-            public static int Division(int a, int b)
-            {
-                return a / b;
-            }
-        }
+        //public static void swap(ref int a, ref int b)
+        //{
+        //    int temp = a;
+        //    a = b;
+        //    b = temp;
+        //}
+
+        //public static double Square(double arg)
+        //{
+        //    return arg * arg;
+        //}
+
+        //class Calculator
+        //{
+        //    public static int Plus(int a, int b)
+        //    {
+        //        return a + b;
+        //    }
+        //    public static int Minus(int a, int b)
+        //    {
+        //        return a - b;
+        //    }
+        //    public static int Multiply(int a, int b)
+        //    {
+        //        return a * b;
+        //    }
+        //    public static int Division(int a, int b)
+        //    {
+        //        return a / b;
+        //    }
+        //}
         static void Main(string[] args)
         {
             //char a = '안';
@@ -202,9 +248,24 @@ namespace Hello
             //swap(ref a, ref b);
             //WriteLine("{0}, {1}", a, b);
 
-            Write("숫자를 입력하세요 : ");
-            double a = double.Parse(ReadLine());
-            Write("결과 : {0}", Square(a));
+            //Write("숫자를 입력하세요 : ");
+            //double a = double.Parse(ReadLine());
+            //Write("결과 : {0}", Square(a));
+
+            //동동 인간 = new 동동();
+            //인간.Name = "김동현";
+            //인간.age = 17;
+            //인간.game = "블루 아카이브";
+            //인간.novel = "유희왕이라도 사랑이 하고 싶어";
+            //인간.자기소개();
+            //인간.웃기();
+            //인간.변명();
+            //인간.웃기();
+            //인간.게임하기();
+            //인간.소설읽기();
+            //인간.화내기();
+
+            
         }
     }
 }
