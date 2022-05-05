@@ -27,7 +27,7 @@ public class PlayerMove : MonoBehaviour
             spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
 
         // 이동 애니메이션 구현
-        if (rigid.velocity.normalized.x == 0)
+        if (Mathf.Abs(rigid.velocity.x) < 0.3)
             anim.SetBool("isWalking", false);
         else
             anim.SetBool("isWalking", true);
