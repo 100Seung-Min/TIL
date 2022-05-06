@@ -1,10 +1,10 @@
-ai/GAN/GAN_tutorial/
+Ai/GAN/GAN_tutorial/
 *.zip
 *.jpg
 *.png
 *.mp4
 *.webm
 *.mp3
-study/tensorflow/
-javastudy/IDE/
-javastudy/JDK/
+Study/tensorflow/
+Languages/Java/javastudy/IDE/
+Languages/Java/javastudy/JDK/
