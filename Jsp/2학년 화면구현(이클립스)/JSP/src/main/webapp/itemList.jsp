@@ -24,7 +24,7 @@ ArrayList<Product> listOfProducts = productDao.getAllProducts();
 <h1 style="line-height: 170px; margin-left: 10px; font-size: 70px">상품목록</h1>
 </article>
 
-<article style="display: flex; width: 100%; height: 100px; margin-top: 20px">
+<article style="display: flex; width: 100%; height: 130px; margin-top: 20px">
 <%
 for (int i = 0; i < listOfProducts.size(); i++){
 	Product product = listOfProducts.get(i);
@@ -33,6 +33,7 @@ for (int i = 0; i < listOfProducts.size(); i++){
 <h3><%= product.getPname() %></h3>
 <p><%= product.getDescription() %></p>
 <p style="margin-top: 20px"><%= product.getUnitPrice() %>원</p>
+<p><a href="./item.jsp?id=<%=product.getProductId() %>" style="background: orange;padding: 3px; text-decoration: none; font-size: 12px; color: white; margin-top: 5px">상세 정보 &raquo;</a>
 </div>
 <%
 }
