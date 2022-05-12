@@ -61,4 +61,28 @@ public class PlayerMove : MonoBehaviour
                     anim.SetBool("isJumping", false);
         }
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "enemy")
+        {
+            OnDameged(collision.transform.position);
+        }
+    }
+
+    void OnDameged(Vector2 targetPos)
+    {
+        gameObject.layer = 9;
+        spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+        int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1;
+        rigid.AddForce(new Vector2(dirc, 1)*7, ForceMode2D.Impulse);
+        anim.SetTrigger("doDameged");
+        Invoke("OffDameged", 3);
+    }
+
+    void OffDameged()
+    {
+        gameObject.layer = 8;
+        spriteRenderer.color = new Color(1, 1, 1, 1);
+    }
 }
