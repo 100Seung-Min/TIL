@@ -14,6 +14,7 @@
 <h2 style="text-align: center;"><b>교과목 추가</b></h2>
 
 <form method="post" action="action.jsp" name="frm" style="display: flex; align-items: center; justify-content: center;">
+<input type="hidden" name="mode" value="insert">
 <table border="1" style="text-align: center;">
 	<tr>
 		<td>과목코드</td>
@@ -56,7 +57,7 @@
 </tr>
 <tr>
 	<td>종료시간</td>
-	<td><input type="text" name="end_hout" style="width: 100%"></td>
+	<td><input type="text" name="end_hour" style="width: 100%"></td>
 </tr>
 <tr>
 	<td colspan="2">

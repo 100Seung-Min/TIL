@@ -15,7 +15,7 @@
 
 <section style="position: fixed; top: 70px; left: 0px; width: 100%; height: 100%; background-color: lightgray">
 <h2 style="text-align: center;"><b>교과목 목록 조회/수정</b></h2>
-<from style="display: flex; align-items: center; justify-content: center; text-align: center">
+<form name="frm" style="display: flex; align-items: center; justify-content: center; text-align: center">
 <table border="1">
 <tr>
 	<td>과목코드</td>
@@ -59,13 +59,14 @@ try{
 		end_hour = end_hour.substring(0,2) + "시" + end_hour.substring(2,4) + "분";
 %>
 	<tr>
-		<td><%=rs.getString(1) %></td>
+		<td><a href="modify.jsp?id=<%=rs.getString(1) %>"><%=rs.getString(1) %></a></td>
 		<td><%=rs.getString(2) %></td>
 		<td><%=rs.getString(3) %></td>
 		<td><%=rs.getString(4) %></td>
 		<td><%=week %></td>
 		<td><%=start_hour %></td>
-		<td><%= %></td>
+		<td><%=end_hour %></td>
+		<td><a href="action.jsp?id=<%=rs.getString(1) %>&mode=delete">삭제</a></td>
 	</tr>
 <%
 	}
@@ -74,7 +75,7 @@ try{
 }
 %>
 </table>
-</from>
+</form>
 </section>
 
 <jsp:include page="footer.jsp"/>
