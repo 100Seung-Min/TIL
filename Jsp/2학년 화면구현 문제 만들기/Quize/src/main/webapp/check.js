@@ -1,21 +1,21 @@
 function addCheck(){
-	if(frm.id.value.length==0){
-		alert("교과목 코드가 입력되지 않았습니다.");
-		frm.id.focus();
-		return false;
-	}
-	else if(frm.name.value.length==0){
-		alert("과목명이 입력되지 않았습니다.");
+	if(frm.name.value.length==0){
+		alert("이름이 입력되지 않았습니다.");
 		frm.name.focus();
 		return false;
 	}
 	else if(frm.phone.value.length==0){
-		alert("학점이 입력되지 않았습니다.");
+		alert("전화번호가 입력되지 않았습니다.");
 		frm.credit.focus();
 		return false;
 	}
+	else if(frm.password.value.length==0){
+		alert("비밀번호가 입력되지 않았습니다.");
+		frm.password.focus();
+		return false;
+	}
 	else if(frm.volunteer.value==0){
-		alert("담당강사가 선택되지 않았습니다.");
+		alert("봉사가 선택되지 않았습니다.");
 		frm.lecturer.focus();
 		return false;
 	}
@@ -25,12 +25,12 @@ function addCheck(){
 		return false;
 	}
 	else if(frm.hour.value.length==0){
-		alert("시작시간이 입력되지 않았습니다.");
-		frm.start_hour.focus();
+		alert("봉사시간이 입력되지 않았습니다.");
+		frm.hour.focus();
 		return false;
 	}
-	else{
-		alert("교과목 등록이 완료되었습니다!");
+	else {
+		alert("봉사 신청이 완료되었습니다!");
 		document.frm.submit();
 	return true;
 	}

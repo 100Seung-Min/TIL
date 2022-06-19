@@ -1,3 +1,7 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="DBPKG.Utill"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -14,14 +18,26 @@
 
 <form method="post" action="action.jsp" name="frm" style="display: flex; align-items: center; justify-content: center;">
 <input type="hidden" name="mode" value="insert">
+<%
+Connection conn = Utill.getConnection();
+String sql = "select max(id)+1 from member";
+PreparedStatement pstmt = conn.prepareStatement(sql);
+ResultSet rs = pstmt.executeQuery();
+rs.next();
+String volu_id = rs.getString(1);
+%>
 <table border="1" style="text-align: center;">
 	<tr>
 		<td>봉사번호</td>
-		<td><input type="text" name="id" style="width: 100%"></td>
+		<td><input type="text" name="id" style="width: 100%" value="<%=volu_id %>" readonly></td>
 	</tr>
 <tr>
 	<td>이름</td>
 	<td><input type="text" name="name" style="width: 100%"></td>
+</tr>
+<tr>
+	<td>비밀번호</td>
+	<td><input type="text" name="password" style="width: 100%"></td>
 </tr>
 <tr>
 	<td>전화번호</td>

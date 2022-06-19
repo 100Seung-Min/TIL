@@ -1,3 +1,5 @@
+<%@page import="DBPKG.Utill"%>
+<%@page import="java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -19,6 +21,31 @@
 	<td>봉사 수정</td>
 	<td>봉사 취소</td>
 </tr>
+<%
+request.setCharacterEncoding("UTF-8");
+String name = request.getParameter("name");
+String password = request.getParameter("password");
+try {
+	Connection conn = Utill.getConnection();
+	String sql = "select voul.name, mem.day, mem.volu_time from voulnteer voul, member mem where voul.id = mem.volu_id and mem.name = \'" + name + "\' and mem.password = \'" + password + "\'";
+	PreparedStatement pstmt = conn.prepareStatement(sql);
+	ResultSet rs = pstmt.executeQuery();
+	while(rs.next()) {
+		
+%>
+<tr>
+	<td><%=rs.getString(1) %></td>
+	<td><%=rs.getString(2) %></td>
+	<td><%=rs.getString(3) %></td>
+	<td></td>
+	<td></td>
+</tr>
+<%
+	}
+} catch (Exception e) {
+	e.printStackTrace();
+}
+%>
 </table>
 </form>
 </section>

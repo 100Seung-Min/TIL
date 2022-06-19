@@ -1,3 +1,7 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="DBPKG.Utill"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -22,6 +26,32 @@
 	<td>수정</td>
 	<td>삭제</td>
 </tr>
+<%
+request.setCharacterEncoding("UTF-8");
+try {
+	Connection conn = Utill.getConnection();
+	String sql = "select name, place, day, personnel, maxpersonnel, hours from voulnteer order by id";
+	PreparedStatement pstmt = conn.prepareStatement(sql);
+	ResultSet rs = pstmt.executeQuery();
+	while(rs.next()) {
+		
+%>
+<tr>
+	<td><%=rs.getString(1) %></td>
+	<td><%=rs.getString(2) %></td>
+	<td><%=rs.getString(3) %></td>
+	<td><%=rs.getString(5) %></td>
+	<td><%=rs.getString(4) %></td>
+	<td><%=rs.getString(6) %></td>
+	<td></td>
+	<td></td>
+<tr>
+<%
+	}
+} catch (Exception e){
+	e.printStackTrace();
+}
+%>
 </table>
 </form>
 </section>
