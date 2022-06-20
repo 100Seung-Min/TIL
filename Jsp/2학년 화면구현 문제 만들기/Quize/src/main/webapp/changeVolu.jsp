@@ -8,57 +8,47 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>join</title>
+<title>modify</title>
 </head>
 <body>
 <script type="text/javascript" src="check.js"></script>
 <jsp:include page="header.jsp"/>
 <section style="position: fixed; top: 70px; left: 0px; width: 100%; height: 100%; background-color: lightgray">
-<h2 style="text-align: center;"><b>봉사 신청</b></h2>
+<h2 style="text-align: center;"><b>봉사 수정</b></h2>
 
 <form method="post" action="action.jsp" name="frm" style="display: flex; align-items: center; justify-content: center;" accept-charset="utf-8">
-<input type="hidden" name="mode" value="insert">
+<input type="hidden" name="mode" value="update_user">
 <%
-Connection conn = Utill.getConnection();
-String sql = "select max(id)+1 from member";
-PreparedStatement pstmt = conn.prepareStatement(sql);
-ResultSet rs = pstmt.executeQuery();
-rs.next();
-String volu_id = rs.getString(1);
-%>
+request.setCharacterEncoding("UTF-8");
+String id = request.getParameter("id");
+try{
+	Connection conn = Utill.getConnection();
+	String sql = "select mem.name, mem.password, mem.phone, mem.volu_time, vo.name from member mem, voulnteer vo where vo.id = mem.volu_id and mem.id = " + id;
+	PreparedStatement pstmt = conn.prepareStatement(sql);
+	ResultSet rs = pstmt.executeQuery();
+	rs.next();
+	%>
+
 <table border="1" style="text-align: center;">
 	<tr>
 		<td>봉사번호</td>
-		<td><input type="text" name="id" style="width: 100%" value="<%=volu_id %>" readonly></td>
+		<td><input type="text" name="id" style="width: 100%" value="<%=id %>" readonly></td>
 	</tr>
 <tr>
 	<td>이름</td>
-	<td><input type="text" name="name" style="width: 100%"></td>
+	<td><input type="text" name="name" style="width: 100%" value="<%=rs.getString(1) %>"></td>
 </tr>
 <tr>
 	<td>비밀번호</td>
-	<td><input type="text" name="password" style="width: 100%"></td>
+	<td><input type="text" name="password" style="width: 100%" value="<%=rs.getString(2) %>"></td>
 </tr>
 <tr>
 	<td>전화번호</td>
-	<td><input type="text" name="phone" style="width: 100%"></td>
+	<td><input type="text" name="phone" style="width: 100%" value="<%=rs.getString(3) %>"></td>
 </tr>
 <tr>
 	<td>봉사활동</td>
-	<td>
-	<select name="volunteer" style="width: 100%">
-	<option value="">봉사 선택</option>
-	<%
-	String subSql = "select name, id from voulnteer";
-	PreparedStatement subPstmt = conn.prepareStatement(subSql);
-	ResultSet subRs = subPstmt.executeQuery();
-	while(subRs.next()){
-		%>
-		<option value="<%=subRs.getString(2)%>"><%=subRs.getString(1) %></option>
-		<%
-	}
-	%>
-	</select>
+	<td><input type="text" name="volunteer" style="width: 100%" value="<%=rs.getString(5) %>" readonly></td>
 </tr>
 <tr>
 	<td>요일</td>
@@ -75,7 +65,7 @@ String volu_id = rs.getString(1);
 <tr>
 	<td>봉사시간</td>
 	<td>
-	<input type="text" name="hour" style="width: 100%">
+	<input type="text" name="hour" style="width: 100%"  value="<%=rs.getString(4) %>">
 	</td>
 </tr>
 <tr>
@@ -85,6 +75,11 @@ String volu_id = rs.getString(1);
 	</td>
 </tr>
 </table>
+<%
+} catch (Exception e) {
+	e.printStackTrace();
+}
+%>
 </form>
 </section>
 <jsp:include page="footer.jsp"/>
