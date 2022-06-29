@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<jsp:include page="header.jsp"/>
+<section style="position: fixed; top: 70px; width: 100%; height: 100%; background-color: lightgray; left: 0px">
+<h2 style="text-align: center;">GSM 카페에 오신 것을 환영합니다</h2>
+<p style="font-size: 10px">1. 이 프로그램은 GSM 학생들을 위한 카페 프로그램입니다.</p>
+<p>2. 카페 매출 목록을 확인하려면 매출 조회 메뉴를 클릭하세요.</p>
+</section>
+<jsp:include page="footer.jsp"/>
+</body>
+</html>

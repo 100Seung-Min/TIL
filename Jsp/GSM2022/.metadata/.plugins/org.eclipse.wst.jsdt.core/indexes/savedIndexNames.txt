@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\GSM2022\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1281289487.index
+1227058584.index
+1588398179.index
+3216840380.index
+4234387264.index
+1322236106.index

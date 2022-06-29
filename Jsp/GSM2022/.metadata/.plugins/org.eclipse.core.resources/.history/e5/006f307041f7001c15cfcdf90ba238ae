@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<jsp:include page="header.jsp"/>
+<section style="position: fixed; top: 70px; width: 100%; height: 100%;background-color: gray; left: 0px">
+<table>
+	<tr>
+		<td>메뉴번호</td>
+		<td>메뉴이름</td>
+		<td>주문량</td>
+		<td>합계</td>
+	</tr>
+</table>
+</section>
+<jsp:include page="footer.jsp"/>
+</body>
+</html>
