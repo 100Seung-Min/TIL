@@ -2,6 +2,7 @@ package com.example.study_board.service;
 
 import com.example.study_board.domain.posts.Posts;
 import com.example.study_board.domain.posts.PostsRepository;
+import com.example.study_board.web.dto.PostsListResponseDto;
 import com.example.study_board.web.dto.PostsResponseDto;
 import com.example.study_board.web.dto.PostsSaveRequestDto;
 import com.example.study_board.web.dto.PostsUpdateRequestDto;
@@ -9,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -29,6 +32,13 @@ public class PostsService {
         posts.update(requestDto.getTitle(), requestDto.getContent());
 
         return id;
+    }
+
+    @Transactional
+    public List<PostsListResponseDto> findAllDesc() {
+        return postsRepository.findAllDesc().stream()
+                .map(PostsListResponseDto::new)
+                .collect(Collectors.toList());
     }
 
     public PostsResponseDto findById(Long id) {
