@@ -1,0 +1,29 @@
+{{>layout/header}}
+<h1>승민이가 만든 웹서비스</h1>
+<div>
+    <div>
+        <a href="/posts/save" role="button">글 등록</a>
+    </div>
+    <br>
+    <table>
+        <thead>
+        <tr>
+            <th>게시글번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>최종수정일</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#posts}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{title}}</td>
+                <td>{{author}}</td>
+                <td>{{modifiedDate}}</td>
+            </tr>
+        {{/posts}}
+        </tbody>
+    </table>
+</div>
+{{>layout/footer}}
