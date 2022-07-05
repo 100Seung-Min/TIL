@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '2.7.1'
+    id 'org.springframework.boot' version '2.6.7'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
 }
@@ -27,6 +27,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springframework.data:spring-data-jpa:2.7.0'
     implementation 'com.h2database:h2:2.1.212'
+    implementation 'org.springframework.boot:spring-boot-starter-mustache:2.7.0'
 }
 
 tasks.named('test') {
