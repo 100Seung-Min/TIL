@@ -28,6 +28,7 @@ dependencies {
     implementation 'org.springframework.data:spring-data-jpa:2.7.0'
     implementation 'com.h2database:h2:2.1.212'
     implementation 'org.springframework.boot:spring-boot-starter-mustache:2.7.0'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 }
 
 tasks.named('test') {
