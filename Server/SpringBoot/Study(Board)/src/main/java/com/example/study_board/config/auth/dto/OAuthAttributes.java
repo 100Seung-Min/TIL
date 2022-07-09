@@ -1,7 +1,7 @@
 package com.example.study_board.config.auth.dto;
 
+import com.example.study_board.domain.user.Client;
 import com.example.study_board.domain.user.Role;
-import com.example.study_board.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -38,8 +38,8 @@ public class OAuthAttributes {
                 .build();
     }
 
-    public User toEntity() {
-        return User.builder()
+    public Client toEntity() {
+        return Client.builder()
                 .name(name)
                 .email(email)
                 .picture(picture)

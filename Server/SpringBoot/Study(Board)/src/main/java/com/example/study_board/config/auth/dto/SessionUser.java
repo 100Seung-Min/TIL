@@ -1,6 +1,6 @@
 package com.example.study_board.config.auth.dto;
 
-import com.example.study_board.domain.user.User;
+import com.example.study_board.domain.user.Client;
 import lombok.Getter;
 
 import java.io.Serializable;
@@ -11,9 +11,9 @@ public class SessionUser implements Serializable {
     private String email;
     private String picture;
 
-    public SessionUser(User user) {
-        this.name = user.getName();
-        this.email = user.getEmail();
-        this.picture = user.getPicture();
+    public SessionUser(Client client) {
+        this.name = client.getName();
+        this.email = client.getEmail();
+        this.picture = client.getPicture();
     }
 }
