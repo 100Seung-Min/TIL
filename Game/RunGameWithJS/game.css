@@ -1,0 +1,15 @@
+#canvas {
+  background-color: green;
+  margin-top: 120px;
+}
+
+#score {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#gameover {
+  text-align: center;
+  margin-top: 10px;
+  visibility: hidden;
+}
