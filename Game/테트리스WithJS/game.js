@@ -23,6 +23,8 @@ const movingItem = {
 init();
 
 function init() {
+  score = 0;
+  scoreDisplay.innerText = score;
   tempMovingItem = { ...movingItem };
   for (let i = 0; i < GAME_ROWS; i++) {
     prependNewLine();
@@ -174,6 +176,5 @@ document.addEventListener("keydown", e => {
 restartButton.addEventListener("click", () => {
   playground.innerHTML = "";
   gameText.style.display = "none";
-  score = 0;
   init();
 })
