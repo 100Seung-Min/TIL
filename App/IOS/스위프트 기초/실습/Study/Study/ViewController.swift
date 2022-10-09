@@ -15,5 +15,8 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func Click_moveBtn(_ sender: Any) {
+        print("Click Move")
+    }
 }
 
