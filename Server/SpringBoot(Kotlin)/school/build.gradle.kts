@@ -20,7 +20,6 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.apache.tomcat.embed:tomcat-embed-jasper")
-	implementation("jstl:jstl:1.2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
