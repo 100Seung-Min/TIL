@@ -11,6 +11,3 @@ def hello():
     if len(result) < 1 :
         return 'Not Found', 404
     return jsonify(result)
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080)
